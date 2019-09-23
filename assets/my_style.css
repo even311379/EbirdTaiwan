@@ -1,0 +1,345 @@
+html {
+    overflow-y: scroll;
+}
+
+@media only screen and (min-width: 961px){
+
+    .activity_title {
+        font-size: 36px;
+        color: #235EAE;
+        font-weight: 900;
+        text-align: center;
+    }
+
+    .my_badge {
+        font-size: 24px;
+        color: #fff;
+        background-color: #235EAE;
+        display: inline-block;
+        border-radius: 10% / 50%;
+    }
+
+    .badge_size {
+        font-size: 24px;
+    }
+    .logo_title {
+        font-size: 48px
+    }
+
+    .banner {
+        padding: 0 2rem;
+    }
+    /*Map section*/
+
+    .my_map {
+        width: 100%;
+        height: 500px;
+        border: 0;
+    }
+
+    .badge_overlay {
+        display: none;
+    }
+
+    /*fig section*/
+    .fig_title {
+        color: #235EAE;
+        text-align: left;
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+    .main-svg {
+        height: 40vh !important;
+        width: 30vw !important;
+    }
+
+    .svg-container {
+        height: 40vh !important;
+        width: 30vw !important;
+    }
+
+    .my_fig {
+        height: 40vh;
+        width: 30vw;
+        padding: 1rem 0;
+        display: block !important;
+    }
+}
+
+
+
+@media only screen and (min-width: 681px) and (max-width: 960px) {
+
+
+    .fig_title {
+        color: #235EAE;
+        text-align: left;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .main-svg {
+        height: 300px !important;
+        width: 600px !important;
+    }
+
+    .svg-container {
+        height: 300px !important;
+        width: 600px !important;
+    }
+
+    .my_fig {
+        height: 300px;
+        width: 600px;
+        padding: 2rem 0;
+        display: block !important;
+    }
+}
+
+
+@media only screen and (min-width: 401px) and (max-width: 680px) {
+    .fig_title {
+        color: #235EAE;
+        text-align: left;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .main-svg {
+        height: 220px !important;
+        width: 350px !important;
+    }
+
+    .svg-container {
+        height: 220px !important;
+        width: 350px !important;
+    }
+
+    .my_fig {
+        height: 220px;
+        width: 350px;
+        padding: 2rem 0;
+        display: block !important;
+    }
+}
+
+@media only screen and (min-width: 401px) and (max-width: 960px) {
+    .activity_title {
+        font-size: 24px;
+        color: #235EAE;
+        font-weight: 600;
+        text-align: right;
+    }
+
+    .my_badge {
+        display: none;
+        max-width: none;
+    }
+
+    .badge_size {
+        display: none;
+        max-width: none;
+    }
+
+    .EB {
+        font-size: 24px !important;
+    }
+
+    .logo_title {
+        font-size: 20px;
+        text-align: left;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .banner {
+        padding: 0 0 0 2rem;
+    }
+    /*Map section*/
+    .my_map {
+        width: 100%;
+        height: 350px;
+        border: 0;
+    }
+
+    .badge_overlay {
+        color: #fff;
+        background-color: #235EAE;
+        display: block;
+        position: absolute;
+        top: 350px;
+        left: 20px;
+        font-size: 16px;
+        border-radius: 10% / 50%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    /*Banner section*/
+    .activity_title {
+        font-size: 18px;
+        color: #235EAE;
+        font-weight: 600;
+        text-align: right;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .logo_img {
+        display: none;
+        max-width: none;
+    }
+
+    .my_badge {
+        display: none;
+        max-width: none;
+    }
+
+    .badge_size {
+        display: none;
+        max-width: none;
+    }
+
+    .EB {
+        font-size: 21px !important;
+    }
+
+    .logo_title {
+        
+        font-size: 16px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .banner {
+        padding: 0;
+        display: inline-block;
+    }
+
+    .banner .col-8 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .banner .col-1 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    /*Map section*/
+    .my_map {
+        width: 100%;
+        height: 300px;
+        border: 0;
+    }
+
+    .badge_overlay {
+        color: #fff;
+        background-color: #235EAE;
+        display: block;
+        position: absolute;
+        top: 310px;
+        left: 30px;
+        font-size: 12px;
+        border-radius: 10% / 50%;
+    }
+
+    /*fig section*/
+    .fig_title {
+        color: #235EAE;
+        text-align: left;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .main-svg {
+        height: 240px !important;
+        width: 300px !important;
+    }
+
+    .svg-container {
+        height: 240px !important;
+        width: 300px !important;
+    }
+
+    .my_fig {
+        height: 240px;
+        width: 300px;
+        padding: 0 0;
+        display: block !important;
+    }
+
+    /*.HomeBanner {
+        transform: scale(0.2);
+        width: 100%;
+    }*/
+}
+
+
+font {
+    font-family: 'Noto Serif', serif;
+}
+
+:not(font) {
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+.card {
+    border-radius: 1rem !important;
+}
+
+
+
+.HomeBanner {
+    transform-origin: top left;
+    height: 750px;
+    border: 0;
+}
+
+
+/*
+    xs: < 576px sm: 576~768 px md: 992~768px lg: 1140~960px xl: > 1200px */
+@media only screen and (min-width: 1250px) {
+    .NavLnks {
+        font-size: 24px;
+        color: #235EAE;
+        padding: 0 30px;
+    }
+
+    .navbar-collapse ul {
+        padding-top: 10px;
+        padding-left: 100px;
+    }
+
+
+}
+
+
+@media only screen and (min-width: 961px) and (max-width: 1250px) {
+    /* Nav bar*/
+    .NavLnks {
+        font-size: 20px;
+        color: #235EAE;
+        padding: 0 10px;
+    }
+
+    .navbar-collapse ul {
+        padding-top: 10px;
+        padding-left: 30px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 961px) {
+    .NavLnks {
+        font-size: 16px;
+        color: #235EAE;
+        padding: 0 10px;
+    }
+
+    .navbar-collapse ul {
+        padding-top: 10px;
+        padding-left: 30px;
+    }
+
+}
+

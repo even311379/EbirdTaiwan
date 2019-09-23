@@ -1,0 +1,7 @@
+dash
+dash_bootstrap_components
+visdcc
+pandas
+xlrd
+xlml
+requests
