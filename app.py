@@ -9,9 +9,10 @@ import dash
 import dash_html_components as html
 import dash_core_components as dcc
 from dash.dependencies import Input, Output, State
+from textwrap import dedent
+
 import dash_bootstrap_components as dbc
 import visdcc
-
 import time
 
 from e_bird_utils import GetN_Species, GetTotalIndivisual,\
@@ -66,7 +67,7 @@ app.layout = app.layout = html.Div([
             html.Ul([
                 html.Li(html.A('eBird Taiwan秋季大亂鬥', href='/Ebird%e7%a7%8b%e5%ad%a3%e6%8c%91%e6%88%b0%e8%b3%bd',className="NavLnks"),className="nav-item"),
                 html.Li(html.A('關渡觀鳥大日', href='/%e9%97%9c%e6%b8%a1%e9%b3%a5%e5%8d%9a%e8%a7%80%e9%b3%a5%e5%a4%a7%e6%97%a5',className="NavLnks"),className="nav-item"),
-                html.Li(html.A('全球觀鳥大日', href='https://ebird.org/octoberbigday',className="NavLnks"),className="nav-item"),
+                html.Li(html.A('全球觀鳥大日', href='https://ebird.org/taiwan/news/2019-ebird%E5%8D%81%E6%9C%88%E8%A7%80%E9%B3%A5%E5%A4%A7%E6%97%A5-10%E6%9C%8819%E6%97%A5',className="NavLnks"),className="nav-item"),
             ],className="navbar-nav mr-auto"),
             html.Img(src="assets/sponsor.png",height="71px",className="float-right"),
         ],id="navbar-collapse", navbar=True),
@@ -85,11 +86,86 @@ home_layout = html.Div([
     html.Hr(),
     html.Iframe(srcDoc=open('assets/Logo.html','r',encoding='utf-8').read(),className="HomeBanner",id="HomeBanner"),
     html.Div([
-        html.Hr(),
-        html.H1('TESTEST',className='test',id='test'),
+        html.Div("活動辦法", className="section_title"),
         html.Br(),
-        html.H1('TESTEST2'),
+        dbc.CardDeck([
+            dbc.Card([
+                dbc.CardBody([
+                    html.H2("eBird Taiwan秋季大亂鬥", className="card-title home-card-title"),
+                    html.P("和其他eBirder組隊來PK，共有3隊 任你選，灰面鵟鷹隊、黑面琵鷺隊 與小辮鴴隊，在10月上傳觀察清單、 鳥種數最多的隊伍，全隊隊員可獲 得一次望遠鏡抽獎機會。",className="card-text home-card-content"),
+                    html.Br(),html.Br(),html.Br(),
+                ]),
+                dbc.CardFooter(html.Div([
+                        html.Div("2019/10/01-31",className="mr-auto date-range-text"),
+                        dbc.Button("詳情活動說明",id="modal-entry-1", className="modal-entry border-0 bg-transparent")
+                    ],className="d-flex bd-highlight"), className="border-0 bg-transparent")
+                ]),
+            dbc.Card([
+                dbc.CardBody([
+                    html.H2("關渡觀鳥大日", className="card-title home-card-title"),
+                    html.P("和其他eBirder組隊來PK，共有3隊 任你選，灰面鵟鷹隊、黑面琵鷺隊 與小辮鴴隊，在10月上傳觀察清單、 鳥種數最多的隊伍，全隊隊員可獲 得一次望遠鏡抽獎機會。",className="card-text home-card-content"),
+                    html.Br(),html.Br(),html.Br(),
+                ]),
+                dbc.CardFooter(html.Div([
+                        html.Div("2019/10/01-31",className="mr-auto date-range-text"),
+                        dbc.Button("詳情活動說明",id="modal-entry-2", className="modal-entry border-0 bg-transparent")
+                    ],className="d-flex bd-highlight"), className="border-0 bg-transparent")
+                ]),
+            dbc.Card([
+                dbc.CardBody([
+                    html.H2("10/19全球觀鳥大日", className="card-title home-card-title"),
+                    html.P("去年的觀鳥大日集結全世界3萬多位 eBirder的力量，短短24小時共記錄 6,331種鳥類。台灣則記錄242種鳥類 ，送出372份清單，今年的結果究竟 會如何?趕緊安排10月19日出門賞鳥， 一起努力送清單吧!",className="card-text home-card-content"),
+                    html.Br(),html.Br(),html.Br(),
+                ]),
+                dbc.CardFooter(html.Div([
+                        html.Div("2019/10/01-31",className="mr-auto date-range-text"),
+                        dbc.Button("詳情活動說明",id="modal-entry-3", className="modal-entry border-0 bg-transparent")
+                    ],className="d-flex bd-highlight"), className="border-0 bg-transparent")
+                ]),           
+        ], className="home-card-deck"),
+        html.Br(),
+        html.Br(),
+        html.Br(),
     ],id='move_up',style={}),
+    dbc.Modal([
+        dbc.ModalHeader("eBird Taiwan秋季大亂鬥",className="modal-title"),
+        dbc.ModalBody(dcc.Markdown(dedent('''
+        * 挑戰時間：2019.10.01-2019.10.31
+        * 挑戰方式：
+            * 填寫要加入的隊伍，可隨時加入，自由選擇隊伍，但每人只能加入一隊。
+            * 清單上傳時請分享到隊伍帳號（ET灰面鵟鷹隊、ET黑面琵鷺隊、ET小辮鴴隊)，才能列入挑戰紀錄。
+            * 紀錄清單必須持續時間超過3分鐘，鳥種數量沒有以「X」代替的完整紀錄清單。
+            * 賞鳥動態和eBird鳥訊快報需設為公開，才能列入紀錄。        
+        * 獎項：a.上傳鳥種數最多  b.上傳清單數最多
+        ''')),className="modal-body"),
+        dbc.ModalFooter(dbc.Button("關閉", id="close-modal-1", className="ml-auto")),
+        ],id="modal-1",size="xl",centered=True),
+    dbc.Modal([
+        dbc.ModalHeader("關渡觀鳥大日",className="modal-title"),
+        dbc.ModalBody(dcc.Markdown(dedent('''
+        * 挑戰時間：2019.10.01-2019.10.31
+        * 挑戰方式：
+            * 填寫要加入的隊伍，可隨時加入，自由選擇隊伍，但每人只能加入一隊。
+            * 清單上傳時請分享到隊伍帳號（ET灰面鵟鷹隊、ET黑面琵鷺隊、ET小辮鴴隊)，才能列入挑戰紀錄。
+            * 紀錄清單必須持續時間超過3分鐘，鳥種數量沒有以「X」代替的完整紀錄清單。
+            * 賞鳥動態和eBird鳥訊快報需設為公開，才能列入紀錄。        
+        * 獎項：a.上傳鳥種數最多  b.上傳清單數最多
+        ''')),className="modal-body"),
+        dbc.ModalFooter(dbc.Button("關閉", id="close-modal-2", className="ml-auto")),
+        ],id="modal-2",size="xl",centered=True),
+    dbc.Modal([
+        dbc.ModalHeader("10/19全球觀鳥大日",className="modal-title"),
+        dbc.ModalBody(dcc.Markdown(dedent('''
+        * 挑戰時間：2019.10.01-2019.10.31
+        * 挑戰方式：
+            * 填寫要加入的隊伍，可隨時加入，自由選擇隊伍，但每人只能加入一隊。
+            * 清單上傳時請分享到隊伍帳號（ET灰面鵟鷹隊、ET黑面琵鷺隊、ET小辮鴴隊)，才能列入挑戰紀錄。
+            * 紀錄清單必須持續時間超過3分鐘，鳥種數量沒有以「X」代替的完整紀錄清單。
+            * 賞鳥動態和eBird鳥訊快報需設為公開，才能列入紀錄。        
+        * 獎項：a.上傳鳥種數最多  b.上傳清單數最多
+        ''')),className="modal-body"),
+        dbc.ModalFooter(dbc.Button("關閉", id="close-modal-3", className="ml-auto")),
+        ],id="modal-3",size="xl",centered=True),
     ]
     )
 
@@ -150,18 +226,13 @@ app1_layout = html.Div(children = [
 app2_layout = html.Div(
     html.H1('This is app2!'))
 
+### for all pages ####
 @app.callback(
     Output('javascript', 'run'),
     [Input('page-content', 'children')])
 def resize(_): 
     return "console.log('heyhey'); window.dispatchEvent(new Event('resize'));"
 
-
-#@app.callback(
-#    Output('javascript', 'run'),
-#    [Input('fNs', 'figure')])
-#def resize(_): 
-#    return "console.log('resize'); window.dispatchEvent(new Event('resize'));"
 
 @app.callback(
     Output("navbar-collapse", "is_open"),
@@ -173,6 +244,41 @@ def toggle_navbar_collapse(n, is_open):
         return not is_open
     return is_open
 
+
+
+
+### for home page
+@app.callback(
+    Output("modal-1", "is_open"),
+    [Input("modal-entry-1", "n_clicks"), Input("close-modal-1", "n_clicks")],
+    [State("modal-1", "is_open")],
+)
+def toggle_modal(n1, n2, is_open):
+    if n1 or n2:
+        return not is_open
+    return is_open
+
+@app.callback(
+    Output("modal-2", "is_open"),
+    [Input("modal-entry-2", "n_clicks"), Input("close-modal-2", "n_clicks")],
+    [State("modal-2", "is_open")],
+)
+def toggle_modal(n1, n2, is_open):
+    if n1 or n2:
+        return not is_open
+    return is_open
+
+@app.callback(
+    Output("modal-3", "is_open"),
+    [Input("modal-entry-3", "n_clicks"), Input("close-modal-3", "n_clicks")],
+    [State("modal-3", "is_open")],
+)
+def toggle_modal(n1, n2, is_open):
+    if n1 or n2:
+        return not is_open
+    return is_open
+
+### for 關渡觀鳥大日
 @app.callback([
     Output('accp', 'children'),
     Output('accp_o', 'children'),
@@ -210,6 +316,9 @@ def update_all(n,s_accp,s_fNs,s_fTIs,s_fRs):
         s_ut3 = f'{m}分鐘前更新'
         return s_accp, s_accp, s_ut1, s_ut2, s_ut3, s_fNs, s_fTIs, s_fRs
 
+
+
+### for url setup
 
 @app.callback(Output('page-content', 'children'),
               [Input('url', 'pathname')])

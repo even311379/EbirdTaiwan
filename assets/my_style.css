@@ -275,6 +275,41 @@ html {
     }*/
 }
 
+.home-card-deck {
+    padding: 50px;
+}
+
+.home-card-title {
+    font-size: 36px;
+    line-height: 52px;
+    text-align:center;
+    padding:10px;
+}
+
+.home-card-content {
+    font-size: 24px;
+    line-height: 35px;
+    padding:10px;
+}
+
+.date-range-text {
+    font-weight: 100;
+    font-size: 22px;
+}
+
+.modal-entry {
+    font-weight: 100;
+    font-size: 24px;
+    color: #235EAE;
+}
+
+.modal-title {
+    font-size: 40px;
+}
+
+.modal-body {
+    font-size: 28px;
+}
 
 font {
     font-family: 'Noto Serif', serif;
@@ -294,6 +329,17 @@ font {
     transform-origin: top left;
     height: 750px;
     border: 0;
+}
+
+
+.section_title {
+    font-size: 48px;
+    height: 200px;
+    line-height:200px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background: #A4D386;
+    text-align: center;
 }
 
 
