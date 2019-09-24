@@ -16,9 +16,8 @@ function moveUp() {
     var w = $(window).width();
     if (w < 400) { w = 400 };
     if (w > 1600) { w = 1600 };
-    var value = -550 * (1 - ((w - 400) / 1200));
-    document.getElementById("move_up").style.transform = "translateY("+value+"px)";
-    console.log('runing?');
+    var value = 550 * ((w-400)/1200) + 200;
+    $(".ifwrap").css({ "height": value+"px"});
 }
 
 $(window).resize(function() {

@@ -16,30 +16,32 @@ import visdcc
 import time
 
 from e_bird_utils import GetN_Species, GetTotalIndivisual,\
-   GetN_Record, draw_bar, GetN_Participants
+   GetN_Record, draw_bar, GetN_Participants, half_donut,\
+   accumlate_people_trace
 
-
-# themes from https://bootswatch.com/
+#################################################################
+########################## APP SETUP ############################
+#################################################################
 
 external_scripts = [
     "https://code.jquery.com/jquery-3.4.1.min.js",
     ]
 
+# themes from https://bootswatch.com/
 app = dash.Dash(
     'E-bird dash',
      external_stylesheets=[dbc.themes.COSMO, "https://fonts.googleapis.com/css?family=Noto+Sans+TC|Noto+Serif&display=swap"],
      external_scripts=external_scripts,
-     meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"},
-                #{"http-equiv":"cache-control","content":"no-cache"},
-                #{"http-equiv":"expires","content":"0"},
+     meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"},                
                 {"content_type":"text/html"}]
      )
 
 app.config.suppress_callback_exceptions = True
 server = app.server
 
-#app.title = 'E-bird dash'
+app.title = 'E-bird Taiwan'
 
+# init figs
 
 df = GetN_Species([2019,7,1], [2019,12,31])
 fig_N_species = draw_bar(df.鳥種數.tolist(), df.觀察者.tolist())
@@ -53,15 +55,16 @@ nP = GetN_Participants([2019,7,1], [2019,12,31])
 accP = f'累積參與人數: {nP}'
 
 
-
-
+#####################################################################################
+######################## LAYOUTs SECTION ##################################################
+###################################################################
 
 
 app.layout = app.layout = html.Div([
     visdcc.Run_js(id='javascript'),
     dcc.Location(id='url', refresh=False),
     html.Nav([
-        html.A([html.Font('e', style={'color':'#4ca800'},className='EB'),html.Font('Bird',className='EB',style={'color':'#000000'}), html.Font(' Taiwan', style={'color':'#4ca800'})],style={'font-weight':'600'},className='logo_title navbar-brand',href="/"),
+        html.A([html.Font('e', style={'color':'#4ca800'},className='EB'),html.Font('Bird',className='EB',style={'color':'#000000'}),html.Br(className="EB_sep"), html.Font(' Taiwan', style={'color':'#4ca800'})],style={'font-weight':'600'},className='logo_title navbar-brand',href="/"),
         dbc.NavbarToggler(id="navbar-toggler"),
         dbc.Collapse([
             html.Ul([
@@ -73,6 +76,9 @@ app.layout = app.layout = html.Div([
         ],id="navbar-collapse", navbar=True),
         ], className="navbar navbar-expand-md navbar-light bg-white justify-content-between"),
     html.Div(id='page-content'),
+    html.Br(),
+    html.Div(style={"height": "100px", "background": "#84BC60"}),
+    html.Div(id='js_out'),
     dcc.Interval(
         id='interval-component',
         interval=60*1000, # in milliseconds
@@ -84,7 +90,7 @@ app.layout = app.layout = html.Div([
 ## 中文網址一定要事先encode才行!!  http://www.convertstring.com/zh_TW/EncodeDecode/UrlEncode
 home_layout = html.Div([
     html.Hr(),
-    html.Iframe(srcDoc=open('assets/Logo.html','r',encoding='utf-8').read(),className="HomeBanner",id="HomeBanner"),
+    html.Div(html.Iframe(srcDoc=open('assets/Logo.html','r',encoding='utf-8').read(),className="HomeBanner",id="HomeBanner"),className="ifwrap"),
     html.Div([
         html.Div("活動辦法", className="section_title"),
         html.Br(),
@@ -98,18 +104,18 @@ home_layout = html.Div([
                 dbc.CardFooter(html.Div([
                         html.Div("2019/10/01-31",className="mr-auto date-range-text"),
                         dbc.Button("詳情活動說明",id="modal-entry-1", className="modal-entry border-0 bg-transparent")
-                    ],className="d-flex bd-highlight"), className="border-0 bg-transparent")
+                    ],className="d-flex align-items-center"), className="border-0 bg-transparent")
                 ]),
             dbc.Card([
                 dbc.CardBody([
                     html.H2("關渡觀鳥大日", className="card-title home-card-title"),
-                    html.P("和其他eBirder組隊來PK，共有3隊 任你選，灰面鵟鷹隊、黑面琵鷺隊 與小辮鴴隊，在10月上傳觀察清單、 鳥種數最多的隊伍，全隊隊員可獲 得一次望遠鏡抽獎機會。",className="card-text home-card-content"),
+                    html.P("今年的關渡鳥博適逢eBird全球觀鳥大日，ebird Taiwan除了按照往例將在關渡鳥博設攤，另外在10/19觀鳥大日這天，特別邀請鳥友們前往鄰近關渡平原賞鳥、上傳紀錄。鳥友們請做好準備，一起來衝關渡觀鳥大日吧!",className="card-text home-card-content"),
                     html.Br(),html.Br(),html.Br(),
                 ]),
                 dbc.CardFooter(html.Div([
                         html.Div("2019/10/01-31",className="mr-auto date-range-text"),
                         dbc.Button("詳情活動說明",id="modal-entry-2", className="modal-entry border-0 bg-transparent")
-                    ],className="d-flex bd-highlight"), className="border-0 bg-transparent")
+                    ],className="d-flex align-items-center"), className="border-0 bg-transparent")
                 ]),
             dbc.Card([
                 dbc.CardBody([
@@ -120,64 +126,70 @@ home_layout = html.Div([
                 dbc.CardFooter(html.Div([
                         html.Div("2019/10/01-31",className="mr-auto date-range-text"),
                         dbc.Button("詳情活動說明",id="modal-entry-3", className="modal-entry border-0 bg-transparent")
-                    ],className="d-flex bd-highlight"), className="border-0 bg-transparent")
+                    ],className="d-flex align-items-center"), className="border-0 bg-transparent")
                 ]),           
         ], className="home-card-deck"),
         html.Br(),
         html.Br(),
-        html.Br(),
-    ],id='move_up',style={}),
+        html.Div([
+            html.Img(src="assets/chick.png",className="chick-img"),
+            html.Div("完成任一活動之參賽者即可參加抽獎, 豐富大獎得主就是你啦！",className="home-footer"),
+            html.Img(src="assets/chick.png",className="chick-img", style={"transform": "scaleX(-1)"}),
+            ], className="d-flex justify-content-around align-items-center"),
+        html.Br(),        
+    ],id='move_up'),
     dbc.Modal([
         dbc.ModalHeader("eBird Taiwan秋季大亂鬥",className="modal-title"),
         dbc.ModalBody(dcc.Markdown(dedent('''
+        ## Contents are not checked yet ##
         * 挑戰時間：2019.10.01-2019.10.31
         * 挑戰方式：
             * 填寫要加入的隊伍，可隨時加入，自由選擇隊伍，但每人只能加入一隊。
             * 清單上傳時請分享到隊伍帳號（ET灰面鵟鷹隊、ET黑面琵鷺隊、ET小辮鴴隊)，才能列入挑戰紀錄。
             * 紀錄清單必須持續時間超過3分鐘，鳥種數量沒有以「X」代替的完整紀錄清單。
             * 賞鳥動態和eBird鳥訊快報需設為公開，才能列入紀錄。        
-        * 獎項：a.上傳鳥種數最多  b.上傳清單數最多
+        * 獎項：
+            * 上傳鳥種數最多  
+            * 上傳清單數最多
         ''')),className="modal-body"),
         dbc.ModalFooter(dbc.Button("關閉", id="close-modal-1", className="ml-auto")),
         ],id="modal-1",size="xl",centered=True),
     dbc.Modal([
         dbc.ModalHeader("關渡觀鳥大日",className="modal-title"),
         dbc.ModalBody(dcc.Markdown(dedent('''
+        ## Contents are not checked yet ##
         * 挑戰時間：2019.10.01-2019.10.31
         * 挑戰方式：
             * 填寫要加入的隊伍，可隨時加入，自由選擇隊伍，但每人只能加入一隊。
             * 清單上傳時請分享到隊伍帳號（ET灰面鵟鷹隊、ET黑面琵鷺隊、ET小辮鴴隊)，才能列入挑戰紀錄。
             * 紀錄清單必須持續時間超過3分鐘，鳥種數量沒有以「X」代替的完整紀錄清單。
             * 賞鳥動態和eBird鳥訊快報需設為公開，才能列入紀錄。        
-        * 獎項：a.上傳鳥種數最多  b.上傳清單數最多
+        * 獎項：
+            * 上傳鳥種數最多  
+            * 上傳清單數最多
         ''')),className="modal-body"),
         dbc.ModalFooter(dbc.Button("關閉", id="close-modal-2", className="ml-auto")),
         ],id="modal-2",size="xl",centered=True),
     dbc.Modal([
         dbc.ModalHeader("10/19全球觀鳥大日",className="modal-title"),
         dbc.ModalBody(dcc.Markdown(dedent('''
+        ## Contents are not checked yet ##
         * 挑戰時間：2019.10.01-2019.10.31
         * 挑戰方式：
             * 填寫要加入的隊伍，可隨時加入，自由選擇隊伍，但每人只能加入一隊。
             * 清單上傳時請分享到隊伍帳號（ET灰面鵟鷹隊、ET黑面琵鷺隊、ET小辮鴴隊)，才能列入挑戰紀錄。
             * 紀錄清單必須持續時間超過3分鐘，鳥種數量沒有以「X」代替的完整紀錄清單。
             * 賞鳥動態和eBird鳥訊快報需設為公開，才能列入紀錄。        
-        * 獎項：a.上傳鳥種數最多  b.上傳清單數最多
+        * 獎項：
+            * 上傳鳥種數最多  
+            * 上傳清單數最多
         ''')),className="modal-body"),
         dbc.ModalFooter(dbc.Button("關閉", id="close-modal-3", className="ml-auto")),
         ],id="modal-3",size="xl",centered=True),
     ]
     )
 
-app1_layout = html.Div(children = [
-        #title
-        dbc.Container([
-        dbc.Row([
-        dbc.Col(html.Div([html.Font('e', style={'color':'#4ca800'},className='EB'),html.Font('Bird',className='EB'), html.Font(' Taiwan', style={'color':'#4ca800'})],style={'font-weight':'600'}),className='logo_title',width=2,lg=4),
-        dbc.Col(html.Div('2019年關渡鳥博觀鳥大日',className = 'activity_title text-nowrap'),lg=4,sm=6,width=8),
-        dbc.Col(xl=2,lg=2,md=0),
-        dbc.Col(html.Div(dbc.Badge(accP,id='accp', pill=True,className='my_badge')), width=2, className='badge_size'),
-        ], className="banner d-flex", align='center', style={'backgroundColor':'white'}),
+app1_layout = dbc.Container([        
         # map
         dbc.Row([
             html.Iframe(id='map',srcDoc=open('my_map.html','r',encoding='utf8').read(),className='my_map'),
@@ -187,51 +199,77 @@ app1_layout = html.Div(children = [
         # result
         dbc.Card([
             dbc.Row([
-            dbc.Col([
-                dbc.Row([
-                    dbc.Col(html.Div('上傳鳥種數排名',className='fig_title'),width=7),
-                    dbc.Col(html.Div('1小時前更新',id='ut1',className='text-muted', style={'text-align':'right','fontSize':12}),width=5),
-                    ],justify='end',align='baseline'),
-                html.Hr(),
-                dbc.Row(
-                    dbc.Col(dcc.Graph(figure=fig_N_species, id='fNs',config=dict(displayModeBar=False),className='my_fig'))),
-                html.Hr(),
+                dbc.Col([
+                    dbc.Row([
+                        dbc.Col(html.Div('上傳鳥種數排名',className='fig_title'),width=7),
+                        dbc.Col(html.Div('1小時前更新',id='ut1',className='text-muted', style={'text-align':'right','fontSize':12}),width=5),
+                        ],justify='end',align='baseline'),
+                    html.Hr(),
+                    dbc.Row(
+                        dbc.Col(dcc.Graph(figure=fig_N_species, id='fNs',config=dict(displayModeBar=False),className='my_fig'))),
+                    html.Hr(),
                 ], xl=4,lg=4,md=12),
-             dbc.Col([
-                dbc.Row([
-                    dbc.Col(html.Div('上傳鳥隻數排名',className='fig_title'),width=7),
-                    dbc.Col(html.Div('1小時前更新',id='ut2',className='text-muted', style={'text-align':'right','fontSize':12}),width=5),
-                    ],justify='end',align='baseline'),
-                html.Hr(),
-                dbc.Row(
-                    dbc.Col(dcc.Graph(figure=fig_TI_species, id='fTIs', config=dict(displayModeBar=False),className='my_fig'))),
-                html.Hr(),
+                dbc.Col([
+                    dbc.Row([
+                        dbc.Col(html.Div('上傳鳥隻數排名',className='fig_title'),width=7),
+                        dbc.Col(html.Div('1小時前更新',id='ut2',className='text-muted', style={'text-align':'right','fontSize':12}),width=5),
+                        ],justify='end',align='baseline'),
+                    html.Hr(),
+                    dbc.Row(
+                        dbc.Col(dcc.Graph(figure=fig_TI_species, id='fTIs', config=dict(displayModeBar=False),className='my_fig'))),
+                    html.Hr(),
                 ], xl=4,lg=4,md=12),
-             dbc.Col([
-                dbc.Row([
-                    dbc.Col(html.Div('上傳清單數排名',className='fig_title'),width=7),
-                    dbc.Col(html.Div('1小時前更新',id='ut3',className='text-muted', style={'text-align':'right','fontSize':12}),width=5),
-                    ],justify='end',align='baseline'),
-                html.Hr(),
-                dbc.Row(
-                    dbc.Col(dcc.Graph(figure=fig_Record_species, id='fRs', config=dict(displayModeBar=False),className='my_fig'))),
-                html.Hr(),
+                dbc.Col([
+                    dbc.Row([
+                        dbc.Col(html.Div('上傳清單數排名',className='fig_title'),width=7),
+                        dbc.Col(html.Div('1小時前更新',id='ut3',className='text-muted', style={'text-align':'right','fontSize':12}),width=5),
+                        ],justify='end',align='baseline'),
+                    html.Hr(),
+                    dbc.Row(
+                        dbc.Col(dcc.Graph(figure=fig_Record_species, id='fRs', config=dict(displayModeBar=False),className='my_fig'))),
+                    html.Hr(),
                 ], xl=4,lg=4,md=12),
-            ]),
-            ],body=True
-        ),
-        ],fluid=True, style={'backgroundColor':'#E2EDF3'})])
+             ]),
+        ], style={"box-shadow":"4px 4px 0px rgba(187, 187, 187, 0.25)"}, body=True, color="light"),
+        html.Br(),
+        ],fluid=True)
 
 
-app2_layout = html.Div(
-    html.H1('This is app2!'))
+app2_layout = html.Div([
+    html.Div("當前戰況", className="section_title"),
+    html.Br(),
+    html.Br(),
+    html.Br(),
+    dbc.Row([
+        dbc.Col(dcc.Graph(id='donut1',config=dict(displayModeBar=False),className="half_donut"),xl = 4,lg = 4, md = 12, className = "d-flex justify-content-center"),
+        dbc.Col(dcc.Graph(id='donut2',config=dict(displayModeBar=False),className="half_donut"),xl = 4,lg = 4, md = 12, className = "d-flex justify-content-center"),
+        dbc.Col(dcc.Graph(id='donut3',config=dict(displayModeBar=False),className="half_donut"),xl = 4,lg = 4, md = 12, className = "d-flex justify-content-center")
+    ]),
+    html.Div(style={"padding":"80px"}),
+    dbc.Row(dcc.Graph(figure=accumlate_people_trace()),className="d-flex justify-content-center"),
+    html.Br(),
+    ])
+
+##########################################################################################
+##########################################  CALLBACKs SECTION  ##########################
+###########################################################################################
 
 ### for all pages ####
 @app.callback(
     Output('javascript', 'run'),
     [Input('page-content', 'children')])
 def resize(_): 
-    return "console.log('heyhey'); window.dispatchEvent(new Event('resize'));"
+    return """
+    function getWindowSize(){
+        var w = $(window).width();
+            setProps({
+            'event':{'w':w}
+            })
+    }
+    window.addEventListener("resize", getWindowSize);
+    window.dispatchEvent(new Event('resize'));
+    window.removeEventListener("resize", getWindowSize);
+    """
 
 
 @app.callback(
@@ -243,8 +281,6 @@ def toggle_navbar_collapse(n, is_open):
     if n:
         return not is_open
     return is_open
-
-
 
 
 ### for home page
@@ -317,9 +353,21 @@ def update_all(n,s_accp,s_fNs,s_fTIs,s_fRs):
         return s_accp, s_accp, s_ut1, s_ut2, s_ut3, s_fNs, s_fTIs, s_fRs
 
 
+### for autumn page
+@app.callback(
+    [Output('donut1', 'figure'),
+    Output('donut2', 'figure'),
+    Output('donut3', 'figure')],
+    [Input('javascript', 'event')])
+def set_donut_by_viewport_width(prop):  
+    # I'll add get data from file functions here
+    w = prop['w']
+    fig1 = half_donut(105,100,0, w)
+    fig2 = half_donut(179,148,1, w)
+    fig3 = half_donut(452,790,2, w)
+    return fig1, fig2, fig3
 
 ### for url setup
-
 @app.callback(Output('page-content', 'children'),
               [Input('url', 'pathname')])
 def display_page(pathname):
