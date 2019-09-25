@@ -39,7 +39,7 @@ app = dash.Dash(
 app.config.suppress_callback_exceptions = True
 server = app.server
 
-app.title = 'E-bird Taiwan'
+app.title = 'eBird Taiwan系列活動'
 
 # init figs
 
@@ -70,7 +70,7 @@ app.layout = app.layout = html.Div([
             html.Ul([
                 html.Li(html.A('eBird Taiwan秋季大亂鬥', href='/Ebird%e7%a7%8b%e5%ad%a3%e6%8c%91%e6%88%b0%e8%b3%bd',className="NavLnks"),className="nav-item"),
                 html.Li(html.A('關渡觀鳥大日', href='/%e9%97%9c%e6%b8%a1%e9%b3%a5%e5%8d%9a%e8%a7%80%e9%b3%a5%e5%a4%a7%e6%97%a5',className="NavLnks"),className="nav-item"),
-                html.Li(html.A('全球觀鳥大日', href='https://ebird.org/taiwan/news/2019-ebird%E5%8D%81%E6%9C%88%E8%A7%80%E9%B3%A5%E5%A4%A7%E6%97%A5-10%E6%9C%8819%E6%97%A5',className="NavLnks"),className="nav-item"),
+                html.Li(html.A('10/19十月觀鳥大日', href='https://ebird.org/taiwan/news/2019-ebird%E5%8D%81%E6%9C%88%E8%A7%80%E9%B3%A5%E5%A4%A7%E6%97%A5-10%E6%9C%8819%E6%97%A5',className="NavLnks"),className="nav-item"),
             ],className="navbar-nav mr-auto"),
             html.Img(src="assets/sponsor.png",height="71px",className="float-right"),
         ],id="navbar-collapse", navbar=True),
