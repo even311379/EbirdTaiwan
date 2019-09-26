@@ -113,7 +113,7 @@ home_layout = html.Div([
                     html.Br(),html.Br(),html.Br(),
                 ]),
                 dbc.CardFooter(html.Div([
-                        html.Div("2019/10/01-31",className="mr-auto date-range-text"),
+                        html.Div("2019/10/19",className="mr-auto date-range-text"),
                         dbc.Button("詳細活動說明",id="modal-entry-2", className="modal-entry border-0 bg-transparent")
                     ],className="d-flex align-items-center"), className="border-0 bg-transparent")
                 ]),
@@ -124,7 +124,7 @@ home_layout = html.Div([
                     html.Br(),html.Br(),html.Br(),
                 ]),
                 dbc.CardFooter(html.Div([
-                        html.Div("2019/10/01-31",className="mr-auto date-range-text"),
+                        html.Div("2019/10/19",className="mr-auto date-range-text"),
                         dbc.Button("詳細活動說明",id="modal-entry-3", className="modal-entry border-0 bg-transparent")
                     ],className="d-flex align-items-center"), className="border-0 bg-transparent")
                 ]),           
