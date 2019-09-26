@@ -13,65 +13,63 @@ import random
 import plotly.graph_objects as go
 
 ## app1 functions
-def draw_bar(values, names):
+def draw_bar(values, names, w):
 
     if len(values) < 5:
-        t = [0]*(5 - len(values))
+        t = [0] * (5 - len(values))
         values = t.append(values)
-        t = ['']*(5 - len(values))
+        t = [''] * (5 - len(values))
         names = t.append(names)
 
-    data = [
-        go.Bar(
-            x = values,
+    m_names = names
+
+    if w < 400:
+        m_names = []
+        for n in names:
+            c_ord = sum([ord(c) for c in n])
+            if (c_ord > 40000 and len(n)> 6) or (len(n) > 15):
+                if c_ord > 40000:
+                    m_names.append(n[:6]+'...')
+                else:
+                    m_names.append(n[:12]+'...')
+            else:
+                m_names.append(n)
+
+    data = [go.Bar(x = values,
             y = [1,2,3,4,5],
             width=[0.5, 0.5, 0.5, 0.5, 0.5],
             marker_color='#5EA232',
             orientation='h',
             hoverinfo = 'text',
-            hovertext = [f'{n}: {v}' for n,v in zip(names, values)]
-        ),
-        go.Scatter(
-            x = [max(values)* -0.75] * 5,
+            hovertext = [f'{n}: {v}' for n,v in zip(names, values)]),
+        go.Scatter(x = [max(values) * -0.75] * 5,
             y = [1,2,3,4,5],
-            text=[f'<b>{n}</b>' for n in names],
+            text=[f'<b>{n}</b>' for n in m_names],  # this line to fix final issue...
             mode = 'text',
             textposition="middle right",
-            textfont=dict(
-                color="black",
+            textfont=dict(color="black",
                 size=12,),
-            hoverinfo='none'
-        ),
-        go.Scatter(
-            x = [max(values)* 0.05] * 5,
+            hoverinfo='none'),
+        go.Scatter(x = [max(values) * 0.05] * 5,
             y = [1,2,3,4,5],
             text=[f'<b>{n}</b>' for n in values],
             mode = 'text',
             textposition="middle right",
-            textfont=dict(
-                color="white",
+            textfont=dict(color="white",
                 size=18),
-            hoverinfo='none'
-        )
-    ]
+            hoverinfo='none')]
 
 
-    layout = go.Layout(
-        shapes = [go.layout.Shape(type="line",x0= max(values)* -0.1,x1=max(values)* -0.1,y0=1,y1=5)],
-        margin=dict(
-            l=0,r=0,b=0,t=0
-        ),
+    layout = go.Layout(shapes = [go.layout.Shape(type="line",x0= max(values) * -0.1,x1=max(values) * -0.1,y0=1,y1=5)],
+        margin=dict(l=0,r=0,b=0,t=0),
         dragmode = False,
-        xaxis=dict(
-        range=[max(values)* -0.75, max(values)],
-        tickvals = [ 0, int(max(values)/2), max(values)],
-        showgrid=False,zeroline=False
-        ),
+        xaxis=dict(range=[max(values) * -0.75, max(values)],
+        tickvals = [0, int(max(values) / 2), max(values)],
+        showgrid=False,zeroline=False),
         yaxis=dict(showticklabels=False,showgrid=False,zeroline=False),
         showlegend=False,
         plot_bgcolor='rgba(0,0,0,0)',
-        paper_bgcolor='rgba(0,0,0,0)',
-    )
+        paper_bgcolor='rgba(0,0,0,0)',)
 
     fig = go.Figure(data=data, layout=layout)
 
@@ -101,7 +99,7 @@ def GetUploadTimeTable(sdate, edate):
         ndf = ndf.tail(5)
         ndf.insert(0, 'No.', range(1,6))
     else:
-        ndf.insert(0, 'No.', range(1,len(ndf)+1))
+        ndf.insert(0, 'No.', range(1,len(ndf) + 1))
     ndf.columns = ['名次', '觀察者', '日期', '時間']
     return ndf
 
@@ -138,7 +136,7 @@ def GetN_Species(sdate, edate):
         odf = odf.tail(5)
         odf.insert(0, '名次', range(1,6))
     else:
-        odf.insert(0, '名次', range(1,len(odf)+1))
+        odf.insert(0, '名次', range(1,len(odf) + 1))
     
     return odf
 
@@ -159,7 +157,7 @@ def GetTotalIndivisual(sdate, edate):
     TotalN = []
     for observer in observers:
         N = 0
-        for n in ndf[ndf.Observer==observer].Count.tolist():
+        for n in ndf[ndf.Observer == observer].Count.tolist():
             if n < 0:
                 pass
             else:
@@ -172,7 +170,7 @@ def GetTotalIndivisual(sdate, edate):
         odf = odf.tail(5)
         odf.insert(0, '名次', range(1,6))
     else:
-        odf.insert(0, '名次', range(1,len(odf)+1))
+        odf.insert(0, '名次', range(1,len(odf) + 1))
     return odf
 
 def GetN_Record(sdate, edate):
@@ -188,7 +186,7 @@ def GetN_Record(sdate, edate):
     observers = set(ndf.Observer)
     N_Record = []
     for observer in observers:
-        N_Record.append(len(ndf[ndf.Observer==observer]))
+        N_Record.append(len(ndf[ndf.Observer == observer]))
     odf = pd.DataFrame([observers,N_Record]).T
     odf.columns = ['觀察者', '紀錄筆數']
     odf = odf.sort_values(by='紀錄筆數')
@@ -196,21 +194,21 @@ def GetN_Record(sdate, edate):
         odf = odf.tail(5)
         odf.insert(0, '名次', range(1,6))
     else:
-        odf.insert(0, '名次', range(1,len(odf)+1))
+        odf.insert(0, '名次', range(1,len(odf) + 1))
     
     return odf
 
 # app2 functions
-def half_donut(n_bird, n_rows, team = 0, w = 1600):
+def half_donut(n_bird, n_rows, team=0, w=1600):
     
     if team == 0:
-        team_name = '灰面鵟鷹隊'
+        team_name = 'ET灰面鵟鷹隊'
         team_color = '#A4B924'
     elif team == 1:
-        team_name = '黑面琵鷺隊'
+        team_name = 'ET黑面琵鷺隊'
         team_color = '#5185AA'
     elif team == 2:
-        team_name = '小辮鴴隊'
+        team_name = 'ET小辮鴴隊'
         team_color = '#993131'
 
     if 681 <= w:
@@ -236,16 +234,14 @@ def half_donut(n_bird, n_rows, team = 0, w = 1600):
     else:
         D = 'counterclockwise'
 
-    data=[go.Pie(values=values,
+    data = [go.Pie(values=values,
                  marker=dict(colors=[team_color,'#C4C4C4','rgba(0,0,0,0)']),hole=.75,
                  rotation =90,direction=D,
                  text=[f'發現了{n_bird}種囉!', f'還有{all_n_bird - n_bird}種等待您的發掘',''],
                  textinfo='none',
-                 hoverinfo='text'
-                )]
+                 hoverinfo='text')]
 
-    layout = go.Layout(
-        width=fig_wh,
+    layout = go.Layout(width=fig_wh,
         height=fig_wh,
         clickmode='none',
         dragmode=False,
@@ -255,20 +251,55 @@ def half_donut(n_bird, n_rows, team = 0, w = 1600):
         showlegend=False,
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor='rgba(0,0,0,0)',
-        annotations=[
-            go.layout.Annotation(x=0,y=3,xref="x",yref="y",text=f"鳥種數：{n_bird}",font=dict(size=t1_s,color='#000000',family='Noto Sans TC'),showarrow=False),
+        annotations=[go.layout.Annotation(x=0,y=3,xref="x",yref="y",text=f"鳥種數：{n_bird}",font=dict(size=t1_s,color='#000000',family='Noto Sans TC'),showarrow=False),
             go.layout.Annotation(x=0,y=-2,xref="x",yref="y",text=f"總上傳清單數：{n_rows}",font=dict(size=t2_s,color='#000000',family='Noto Sans TC'),showarrow=False),
             go.layout.Annotation(x=0,y=-5,xref="x",yref="y",text=team_name,font=dict(size=t3_s,color='#000000',family='Noto Sans TC'),showarrow=False),
-            #go.layout.Annotation(x=0,y=-7,xref="x",yref="y",text="1345",font=dict(size=10,color='rgba(0,0,0,0)'),showarrow=False),#to prevent chinese text been cut off
-        ]
-    )
+            #go.layout.Annotation(x=0,y=-7,xref="x",yref="y",text="1345",font=dict(size=10,color='rgba(0,0,0,0)'),showarrow=False),#to
+            #prevent chinese text been cut off
+        ])
     # Use `hole` to create a donut-like pie chart
     fig = go.Figure(data=data,layout=layout)
     return fig
 
+def setup_donuts(w):
+    data1 = pd.read_csv('Team1Data.csv')
+    data2 = pd.read_csv('Team2Data.csv')
+    data3 = pd.read_csv('Team3Data.csv')
 
-def accumlate_people_trace(start_date):
+    ts1 = len(set(data1.Species.tolist()))
+    tl1 = len(data1[['DateTime', 'Creator']].drop_duplicates())
+    ts2 = len(set(data2.Species.tolist()))
+    tl2 = len(data2[['DateTime', 'Creator']].drop_duplicates())
+    ts3 = len(set(data3.Species.tolist()))
+    tl3 = len(data3[['DateTime', 'Creator']].drop_duplicates())
+
+    fig1 = half_donut(ts1,tl1,0, w)
+    fig2 = half_donut(ts2,tl2,1, w)
+    fig3 = half_donut(ts3,tl3,2, w)
+    return fig1, fig2, fig3
+
+
+def accumlate_people_trace(start_date, w):
     
+    if w > 1200:
+        ww = 750
+        h = 350
+        lbs = 24
+        tp = -0.15
+        ap = -1.2
+    elif w > 600:
+        ww = 600
+        h = 300
+        lbs = 22
+        tp = -0.15
+        ap = -1.2
+    else:
+        ww = 340
+        h = 170
+        lbs = 16
+        tp = -0.3
+        ap = -1.5
+
     data1 = pd.read_csv('Team1Data.csv')
     data2 = pd.read_csv('Team2Data.csv')
     data3 = pd.read_csv('Team3Data.csv')
@@ -281,7 +312,7 @@ def accumlate_people_trace(start_date):
         X = []
         Y = []
         for i in set(DaysAfterStart):
-            X.append(i+1)
+            X.append(i + 1)
             Y.append(len(set(data[data.DAS <= i].Creator.tolist())))
         return X ,Y
     
@@ -289,41 +320,33 @@ def accumlate_people_trace(start_date):
     x2, y2 = GetXY(data2)
     x3, y3 = GetXY(data3)
 
-    y_upper = max(y1+y2+y3)*1.2 # hack y axis limit
+    y_upper = max(y1 + y2 + y3) * 1.2 # hack y axis limit
 
-    data = [        
-        go.Scatter(x = x1, y = y1, mode='lines+markers',line=dict(shape='spline',color='#A4B924'), name = '灰面鵟鷹隊'),
-        go.Scatter(x = x2, y = y2, mode='lines+markers',line=dict(shape='spline',color='#5185AA'), name = '黑面琵鷺隊'),
-        go.Scatter(x = x3, y = y3, mode='lines+markers',line=dict(shape='spline',color='#993131'), name = '小辮鴴隊'),
-    ]
+    data = [go.Scatter(x = x1, y = y1, mode='lines+markers',line=dict(shape='spline',color='#A4B924'), name = 'ET灰面鵟鷹隊'),
+        go.Scatter(x = x2, y = y2, mode='lines+markers',line=dict(shape='spline',color='#5185AA'), name = 'ET黑面琵鷺隊'),
+        go.Scatter(x = x3, y = y3, mode='lines+markers',line=dict(shape='spline',color='#993131'), name = 'ET小辮鴴隊'),]
 
     date_text = [f'10/{i}' for i in range(1,32)]
 
     # brutal force to axis...
-    layout = go.Layout(
-        shapes = [go.layout.Shape(type="line",x0=0,x1=31,y0=0,y1=0,line=dict(color="#000000",width=1)),
-                  go.layout.Shape(type="line",x0=0,x1=0,y0=0,y1=y_upper,line=dict(color="#000000",width=1)),
-                 ],
-        width=1200,
-        height=400,
-        margin=dict(l=0,r=0,b=100,t=0),
+    layout = go.Layout(shapes = [go.layout.Shape(type="line",x0=0,x1=31,y0=0,y1=0,line=dict(color="#000000",width=1)),
+                  go.layout.Shape(type="line",x0=0,x1=0,y0=0,y1=y_upper,line=dict(color="#000000",width=1)),],
+        width=ww,
+        height=h,
+        margin=dict(l=0,r=0,b=50,t=0),
         xaxis=dict(showgrid=False,zeroline=False,showticklabels=False,automargin=True,ticktext=date_text,tickvals=list(range(31))),
-        yaxis=dict(showgrid=False,zeroline=False,showticklabels=False,automargin=True),
+        yaxis=dict(showgrid=False,zeroline=False,showticklabels=False,automargin=True,fixedrange=True,range=[0, y_upper*1.2]),
         showlegend=False,
         autosize=True,
         hovermode="x",
         clickmode='none',
-        dragmode=False,
+        dragmode='pan',
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor='rgba(0,0,0,0)',
-        annotations=[
-            go.layout.Annotation(x=30,y= -0.1,xref="x",yref="paper",text="<b>時間</b>",font=dict(size=24,color='#000000',family='Noto Sans TC'),showarrow=False),
-            #go.layout.Annotation(x=30,y=-0.4,xref="x",yref="paper",text="1111",font=dict(size=24,color='rgba(0,0,0,0)'),showarrow=False),
-            go.layout.Annotation(x=-1.2,y=0.8,xref="x",yref="paper",text="<b>各隊累積人數</b>",font=dict(size=24,color='#000000',family='Noto Sans TC'),showarrow=False,textangle=-90),
+        annotations=[go.layout.Annotation(x=30,y= tp,xref="x",yref="paper",text="時間",font=dict(size=lbs,color='#000000',family='Noto Sans TC'),showarrow=False),
+            go.layout.Annotation(x=ap,y=0.8,xref="x",yref="paper",text="各隊累積人數",font=dict(size=lbs,color='#000000',family='Noto Sans TC'),showarrow=False,textangle=-90),
             go.layout.Annotation(x=31,y=0,ax=-10,ay=0,xref="x",yref="y",arrowhead=1,arrowwidth=2,arrowcolor='#000000'),
-            go.layout.Annotation(x=0,y=y_upper,ax=0,ay=15,xref="x",yref="y",arrowhead=1,arrowwidth=2,arrowcolor='#000000'),
-        ]
-    )
+            go.layout.Annotation(x=0,y=y_upper,ax=0,ay=15,xref="x",yref="y",arrowhead=1,arrowwidth=2,arrowcolor='#000000'),])
 
     fig = go.Figure(data=data,layout=layout)
     return fig

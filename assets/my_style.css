@@ -12,6 +12,97 @@ html {
     text-align: center;
 }
 
+
+/************************************/
+/************    App2 and signup pages    **********/
+/************************************/
+.JoinBtn {
+    height: 100px;
+    width: 35%;
+    margin: auto;
+    border: 3px solid #37760E;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    text-align: center;
+    /*padding: 20px 0 44px 0;*/
+    font-size: 36px;
+}
+
+    .JoinBtn:hover {
+        color: #84BC60;
+    }
+
+    .JoinBtn:active {
+        font-size: 48px;
+        /*padding: 14px 0 38px 0;*/
+    }
+
+.form-contents {
+    padding: 100px;
+}
+
+    .form-contents .row {
+        height: 60px;
+        font-size: 24px;
+    }
+
+.form-inputs {
+    border: 3px solid #37760E;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    width: 300px;
+}
+
+    .form-inputs .Select-control {
+        height: 60px;
+    }
+
+    .form-inputs .Select-value {
+        line-height: 60px !important;
+    }
+
+
+#join-submit {
+    font-size: 24px;
+    color: #FFFFFF;
+    background: #4CA800;
+    border: 2px solid #A4B924;
+    box-sizing: border-box;
+    box-shadow: 3px 4px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    width: 300px;
+    line-height: 60px;
+}
+
+#hint-text {
+    font-size: 18px;
+    color: red;
+}
+
+.joined-info {
+    font-size: 56px;
+    line-height: 93px;
+    color: #2D3A4B;
+}
+
+.joined-fig {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.gap {
+    height: 120px;
+}
+
+/************************************/
+/************    end of App2 and signup pages    **********/
+/************************************/
+
+
 @media only screen and (min-width: 961px){
 
     /* Nav */
@@ -257,10 +348,23 @@ html {
         border-radius: 10% / 50%;
     }
 
+    /* app2 */
     .half_donut {
         padding: 2rem 0;
         display: block !important;
     }
+
+    .signup-form-col {
+        margin-bottom: 100px !important;
+    }
+
+    .joined-info {
+        font-size: 36px;
+        line-height: 56px;
+        text-align: center;
+        padding-top: 100px;
+    }
+
 }
 
 @media only screen and (max-width: 400px) {
@@ -313,7 +417,7 @@ html {
     }
 
     .CBgap {
-        display:none;
+        display: none;
     }
 
     .modal-title {
@@ -373,8 +477,50 @@ html {
         display: block !important;
     }
 
-}
+    .joined-info {
+        font-size: 28px;
+        line-height: 36px;
+        text-align: center;
+        padding-top: 100px;
+    }
 
+    .JoinBtn {
+        height: 80px;
+        width: 60%;
+        font-size: 28px;
+    }
+
+
+    .form-contents {
+        padding: 100px;
+    }
+
+    .form-contents .row {
+        height: 60px;
+        font-size: 24px;
+    }
+
+    .form-inputs {
+        width: 250px;
+    }
+
+
+    #join-submit {
+        font-size: 24px;
+        width: 250px;
+    }
+
+    #hint-text {
+        font-size: 16px;
+        color: red;
+    }
+
+    #team_accp {
+        padding-top: 100px;
+    }
+
+
+}
 
 .ifwrap {
     position: relative;
@@ -390,10 +536,22 @@ html {
 }
 
 
+/*.people-plot {
+    display: inline-block
+}
 
+.people-plot-wrapper {
+    width: 600px;
+    position: relative;
+    position: relative;
+    margin: auto;
+}
 
-
-
+.x-scroller {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    height: 400px;
+}*/
 
 /*
     xs: < 576px sm: 576~768 px md: 992~768px lg: 1140~960px xl: > 1200px */
@@ -457,3 +615,14 @@ font {
 .card {
     border-radius: 1rem !important;
 }
+
+.card .btn:hover {
+    color: #102c52 !important;
+}
+
+input:invalid {
+    outline: none !important;
+}
+
+
+

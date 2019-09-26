@@ -1,0 +1,16 @@
+## responsive
+    card-deck OK
+    1280 for all OK
+
+    make donut allign with trace
+
+## backend
+    callback fire issue for multiple page OK
+
+## automation
+    add scrape time column  OK
+
+
+## Dev
+
+    form
