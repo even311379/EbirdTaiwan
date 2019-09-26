@@ -13,6 +13,10 @@ from textwrap import dedent
 
 import dash_bootstrap_components as dbc
 import visdcc
+
+import pandas as pd
+import flask
+
 import time
 
 from e_bird_utils import GetN_Species, GetTotalIndivisual,\
@@ -36,7 +40,14 @@ app = dash.Dash(
                 {"content_type":"text/html"}]
      )
 
-app.config.suppress_callback_exceptions = True
+'''
+# this is too dangerous to set it this way...
+app.config.suppress_callback_exceptions = True  
+
+Dynamically Create a Layout for Multi-Page App Validation 
+    is more acceptable to handle multiple page dash-app
+https://dash.plot.ly/urls
+'''
 server = app.server
 
 app.title = 'E-bird Taiwan'
@@ -60,7 +71,7 @@ accP = f'累積參與人數: {nP}'
 ###################################################################
 
 
-app.layout = app.layout = html.Div([
+master_layout = app.layout = html.Div([
     visdcc.Run_js(id='javascript'),
     dcc.Location(id='url', refresh=False),
     html.Nav([
@@ -78,13 +89,8 @@ app.layout = app.layout = html.Div([
     html.Div(id='page-content'),
     html.Br(),
     html.Div(style={"height": "100px", "background": "#84BC60"}),
-    html.Div(id='js_out'),
-    dcc.Interval(
-        id='interval-component',
-        interval=60*1000, # in milliseconds
-        n_intervals=0
-    )
-    
+    html.Div(),
+    html.Div(),
 ])
 
 ## 中文網址一定要事先encode才行!!  http://www.convertstring.com/zh_TW/EncodeDecode/UrlEncode
@@ -98,34 +104,34 @@ home_layout = html.Div([
             dbc.Card([
                 dbc.CardBody([
                     html.H2("eBird Taiwan秋季大亂鬥", className="card-title home-card-title"),
-                    html.P("和其他eBirder組隊來PK，共有3隊 任你選，灰面鵟鷹隊、黑面琵鷺隊 與小辮鴴隊，在10月上傳觀察清單、 鳥種數最多的隊伍，全隊隊員可獲 得一次望遠鏡抽獎機會。",className="card-text home-card-content"),
-                    html.Br(),html.Br(),html.Br(),
+                    html.P("和其他eBirder組隊來PK，共有3隊任你選，ET灰面鵟鷹隊、ET黑面琵鷺隊、ET小辮鴴隊，在10月上傳最多觀察清單以及記錄到最多種鳥!",className="card-text home-card-content"),
+                    html.Br(),html.Br(),html.Br(className='CBgap'),
                 ]),
                 dbc.CardFooter(html.Div([
                         html.Div("2019/10/01-31",className="mr-auto date-range-text"),
-                        dbc.Button("詳情活動說明",id="modal-entry-1", className="modal-entry border-0 bg-transparent")
+                        dbc.Button("詳細活動說明",id="modal-entry-1", className="modal-entry border-0 bg-transparent")
                     ],className="d-flex align-items-center"), className="border-0 bg-transparent")
                 ]),
             dbc.Card([
                 dbc.CardBody([
                     html.H2("關渡觀鳥大日", className="card-title home-card-title"),
                     html.P("今年的關渡鳥博適逢eBird全球觀鳥大日，ebird Taiwan除了按照往例將在關渡鳥博設攤，另外在10/19觀鳥大日這天，特別邀請鳥友們前往鄰近關渡平原賞鳥、上傳紀錄。鳥友們請做好準備，一起來衝關渡觀鳥大日吧!",className="card-text home-card-content"),
-                    html.Br(),html.Br(),html.Br(),
+                    html.Br(),html.Br(),html.Br(className='CBgap'),
                 ]),
                 dbc.CardFooter(html.Div([
                         html.Div("2019/10/01-31",className="mr-auto date-range-text"),
-                        dbc.Button("詳情活動說明",id="modal-entry-2", className="modal-entry border-0 bg-transparent")
+                        dbc.Button("詳細活動說明",id="modal-entry-2", className="modal-entry border-0 bg-transparent")
                     ],className="d-flex align-items-center"), className="border-0 bg-transparent")
                 ]),
             dbc.Card([
                 dbc.CardBody([
-                    html.H2("10/19全球觀鳥大日", className="card-title home-card-title"),
-                    html.P("去年的觀鳥大日集結全世界3萬多位 eBirder的力量，短短24小時共記錄 6,331種鳥類。台灣則記錄242種鳥類 ，送出372份清單，今年的結果究竟 會如何?趕緊安排10月19日出門賞鳥， 一起努力送清單吧!",className="card-text home-card-content"),
-                    html.Br(),html.Br(),html.Br(),
+                    html.H2("10/19十月觀鳥大日", className="card-title home-card-title"),
+                    html.P("10月19日十月觀鳥大日(October Global Big Day)!去年的觀鳥大日集結全世界3萬多位eBirder的力量，短短24小時共記錄6,331種鳥類。台灣則記錄242種鳥類，送出372份清單，今年的結果究竟會如何?趕緊安排10月19日出門賞鳥，一起努力送清單吧!",className="card-text home-card-content"),
+                    html.Br(),html.Br(),html.Br(className='CBgap'),
                 ]),
                 dbc.CardFooter(html.Div([
                         html.Div("2019/10/01-31",className="mr-auto date-range-text"),
-                        dbc.Button("詳情活動說明",id="modal-entry-3", className="modal-entry border-0 bg-transparent")
+                        dbc.Button("詳細活動說明",id="modal-entry-3", className="modal-entry border-0 bg-transparent")
                     ],className="d-flex align-items-center"), className="border-0 bg-transparent")
                 ]),           
         ], className="home-card-deck"),
@@ -133,7 +139,7 @@ home_layout = html.Div([
         html.Br(),
         html.Div([
             html.Img(src="assets/chick.png",className="chick-img"),
-            html.Div("完成任一活動之參賽者即可參加抽獎, 豐富大獎得主就是你啦！",className="home-footer"),
+            html.Div("完成任一活動之參賽者即可參加抽獎,豐富大獎得主就是你啦！",className="home-footer",id='FooterText'),
             html.Img(src="assets/chick.png",className="chick-img", style={"transform": "scaleX(-1)"}),
             ], className="d-flex justify-content-around align-items-center"),
         html.Br(),        
@@ -141,11 +147,11 @@ home_layout = html.Div([
     dbc.Modal([
         dbc.ModalHeader("eBird Taiwan秋季大亂鬥",className="modal-title"),
         dbc.ModalBody(dcc.Markdown(dedent('''
-        ## Contents are not checked yet ##
         * 挑戰時間：2019.10.01-2019.10.31
         * 挑戰方式：
             * 填寫要加入的隊伍，可隨時加入，自由選擇隊伍，但每人只能加入一隊。
-            * 清單上傳時請分享到隊伍帳號（ET灰面鵟鷹隊、ET黑面琵鷺隊、ET小辮鴴隊)，才能列入挑戰紀錄。
+            * 在10/15之前填寫要加入的隊伍及至少上傳一份記錄清單，每人只能加入一隊，不能更換隊伍。
+            * 清單上傳時請分享到隊伍帳號（ET灰面鵟鷹隊、ET黑面琵鷺隊、ET小辮鴴隊)，才能列入挑戰紀錄，需在10/31前完成分享。
             * 紀錄清單必須持續時間超過3分鐘，鳥種數量沒有以「X」代替的完整紀錄清單。
             * 賞鳥動態和eBird鳥訊快報需設為公開，才能列入紀錄。        
         * 獎項：
@@ -157,32 +163,32 @@ home_layout = html.Div([
     dbc.Modal([
         dbc.ModalHeader("關渡觀鳥大日",className="modal-title"),
         dbc.ModalBody(dcc.Markdown(dedent('''
-        ## Contents are not checked yet ##
-        * 挑戰時間：2019.10.01-2019.10.31
+        * 挑戰時間：2019.10.19, 0:00-24:00
         * 挑戰方式：
-            * 填寫要加入的隊伍，可隨時加入，自由選擇隊伍，但每人只能加入一隊。
-            * 清單上傳時請分享到隊伍帳號（ET灰面鵟鷹隊、ET黑面琵鷺隊、ET小辮鴴隊)，才能列入挑戰紀錄。
-            * 紀錄清單必須持續時間超過3分鐘，鳥種數量沒有以「X」代替的完整紀錄清單。
-            * 賞鳥動態和eBird鳥訊快報需設為公開，才能列入紀錄。        
+            * 選擇活動範圍內就近熱點上傳紀錄清單，清單種類不限，但必須設為公開。
+            * 所有紀錄都要在10月20日中午12:00前上傳到eBird，才能被計算在關渡觀鳥大日的統計結果裡。
         * 獎項：
             * 上傳鳥種數最多  
             * 上傳清單數最多
+            * 上傳鳥隻數最多
+        * 獎品:
+            * 貓頭鷹浴巾組-八色鳥咖啡出品*1
+            * 歐帝生2019望遠鏡新品5折折價卷*1
+        * 得獎名單公布：2019.10.20, 15:00於關渡鳥博eBird攤位公布
+
         ''')),className="modal-body"),
         dbc.ModalFooter(dbc.Button("關閉", id="close-modal-2", className="ml-auto")),
         ],id="modal-2",size="xl",centered=True),
     dbc.Modal([
-        dbc.ModalHeader("10/19全球觀鳥大日",className="modal-title"),
+        dbc.ModalHeader("10/19十月觀鳥大日",className="modal-title"),
         dbc.ModalBody(dcc.Markdown(dedent('''
-        ## Contents are not checked yet ##
-        * 挑戰時間：2019.10.01-2019.10.31
+        * 挑戰時間：2019.10.19
         * 挑戰方式：
-            * 填寫要加入的隊伍，可隨時加入，自由選擇隊伍，但每人只能加入一隊。
-            * 清單上傳時請分享到隊伍帳號（ET灰面鵟鷹隊、ET黑面琵鷺隊、ET小辮鴴隊)，才能列入挑戰紀錄。
-            * 紀錄清單必須持續時間超過3分鐘，鳥種數量沒有以「X」代替的完整紀錄清單。
-            * 賞鳥動態和eBird鳥訊快報需設為公開，才能列入紀錄。        
+            * 在十月觀鳥大日完成一份鳥種數量沒有以「X」代替的完整紀錄清單。       
         * 獎項：
-            * 上傳鳥種數最多  
-            * 上傳清單數最多
+            * 望遠鏡(歐帝生光學BRITEC R 10X42雙筒望遠鏡)抽獎機會
+        * 得獎名單公布：
+            * 2019.11.24, 於eBird Taiwan FB社團進行直播抽獎，公布得獎名單。
         ''')),className="modal-body"),
         dbc.ModalFooter(dbc.Button("關閉", id="close-modal-3", className="ml-auto")),
         ],id="modal-3",size="xl",centered=True),
@@ -232,6 +238,11 @@ app1_layout = dbc.Container([
              ]),
         ], style={"box-shadow":"4px 4px 0px rgba(187, 187, 187, 0.25)"}, body=True, color="light"),
         html.Br(),
+        dcc.Interval(
+            id='interval-component',
+            interval=60*1000, # in milliseconds
+            n_intervals=0
+        ),
         ],fluid=True)
 
 
@@ -246,13 +257,28 @@ app2_layout = html.Div([
         dbc.Col(dcc.Graph(id='donut3',config=dict(displayModeBar=False),className="half_donut"),xl = 4,lg = 4, md = 12, className = "d-flex justify-content-center")
     ]),
     html.Div(style={"padding":"80px"}),
-    dbc.Row(dcc.Graph(figure=accumlate_people_trace()),className="d-flex justify-content-center"),
+    dbc.Row(dcc.Graph(figure=accumlate_people_trace('2019-09-25')),className="d-flex justify-content-center"),
     html.Br(),
     ])
 
 ##########################################################################################
 ##########################################  CALLBACKs SECTION  ##########################
 ###########################################################################################
+
+#serve layouts  better way to handle multiple pages dash
+def serve_layout():
+    if flask.has_request_context():
+        return master_layout
+    return html.Div([
+        master_layout,
+        home_layout,
+        app1_layout,
+        app2_layout,
+    ])
+
+
+app.layout = serve_layout
+
 
 ### for all pages ####
 @app.callback(
@@ -314,9 +340,10 @@ def toggle_modal(n1, n2, is_open):
         return not is_open
     return is_open
 
+
 ### for 關渡觀鳥大日
+
 @app.callback([
-    Output('accp', 'children'),
     Output('accp_o', 'children'),
     Output('ut1', 'children'),
     Output('ut2', 'children'),
@@ -325,7 +352,7 @@ def toggle_modal(n1, n2, is_open):
     Output('fTIs', 'figure'),
     Output('fRs', 'figure')],
     [Input('interval-component', 'n_intervals')],
-    [State('accp', 'children'),
+    [State('accp_o', 'children'),
     State('fNs', 'figure'),
     State('fTIs', 'figure'),
     State('fRs', 'figure')],
@@ -344,13 +371,13 @@ def update_all(n,s_accp,s_fNs,s_fTIs,s_fRs):
         s_ut2 = '1分鐘前更新'
         s_ut3 = '1分鐘前更新'
 
-        return o_accp, o_accp, s_ut1, s_ut2, s_ut3, fig_N_species, fig_TI_species, fig_Record_species
+        return o_accp, s_ut1, s_ut2, s_ut3, fig_N_species, fig_TI_species, fig_Record_species
     else:
         m = time.localtime().tm_min
         s_ut1 = f'{m}分鐘前更新'
         s_ut2 = f'{m}分鐘前更新'
         s_ut3 = f'{m}分鐘前更新'
-        return s_accp, s_accp, s_ut1, s_ut2, s_ut3, s_fNs, s_fTIs, s_fRs
+        return s_accp, s_ut1, s_ut2, s_ut3, s_fNs, s_fTIs, s_fRs
 
 
 ### for autumn page
@@ -360,11 +387,23 @@ def update_all(n,s_accp,s_fNs,s_fTIs,s_fRs):
     Output('donut3', 'figure')],
     [Input('javascript', 'event')])
 def set_donut_by_viewport_width(prop):  
-    # I'll add get data from file functions here
+    # Need to further filtered data by month in DataTime
+    print(prop)
     w = prop['w']
-    fig1 = half_donut(105,100,0, w)
-    fig2 = half_donut(179,148,1, w)
-    fig3 = half_donut(452,790,2, w)
+    data1 = pd.read_csv('Team1Data.csv')
+    data2 = pd.read_csv('Team2Data.csv')
+    data3 = pd.read_csv('Team3Data.csv')
+
+    ts1 = len(set(data1.Species.tolist()))
+    tl1 = len(data1[['DateTime', 'Creator']].drop_duplicates())
+    ts2 = len(set(data2.Species.tolist()))
+    tl2 = len(data2[['DateTime', 'Creator']].drop_duplicates())
+    ts3 = len(set(data3.Species.tolist()))
+    tl3 = len(data3[['DateTime', 'Creator']].drop_duplicates())
+
+    fig1 = half_donut(ts1,tl1,0, w)
+    fig2 = half_donut(ts2,tl2,1, w)
+    fig3 = half_donut(ts3,tl3,2, w)
     return fig1, fig2, fig3
 
 ### for url setup

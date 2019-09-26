@@ -25,27 +25,31 @@ html {
 
     /* Card*/
 
+    .home-card-deck {
+        padding: 50px;
+    }
+
     .home-card-title {
-        font-size: 36px;
+        font-size: 32px;
         line-height: 52px;
         text-align: center;
         padding: 10px;
     }
 
     .home-card-content {
-        font-size: 24px;
+        font-size: 20px;
         line-height: 35px;
         padding: 10px;
     }
 
     .date-range-text {
         font-weight: 100;
-        font-size: 22px;
+        font-size: 20px;
     }
 
     .modal-entry {
         font-weight: 100;
-        font-size: 24px;
+        font-size: 20px;
         color: #235EAE;
     }
 
@@ -63,8 +67,9 @@ html {
     }
 
     .home-footer {
-        font-size: 36px;
+        font-size: 28px;
     }
+
 
     /*Map section*/
     .my_map {
@@ -93,15 +98,13 @@ html {
     }
 
     .my_fig {
-        height: 40vh;
+        height: 30vh;
         width: 30vw;
         padding: 1rem 0;
         display: block !important;
     }
 
     .half_donut {
-        height: 30vh;
-        width: 30vw;
         padding: 1rem 0;
         display: block !important;
     }
@@ -183,6 +186,15 @@ html {
 
     /* Card*/
 
+    .home-card-deck {
+        padding: 30px;
+        flex-direction: column;
+    }
+
+    .card {
+        margin-bottom: 40px !important;
+    }
+
     .home-card-title {
         font-size: 36px;
         line-height: 52px;
@@ -216,13 +228,16 @@ html {
     }
 
     .chick-img {
-        width: 106px;
-        height: 111px;
+        width: 53px;
+        height: 55px;
     }
 
     .home-footer {
-        font-size: 36px;
+        font-size: 24px;
+        text-align: center;
+        width: 400px;
     }
+
 
     /*Map section*/
     .my_map {
@@ -243,8 +258,6 @@ html {
     }
 
     .half_donut {
-        height: auto;
-        width: 80vw;
         padding: 2rem 0;
         display: block !important;
     }
@@ -270,16 +283,21 @@ html {
     }
 
     /* card */
+
+    .home-card-deck {
+        padding: 20px;
+        margin-bottom: 50px;
+        flex-direction: column;
+    }
+
     .home-card-title {
-        font-size: 28px;
-        line-height: 42px;
+        font-size: 24px;
         text-align: center;
         padding: 10px;
     }
 
     .home-card-content {
-        font-size: 20px;
-        line-height: 28px;
+        font-size: 18px;
         padding: 10px;
     }
 
@@ -292,6 +310,10 @@ html {
         font-weight: 100;
         font-size: 12px;
         color: #235EAE;
+    }
+
+    .CBgap {
+        display:none;
     }
 
     .modal-title {
@@ -347,8 +369,6 @@ html {
     }
 
     .half_donut {
-        height: auto;
-        width: 80vw;
         padding: 2rem 0;
         display: block !important;
     }
@@ -371,15 +391,13 @@ html {
 
 
 
-.home-card-deck {
-    padding: 50px;
-}
+
 
 
 
 /*
     xs: < 576px sm: 576~768 px md: 992~768px lg: 1140~960px xl: > 1200px */
-@media only screen and (min-width: 1250px) {
+@media only screen and (min-width: 1400px) {
     .NavLnks {
         font-size: 24px;
         color: #235EAE;
@@ -395,7 +413,7 @@ html {
 }
 
 
-@media only screen and (min-width: 961px) and (max-width: 1250px) {
+@media only screen and (min-width: 961px) and (max-width: 1400px) {
     /* Nav bar*/
     .NavLnks {
         font-size: 20px;
