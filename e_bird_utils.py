@@ -23,8 +23,8 @@ def draw_bar(values, names, w):
 
     m_names = names
 
+    m_names = []
     if w < 400:
-        m_names = []
         for n in names:
             c_ord = sum([ord(c) for c in n])
             if (c_ord > 40000 and len(n)> 6) or (len(n) > 15):
@@ -34,6 +34,17 @@ def draw_bar(values, names, w):
                     m_names.append(n[:12]+'...')
             else:
                 m_names.append(n)
+    else:
+        for n in names:
+            c_ord = sum([ord(c) for c in n])
+            if (c_ord > 60000 and len(n)> 12) or (len(n) > 30):
+                if c_ord > 40000:
+                    m_names.append(n[:12]+'...')
+                else:
+                    m_names.append(n[:30]+'...')
+            else:
+                m_names.append(n)
+
 
     data = [go.Bar(x = values,
             y = [1,2,3,4,5],
@@ -234,9 +245,13 @@ def half_donut(n_bird, n_rows, team=0, w=1600):
     else:
         D = 'counterclockwise'
 
+    if n_bird > 0:
+        rot = 90
+    else:
+        rot = -90
     data = [go.Pie(values=values,
                  marker=dict(colors=[team_color,'#C4C4C4','rgba(0,0,0,0)']),hole=.75,
-                 rotation =90,direction=D,
+                 rotation =rot,direction=D,
                  text=[f'發現了{n_bird}種囉!', f'還有{all_n_bird - n_bird}種等待您的發掘',''],
                  textinfo='none',
                  hoverinfo='text')]
@@ -261,10 +276,25 @@ def half_donut(n_bird, n_rows, team=0, w=1600):
     fig = go.Figure(data=data,layout=layout)
     return fig
 
-def setup_donuts(w):
+def setup_donuts(w, start_date):
     data1 = pd.read_csv('Team1Data.csv')
     data2 = pd.read_csv('Team2Data.csv')
     data3 = pd.read_csv('Team3Data.csv')
+
+    db1 = []
+    db2 = []
+    db3 = []
+    for d in data1.DateTime:
+        db1.append(datetime.datetime.strptime(d, '%I:%M %p %d %b %Y') >= start_date)
+    for d in data2.DateTime:
+        db2.append(datetime.datetime.strptime(d, '%I:%M %p %d %b %Y') >= start_date)
+    for d in data3.DateTime:
+        db3.append(datetime.datetime.strptime(d, '%I:%M %p %d %b %Y') >= start_date)
+            
+    
+    data1 = data1[db1]
+    data2 = data2[db2]
+    data3 = data3[db3]
 
     ts1 = len(set(data1.Species.tolist()))
     tl1 = len(data1[['DateTime', 'Creator']].drop_duplicates())
@@ -273,9 +303,9 @@ def setup_donuts(w):
     ts3 = len(set(data3.Species.tolist()))
     tl3 = len(data3[['DateTime', 'Creator']].drop_duplicates())
 
-    fig1 = half_donut(ts1,tl1,0, w)
-    fig2 = half_donut(ts2,tl2,1, w)
-    fig3 = half_donut(ts3,tl3,2, w)
+    fig1 = half_donut(ts1,tl1,0,w)
+    fig2 = half_donut(ts2,tl2,1,w)
+    fig3 = half_donut(ts3,tl3,2,w)
     return fig1, fig2, fig3
 
 
@@ -305,7 +335,9 @@ def accumlate_people_trace(start_date, w):
     data3 = pd.read_csv('Team3Data.csv')
 
     start_date = datetime.datetime.strptime(start_date, '%Y-%m-%d')
-
+    #today = datetime.datetime(2019,10,1)
+    today = datetime.datetime.now()
+    
     def GetXY(data):
         DaysAfterStart = [(datetime.datetime.strptime(ds, '%Y-%m-%d') - start_date).days for ds in data.ScrapDate]
         data.insert(0, 'DAS', DaysAfterStart)
@@ -316,36 +348,68 @@ def accumlate_people_trace(start_date, w):
             Y.append(len(set(data[data.DAS <= i].Creator.tolist())))
         return X ,Y
     
-    x1, y1 = GetXY(data1)
-    x2, y2 = GetXY(data2)
-    x3, y3 = GetXY(data3)
+    #x1, y1 = GetXY(data1)
+    #x2, y2 = GetXY(data2)
+    #x3, y3 = GetXY(data3)
+
+    SignUp = pd.read_csv('SignUp.csv')
+    def GetXYfromSignUp(team = 'ET灰面鵟鷹隊'):
+        temp_data = SignUp[SignUp.Team == team]
+        DaysAfterStart = [(datetime.datetime.strptime(ds, '%Y-%m-%d') - start_date).days for ds in temp_data.SignUpDate]
+        temp_data.insert(0, 'DAS', DaysAfterStart)
+        X = []
+        Y = []
+        DAS_L = list(set(DaysAfterStart))
+        DAS_L.sort()
+        for i in DAS_L:
+            X.append(i+1)
+            Y.append(len(temp_data[temp_data.DAS <= i]))
+        X = [0] + X
+        Y = [0] + Y
+
+        dd = (today - start_date).days + 1
+        if dd not in X:
+            X.append(dd)
+            Y.append(max(Y))
+
+        Date = [(start_date + datetime.timedelta(days=(x-1))).strftime('%m/%d') for x in X]
+        return X,Y, Date
+
+    x1, y1, Date1 = GetXYfromSignUp('ET灰面鵟鷹隊')
+    x2, y2, Date2 = GetXYfromSignUp('ET黑面琵鷺隊')
+    x3, y3, Date3 = GetXYfromSignUp('ET小辮鴴隊')
+
+    t1_info =[''] + [f'{d}: 灰面鵟鷹隊有{t}位成員囉' for t, d in zip(y1[1:],Date1[1:])]
+    t2_info =[''] + [f'{d}: 黑面琵鷺隊有{t}位成員囉' for t, d in zip(y2[1:],Date2[1:])]
+    t3_info =[''] + [f'{d}: 小辮鴴隊有{t}位成員囉' for t, d in zip(y3[1:],Date3[1:])]
 
     y_upper = max(y1 + y2 + y3) * 1.2 # hack y axis limit
 
-    data = [go.Scatter(x = x1, y = y1, mode='lines+markers',line=dict(shape='spline',color='#A4B924'), name = 'ET灰面鵟鷹隊'),
-        go.Scatter(x = x2, y = y2, mode='lines+markers',line=dict(shape='spline',color='#5185AA'), name = 'ET黑面琵鷺隊'),
-        go.Scatter(x = x3, y = y3, mode='lines+markers',line=dict(shape='spline',color='#993131'), name = 'ET小辮鴴隊'),]
+    data = [go.Scatter(x = x1, y = y1, mode='lines',line=dict(shape='spline',color='#A4B924'), name = 'ET灰面鵟鷹隊', hoverinfo = 'text', text=t1_info),
+        go.Scatter(x = x2, y = y2, mode='lines',line=dict(shape='spline',color='#5185AA'), name = 'ET黑面琵鷺隊', hoverinfo = 'text', text=t2_info),
+        go.Scatter(x = x3, y = y3, mode='lines',line=dict(shape='spline',color='#993131'), name = 'ET小辮鴴隊', hoverinfo = 'text', text=t3_info),]
 
-    date_text = [f'10/{i}' for i in range(1,32)]
+    date_text = [''] + [f'10/{i+1}' for i in range(31)]
 
     # brutal force to axis...
-    layout = go.Layout(shapes = [go.layout.Shape(type="line",x0=0,x1=31,y0=0,y1=0,line=dict(color="#000000",width=1)),
+    layout = go.Layout(shapes = [go.layout.Shape(type="line",x0=0,x1=21,y0=0,y1=0,line=dict(color="#000000",width=1)),
                   go.layout.Shape(type="line",x0=0,x1=0,y0=0,y1=y_upper,line=dict(color="#000000",width=1)),],
         width=ww,
         height=h,
         margin=dict(l=0,r=0,b=50,t=0),
-        xaxis=dict(showgrid=False,zeroline=False,showticklabels=False,automargin=True,ticktext=date_text,tickvals=list(range(31))),
+        xaxis=dict(showgrid=False,zeroline=False,showticklabels=False,automargin=True,ticktext=date_text,tickvals=list(range(20))),
         yaxis=dict(showgrid=False,zeroline=False,showticklabels=False,automargin=True,fixedrange=True,range=[0, y_upper*1.2]),
-        showlegend=False,
+        showlegend=True,
+        legend=dict(x=0.8, y=0.1),
         autosize=True,
         hovermode="x",
-        clickmode='none',
+        #clickmode='none',
         dragmode='pan',
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor='rgba(0,0,0,0)',
-        annotations=[go.layout.Annotation(x=30,y= tp,xref="x",yref="paper",text="時間",font=dict(size=lbs,color='#000000',family='Noto Sans TC'),showarrow=False),
+        annotations=[go.layout.Annotation(x=20,y= tp,xref="x",yref="paper",text="時間",font=dict(size=lbs,color='#000000',family='Noto Sans TC'),showarrow=False),
             go.layout.Annotation(x=ap,y=0.8,xref="x",yref="paper",text="各隊累積人數",font=dict(size=lbs,color='#000000',family='Noto Sans TC'),showarrow=False,textangle=-90),
-            go.layout.Annotation(x=31,y=0,ax=-10,ay=0,xref="x",yref="y",arrowhead=1,arrowwidth=2,arrowcolor='#000000'),
+            go.layout.Annotation(x=21,y=0,ax=-10,ay=0,xref="x",yref="y",arrowhead=1,arrowwidth=2,arrowcolor='#000000'),
             go.layout.Annotation(x=0,y=y_upper,ax=0,ay=15,xref="x",yref="y",arrowhead=1,arrowwidth=2,arrowcolor='#000000'),])
 
     fig = go.Figure(data=data,layout=layout)

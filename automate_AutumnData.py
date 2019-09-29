@@ -32,11 +32,16 @@ def my_logger(level, message):
 
 
 def GetChecklist(url, c):
-    url = 'https://ebird.org/view/checklist/S60100604'
     r = requests.get(url)
     time.sleep(1)
     S = re.findall('Heading-main\".*?>(.*?)</span',r.text)[4:]
-    N = [-1 if n == 'X' else int(n) for n in re.findall('<span>(..?.?)</span>',r.text)]
+    '''
+    if the check list is hidden from public, this word "Checklist flagged"
+    will occur in its html source code and crash my program, I'lljust explicitly silence it!
+    '''
+    if 'Checklist flagged' in S:  
+        S.remove('Checklist flagged')
+    N = [-1 if n == 'X' else int(n) for n in re.findall('<span>([X|\d]\d*?)</span>',r.text)]
     t = re.findall('<span class="Heading-sub Heading-sub--inline">(.*?)</span>', r.text)[0]
     d = re.findall('</span>(.*?)</span>',r.text)[0]
     DT = t+d
@@ -46,7 +51,6 @@ def GetChecklist(url, c):
         L = re.findall('Location</h6>\s*?<span>(.*?)</span>', r.text)[0]
     return pd.DataFrame(dict(Creator=[c]*len(S),Species=S,Count=N,DateTime=[DT]*len(S),Hotspot=[L]*len(S),url=[url]*len(S)))
 
-GetChecklist('https://ebird.org/view/checklist/S60100604', '123')
 
 def Update(j = 0):
     driver = webdriver.Chrome(executable_path = '/usr/bin/chromedriver', options = options)
@@ -135,6 +139,4 @@ def automate():
             Update(i)
  
 if __name__ == '__main__':
-    #automate()
-    for i in range(3):
-        Update(i)
+    automate()

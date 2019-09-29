@@ -1,0 +1,664 @@
+***INFO** 2019-09-19 21:40:21: Start update data.  
+**ERROR** 2019-09-19 21:40:33: Fail to scape this location: L2425949 due to lxml not found, please install it   
+**ERROR** 2019-09-19 21:40:44: Fail to scape this location: L3856620 due to lxml not found, please install it   
+**ERROR** 2019-09-19 21:40:55: Fail to scape this location: L5248567 due to lxml not found, please install it   
+**ERROR** 2019-09-19 21:41:05: Fail to scape this location: L5569845 due to lxml not found, please install it   
+**ERROR** 2019-09-19 21:41:16: Fail to scape this location: L5192267 due to lxml not found, please install it   
+**ERROR** 2019-09-19 21:41:28: Fail to scape this location: L3290632 due to lxml not found, please install it   
+**ERROR** 2019-09-19 21:41:39: Fail to scape this location: L5594364 due to lxml not found, please install it   
+**ERROR** 2019-09-19 21:41:49: Fail to scape this location: L5569795 due to lxml not found, please install it   
+**ERROR** 2019-09-19 21:42:00: Fail to scape this location: L6675201 due to lxml not found, please install it   
+**ERROR** 2019-09-19 21:42:10: Fail to scape this location: L8443148 due to lxml not found, please install it   
+**ERROR** 2019-09-19 21:42:21: Fail to scape this location: L5569882 due to lxml not found, please install it   
+**ERROR** 2019-09-19 21:42:35: Fail to scape this location: L7033433 due to lxml not found, please install it   
+**ERROR** 2019-09-19 21:42:47: Fail to scape this location: L3949628 due to lxml not found, please install it   
+**ERROR** 2019-09-19 21:42:58: Fail to scape this location: L2894596 due to lxml not found, please install it   
+**ERROR** 2019-09-19 21:43:09: Fail to scape this location: L2329696 due to lxml not found, please install it   
+**ERROR** 2019-09-19 21:43:21: Fail to scape this location: L3887194 due to lxml not found, please install it   
+**ERROR** 2019-09-19 21:43:32: Fail to scape this location: L2394672 due to lxml not found, please install it   
+**ERROR** 2019-09-19 21:43:42: Fail to scape this location: L3188784 due to lxml not found, please install it   
+**ERROR** 2019-09-19 21:43:53: Fail to scape this location: L6563827 due to lxml not found, please install it   
+**ERROR** 2019-09-19 21:44:06: Fail to scape this location: L2270945 due to lxml not found, please install it   
+*WARNING* 2019-09-19 21:44:06: No new data found!  
+***INFO** 2019-09-19 21:44:06: Data updating process is finished!  
+***INFO** 2019-09-19 21:45:46: Start update data.  
+*WARNING* 2019-09-19 21:49:34: New data found: 25 rows  
+***INFO** 2019-09-19 21:49:34: Data updating process is finished!  
+***INFO** 2019-09-19 21:55:02: Start update data.  
+***INFO** 2019-09-20 02:00:28: Start update data.  
+*WARNING* 2019-09-20 02:04:06: No new data found!  
+***INFO** 2019-09-20 02:04:06: Data updating process is finished!  
+***INFO** 2019-09-20 06:00:06: Start update data.  
+*WARNING* 2019-09-20 06:03:47: No new data found!  
+***INFO** 2019-09-20 06:03:47: Data updating process is finished!  
+***INFO** 2019-09-20 10:00:48: Start update data.  
+*WARNING* 2019-09-20 10:04:33: No new data found!  
+***INFO** 2019-09-20 10:04:33: Data updating process is finished!  
+***INFO** 2019-09-20 14:00:33: Start update data.  
+*WARNING* 2019-09-20 14:04:15: No new data found!  
+***INFO** 2019-09-20 14:04:15: Data updating process is finished!  
+***INFO** 2019-09-20 18:00:15: Start update data.  
+*WARNING* 2019-09-20 18:04:04: No new data found!  
+***INFO** 2019-09-20 18:04:04: Data updating process is finished!  
+***INFO** 2019-09-20 22:00:05: Start update data.  
+*WARNING* 2019-09-20 22:03:46: No new data found!  
+***INFO** 2019-09-20 22:03:46: Data updating process is finished!  
+***INFO** 2019-09-21 02:00:46: Start update data.  
+*WARNING* 2019-09-21 02:04:25: No new data found!  
+***INFO** 2019-09-21 02:04:25: Data updating process is finished!  
+***INFO** 2019-09-21 06:00:25: Start update data.  
+*WARNING* 2019-09-21 06:04:06: No new data found!  
+***INFO** 2019-09-21 06:04:06: Data updating process is finished!  
+***INFO** 2019-09-21 10:00:06: Start update data.  
+*WARNING* 2019-09-21 10:03:57: No new data found!  
+***INFO** 2019-09-21 10:03:57: Data updating process is finished!  
+***INFO** 2019-09-21 14:00:57: Start update data.  
+*WARNING* 2019-09-21 14:04:49: No new data found!  
+***INFO** 2019-09-21 14:04:49: Data updating process is finished!  
+***INFO** 2019-09-21 18:00:49: Start update data.  
+*WARNING* 2019-09-21 18:04:40: No new data found!  
+***INFO** 2019-09-21 18:04:40: Data updating process is finished!  
+***INFO** 2019-09-21 22:00:40: Start update data.  
+*WARNING* 2019-09-21 22:04:36: No new data found!  
+***INFO** 2019-09-21 22:04:36: Data updating process is finished!  
+***INFO** 2019-09-22 02:00:36: Start update data.  
+*WARNING* 2019-09-22 02:04:22: No new data found!  
+***INFO** 2019-09-22 02:04:22: Data updating process is finished!  
+***INFO** 2019-09-22 06:00:23: Start update data.  
+*WARNING* 2019-09-22 06:04:09: No new data found!  
+***INFO** 2019-09-22 06:04:09: Data updating process is finished!  
+***INFO** 2019-09-22 10:00:09: Start update data.  
+*WARNING* 2019-09-22 10:04:03: No new data found!  
+***INFO** 2019-09-22 10:04:03: Data updating process is finished!  
+***INFO** 2019-09-22 14:00:03: Start update data.  
+*WARNING* 2019-09-22 14:03:59: New data found: 2 rows  
+***INFO** 2019-09-22 14:03:59: Data updating process is finished!  
+***INFO** 2019-09-22 18:00:59: Start update data.  
+*WARNING* 2019-09-22 18:04:46: No new data found!  
+***INFO** 2019-09-22 18:04:46: Data updating process is finished!  
+***INFO** 2019-09-22 22:00:46: Start update data.  
+*WARNING* 2019-09-22 22:04:51: No new data found!  
+***INFO** 2019-09-22 22:04:51: Data updating process is finished!  
+***INFO** 2019-09-23 02:00:51: Start update data.  
+*WARNING* 2019-09-23 02:04:40: No new data found!  
+***INFO** 2019-09-23 02:04:40: Data updating process is finished!  
+***INFO** 2019-09-23 06:00:40: Start update data.  
+*WARNING* 2019-09-23 06:04:31: No new data found!  
+***INFO** 2019-09-23 06:04:31: Data updating process is finished!  
+***INFO** 2019-09-23 10:00:31: Start update data.  
+*WARNING* 2019-09-23 10:04:39: New data found: 76 rows  
+***INFO** 2019-09-23 10:04:39: Data updating process is finished!  
+***INFO** 2019-09-23 14:00:40: Start update data.  
+*WARNING* 2019-09-23 14:04:30: No new data found!  
+***INFO** 2019-09-23 14:04:30: Data updating process is finished!  
+***INFO** 2019-09-23 18:00:31: Start update data.  
+*WARNING* 2019-09-23 18:04:23: No new data found!  
+***INFO** 2019-09-23 18:04:23: Data updating process is finished!  
+***INFO** 2019-09-23 22:00:23: Start update data.  
+*WARNING* 2019-09-23 22:04:13: No new data found!  
+***INFO** 2019-09-23 22:04:13: Data updating process is finished!  
+***INFO** 2019-09-24 02:00:13: Start update data.  
+*WARNING* 2019-09-24 02:04:12: New data found: 24 rows  
+***INFO** 2019-09-24 02:04:12: Data updating process is finished!  
+***INFO** 2019-09-24 06:00:12: Start update data.  
+*WARNING* 2019-09-24 06:04:03: No new data found!  
+***INFO** 2019-09-24 06:04:03: Data updating process is finished!  
+***INFO** 2019-09-24 10:00:04: Start update data.  
+*WARNING* 2019-09-24 10:03:53: No new data found!  
+***INFO** 2019-09-24 10:03:53: Data updating process is finished!  
+***INFO** 2019-09-24 14:00:53: Start update data.  
+*WARNING* 2019-09-24 14:04:41: No new data found!  
+***INFO** 2019-09-24 14:04:41: Data updating process is finished!  
+***INFO** 2019-09-24 18:00:41: Start update data.  
+*WARNING* 2019-09-24 18:04:28: No new data found!  
+***INFO** 2019-09-24 18:04:28: Data updating process is finished!  
+***INFO** 2019-09-24 22:00:28: Start update data.  
+*WARNING* 2019-09-24 22:04:12: No new data found!  
+***INFO** 2019-09-24 22:04:12: Data updating process is finished!  
+***INFO** 2019-09-25 07:00:49: Start update data.  
+**ERROR** 2019-09-25 07:03:00: Fail to scape this location: L2425949 due to HTTPSConnectionPool(host='ebird.org', port=443): Max retries exceeded with url: /hotspot/L2425949/activity?yr=all&m= (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7f5df2fb0b70>: Failed to establish a new connection: [Errno 110] Connection timed out',))   
+**ERROR** 2019-09-25 07:05:11: Fail to scape this location: L3856620 due to HTTPSConnectionPool(host='ebird.org', port=443): Max retries exceeded with url: /hotspot/L3856620/activity?yr=all&m= (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7f5df2f6f240>: Failed to establish a new connection: [Errno 110] Connection timed out',))   
+**ERROR** 2019-09-25 07:07:28: Fail to scape this location: L5248567 due to HTTPSConnectionPool(host='secure.birds.cornell.edu', port=443): Max retries exceeded with url: /cassso/login?service=https%3A%2F%2Febird.org%2Flogin%2Fcas%3Fportal%3Debird&gateway=true&locale=en_US (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7f5df2f6f828>: Failed to establish a new connection: [Errno 110] Connection timed out',))   
+**ERROR** 2019-09-25 07:09:39: Fail to scape this location: L5569845 due to HTTPSConnectionPool(host='ebird.org', port=443): Max retries exceeded with url: /hotspot/L5569845/activity?yr=all&m= (Caused by NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at 0x7f5df2f6fc88>: Failed to establish a new connection: [Errno 110] Connection timed out',))   
+*WARNING* 2019-09-25 07:14:18: New data found: 157 rows  
+***INFO** 2019-09-25 07:14:18: Data updating process is finished!  
+***INFO** 2019-09-25 11:00:18: Start update data.  
+*WARNING* 2019-09-25 11:04:12: No new data found!  
+***INFO** 2019-09-25 11:04:12: Data updating process is finished!  
+***INFO** 2019-09-25 15:00:12: Start update data.  
+*WARNING* 2019-09-25 15:04:02: No new data found!  
+***INFO** 2019-09-25 15:04:02: Data updating process is finished!  
+***INFO** 2019-09-25 17:03:05: Start update data.  
+*WARNING* 2019-09-25 17:07:01: New data found: 21 rows  
+***INFO** 2019-09-25 17:07:01: Data updating process is finished!  
+***INFO** 2019-09-25 17:09:54: Start update data.  
+*WARNING* 2019-09-25 17:13:38: No new data found!  
+***INFO** 2019-09-25 17:13:38: Data updating process is finished!  
+***INFO** 2019-09-25 17:16:25: Start update data.  
+*WARNING* 2019-09-25 17:20:05: No new data found!  
+***INFO** 2019-09-25 17:20:05: Data updating process is finished!  
+***INFO** 2019-09-25 17:22:45: Start update data.  
+*WARNING* 2019-09-25 17:26:24: No new data found!  
+***INFO** 2019-09-25 17:26:24: Data updating process is finished!  
+***INFO** 2019-09-25 17:28:58: Start update data.  
+*WARNING* 2019-09-25 17:32:37: No new data found!  
+***INFO** 2019-09-25 17:32:37: Data updating process is finished!  
+***INFO** 2019-09-25 17:35:05: Start update data.  
+*WARNING* 2019-09-25 17:38:45: No new data found!  
+***INFO** 2019-09-25 17:38:45: Data updating process is finished!  
+***INFO** 2019-09-25 17:41:07: Start update data.  
+*WARNING* 2019-09-25 17:44:47: No new data found!  
+***INFO** 2019-09-25 17:44:47: Data updating process is finished!  
+***INFO** 2019-09-25 17:47:03: Start update data.  
+*WARNING* 2019-09-25 17:50:44: No new data found!  
+***INFO** 2019-09-25 17:50:44: Data updating process is finished!  
+***INFO** 2019-09-25 17:52:54: Start update data.  
+*WARNING* 2019-09-25 17:56:35: No new data found!  
+***INFO** 2019-09-25 17:56:35: Data updating process is finished!  
+***INFO** 2019-09-25 17:58:39: Start update data.  
+*WARNING* 2019-09-25 18:02:23: No new data found!  
+***INFO** 2019-09-25 18:02:23: Data updating process is finished!  
+***INFO** 2019-09-25 18:05:21: Start update data.  
+*WARNING* 2019-09-25 18:09:00: No new data found!  
+***INFO** 2019-09-25 18:09:00: Data updating process is finished!  
+***INFO** 2019-09-25 18:11:51: Start update data.  
+*WARNING* 2019-09-25 18:15:30: No new data found!  
+***INFO** 2019-09-25 18:15:30: Data updating process is finished!  
+***INFO** 2019-09-25 18:18:15: Start update data.  
+**ERROR** 2019-09-25 18:20:09: Fail to scape this location: L5569882 due to html5lib not found, please install it   
+**ERROR** 2019-09-25 18:20:15: Fail to scape this location: L7033433 due to html5lib not found, please install it   
+*WARNING* 2019-09-25 18:21:46: No new data found!  
+***INFO** 2019-09-25 18:21:46: Data updating process is finished!  
+***INFO** 2019-09-25 18:24:25: Start update data.  
+*WARNING* 2019-09-25 18:28:07: No new data found!  
+***INFO** 2019-09-25 18:28:07: Data updating process is finished!  
+***INFO** 2019-09-25 18:30:39: Start update data.  
+*WARNING* 2019-09-25 18:34:20: No new data found!  
+***INFO** 2019-09-25 18:34:20: Data updating process is finished!  
+***INFO** 2019-09-25 18:36:46: Start update data.  
+*WARNING* 2019-09-25 18:40:25: No new data found!  
+***INFO** 2019-09-25 18:40:25: Data updating process is finished!  
+***INFO** 2019-09-25 18:42:45: Start update data.  
+*WARNING* 2019-09-25 18:46:27: No new data found!  
+***INFO** 2019-09-25 18:46:27: Data updating process is finished!  
+***INFO** 2019-09-25 18:48:41: Start update data.  
+*WARNING* 2019-09-25 18:52:20: No new data found!  
+***INFO** 2019-09-25 18:52:20: Data updating process is finished!  
+***INFO** 2019-09-25 18:54:28: Start update data.  
+*WARNING* 2019-09-25 18:58:06: No new data found!  
+***INFO** 2019-09-25 18:58:06: Data updating process is finished!  
+***INFO** 2019-09-25 19:00:08: Start update data.  
+*WARNING* 2019-09-25 19:03:52: No new data found!  
+***INFO** 2019-09-25 19:03:52: Data updating process is finished!  
+***INFO** 2019-09-25 19:06:49: Start update data.  
+*WARNING* 2019-09-25 19:10:34: No new data found!  
+***INFO** 2019-09-25 19:10:34: Data updating process is finished!  
+***INFO** 2019-09-25 19:13:24: Start update data.  
+*WARNING* 2019-09-25 19:17:04: No new data found!  
+***INFO** 2019-09-25 19:17:04: Data updating process is finished!  
+***INFO** 2019-09-25 19:19:47: Start update data.  
+*WARNING* 2019-09-25 19:23:28: No new data found!  
+***INFO** 2019-09-25 19:23:28: Data updating process is finished!  
+***INFO** 2019-09-25 19:26:05: Start update data.  
+*WARNING* 2019-09-25 19:29:44: No new data found!  
+***INFO** 2019-09-25 19:29:44: Data updating process is finished!  
+***INFO** 2019-09-25 19:32:15: Start update data.  
+*WARNING* 2019-09-25 19:35:55: No new data found!  
+***INFO** 2019-09-25 19:35:55: Data updating process is finished!  
+***INFO** 2019-09-25 19:38:20: Start update data.  
+*WARNING* 2019-09-25 19:42:01: No new data found!  
+***INFO** 2019-09-25 19:42:01: Data updating process is finished!  
+***INFO** 2019-09-25 19:44:19: Start update data.  
+*WARNING* 2019-09-25 19:48:01: No new data found!  
+***INFO** 2019-09-25 19:48:01: Data updating process is finished!  
+***INFO** 2019-09-25 19:50:13: Start update data.  
+*WARNING* 2019-09-25 19:53:52: No new data found!  
+***INFO** 2019-09-25 19:53:52: Data updating process is finished!  
+***INFO** 2019-09-25 19:55:59: Start update data.  
+*WARNING* 2019-09-25 19:59:38: No new data found!  
+***INFO** 2019-09-25 19:59:38: Data updating process is finished!  
+***INFO** 2019-09-25 20:01:39: Start update data.  
+*WARNING* 2019-09-25 20:05:20: No new data found!  
+***INFO** 2019-09-25 20:05:20: Data updating process is finished!  
+***INFO** 2019-09-25 20:08:15: Start update data.  
+*WARNING* 2019-09-25 20:11:55: No new data found!  
+***INFO** 2019-09-25 20:11:55: Data updating process is finished!  
+***INFO** 2019-09-25 20:14:44: Start update data.  
+*WARNING* 2019-09-25 20:18:25: No new data found!  
+***INFO** 2019-09-25 20:18:25: Data updating process is finished!  
+***INFO** 2019-09-25 20:21:07: Start update data.  
+*WARNING* 2019-09-25 20:24:53: No new data found!  
+***INFO** 2019-09-25 20:24:53: Data updating process is finished!  
+***INFO** 2019-09-25 20:27:29: Start update data.  
+*WARNING* 2019-09-25 20:31:11: No new data found!  
+***INFO** 2019-09-25 20:31:11: Data updating process is finished!  
+***INFO** 2019-09-25 20:33:40: Start update data.  
+*WARNING* 2019-09-25 20:37:18: No new data found!  
+***INFO** 2019-09-25 20:37:18: Data updating process is finished!  
+***INFO** 2019-09-25 20:39:41: Start update data.  
+*WARNING* 2019-09-25 20:43:30: No new data found!  
+***INFO** 2019-09-25 20:43:30: Data updating process is finished!  
+***INFO** 2019-09-25 20:45:47: Start update data.  
+*WARNING* 2019-09-25 20:49:26: No new data found!  
+***INFO** 2019-09-25 20:49:26: Data updating process is finished!  
+***INFO** 2019-09-25 20:51:38: Start update data.  
+*WARNING* 2019-09-25 20:55:18: No new data found!  
+***INFO** 2019-09-25 20:55:18: Data updating process is finished!  
+***INFO** 2019-09-25 20:57:23: Start update data.  
+*WARNING* 2019-09-25 21:01:04: No new data found!  
+***INFO** 2019-09-25 21:01:04: Data updating process is finished!  
+***INFO** 2019-09-25 21:04:03: Start update data.  
+*WARNING* 2019-09-25 21:07:45: No new data found!  
+***INFO** 2019-09-25 21:07:45: Data updating process is finished!  
+***INFO** 2019-09-25 21:10:38: Start update data.  
+*WARNING* 2019-09-25 21:14:19: No new data found!  
+***INFO** 2019-09-25 21:14:19: Data updating process is finished!  
+***INFO** 2019-09-25 21:17:05: Start update data.  
+*WARNING* 2019-09-25 21:20:46: No new data found!  
+***INFO** 2019-09-25 21:20:46: Data updating process is finished!  
+***INFO** 2019-09-25 21:23:26: Start update data.  
+*WARNING* 2019-09-25 21:27:04: No new data found!  
+***INFO** 2019-09-25 21:27:04: Data updating process is finished!  
+***INFO** 2019-09-25 21:29:37: Start update data.  
+*WARNING* 2019-09-25 21:33:17: No new data found!  
+***INFO** 2019-09-25 21:33:17: Data updating process is finished!  
+***INFO** 2019-09-25 21:35:44: Start update data.  
+*WARNING* 2019-09-25 21:39:29: No new data found!  
+***INFO** 2019-09-25 21:39:29: Data updating process is finished!  
+***INFO** 2019-09-25 21:41:50: Start update data.  
+*WARNING* 2019-09-25 21:45:30: No new data found!  
+***INFO** 2019-09-25 21:45:30: Data updating process is finished!  
+***INFO** 2019-09-25 21:47:45: Start update data.  
+*WARNING* 2019-09-25 21:51:28: No new data found!  
+***INFO** 2019-09-25 21:51:28: Data updating process is finished!  
+***INFO** 2019-09-25 21:53:37: Start update data.  
+*WARNING* 2019-09-25 21:57:15: No new data found!  
+***INFO** 2019-09-25 21:57:15: Data updating process is finished!  
+***INFO** 2019-09-25 21:59:18: Start update data.  
+*WARNING* 2019-09-25 22:02:59: No new data found!  
+***INFO** 2019-09-25 22:02:59: Data updating process is finished!  
+***INFO** 2019-09-25 22:05:57: Start update data.  
+*WARNING* 2019-09-25 22:09:38: No new data found!  
+***INFO** 2019-09-25 22:09:38: Data updating process is finished!  
+***INFO** 2019-09-25 22:12:29: Start update data.  
+*WARNING* 2019-09-25 22:16:08: No new data found!  
+***INFO** 2019-09-25 22:16:08: Data updating process is finished!  
+***INFO** 2019-09-25 22:18:52: Start update data.  
+*WARNING* 2019-09-25 22:22:33: No new data found!  
+***INFO** 2019-09-25 22:22:33: Data updating process is finished!  
+***INFO** 2019-09-25 22:25:11: Start update data.  
+*WARNING* 2019-09-25 22:28:55: No new data found!  
+***INFO** 2019-09-25 22:28:55: Data updating process is finished!  
+***INFO** 2019-09-25 22:31:27: Start update data.  
+*WARNING* 2019-09-25 22:35:09: No new data found!  
+***INFO** 2019-09-25 22:35:09: Data updating process is finished!  
+***INFO** 2019-09-25 22:37:34: Start update data.  
+*WARNING* 2019-09-25 22:41:14: No new data found!  
+***INFO** 2019-09-25 22:41:14: Data updating process is finished!  
+***INFO** 2019-09-25 22:43:33: Start update data.  
+*WARNING* 2019-09-25 22:47:18: No new data found!  
+***INFO** 2019-09-25 22:47:18: Data updating process is finished!  
+***INFO** 2019-09-25 22:49:31: Start update data.  
+*WARNING* 2019-09-25 22:53:11: No new data found!  
+***INFO** 2019-09-25 22:53:11: Data updating process is finished!  
+***INFO** 2019-09-25 22:55:18: Start update data.  
+*WARNING* 2019-09-25 22:59:01: No new data found!  
+***INFO** 2019-09-25 22:59:01: Data updating process is finished!  
+***INFO** 2019-09-25 23:01:02: Start update data.  
+*WARNING* 2019-09-25 23:04:42: No new data found!  
+***INFO** 2019-09-25 23:04:42: Data updating process is finished!  
+***INFO** 2019-09-25 23:07:38: Start update data.  
+*WARNING* 2019-09-25 23:11:20: No new data found!  
+***INFO** 2019-09-25 23:11:20: Data updating process is finished!  
+***INFO** 2019-09-25 23:14:09: Start update data.  
+*WARNING* 2019-09-25 23:17:49: No new data found!  
+***INFO** 2019-09-25 23:17:49: Data updating process is finished!  
+***INFO** 2019-09-25 23:20:32: Start update data.  
+*WARNING* 2019-09-25 23:24:13: No new data found!  
+***INFO** 2019-09-25 23:24:13: Data updating process is finished!  
+***INFO** 2019-09-25 23:26:49: Start update data.  
+*WARNING* 2019-09-25 23:30:31: No new data found!  
+***INFO** 2019-09-25 23:30:31: Data updating process is finished!  
+***INFO** 2019-09-25 23:33:01: Start update data.  
+*WARNING* 2019-09-25 23:36:43: No new data found!  
+***INFO** 2019-09-25 23:36:43: Data updating process is finished!  
+***INFO** 2019-09-25 23:39:07: Start update data.  
+*WARNING* 2019-09-25 23:42:51: No new data found!  
+***INFO** 2019-09-25 23:42:51: Data updating process is finished!  
+***INFO** 2019-09-25 23:45:09: Start update data.  
+*WARNING* 2019-09-25 23:48:50: No new data found!  
+***INFO** 2019-09-25 23:48:50: Data updating process is finished!  
+***INFO** 2019-09-25 23:51:02: Start update data.  
+*WARNING* 2019-09-25 23:54:43: No new data found!  
+***INFO** 2019-09-25 23:54:43: Data updating process is finished!  
+***INFO** 2019-09-25 23:56:49: Start update data.  
+*WARNING* 2019-09-26 00:00:27: No new data found!  
+***INFO** 2019-09-26 00:00:27: Data updating process is finished!  
+***INFO** 2019-09-26 00:03:27: Start update data.  
+*WARNING* 2019-09-26 00:07:09: No new data found!  
+***INFO** 2019-09-26 00:07:09: Data updating process is finished!  
+***INFO** 2019-09-26 00:10:03: Start update data.  
+*WARNING* 2019-09-26 00:13:43: No new data found!  
+***INFO** 2019-09-26 00:13:43: Data updating process is finished!  
+***INFO** 2019-09-26 00:16:30: Start update data.  
+*WARNING* 2019-09-26 00:20:12: No new data found!  
+***INFO** 2019-09-26 00:20:12: Data updating process is finished!  
+***INFO** 2019-09-26 00:22:52: Start update data.  
+*WARNING* 2019-09-26 00:26:31: No new data found!  
+***INFO** 2019-09-26 00:26:31: Data updating process is finished!  
+***INFO** 2019-09-26 00:29:05: Start update data.  
+*WARNING* 2019-09-26 00:32:51: No new data found!  
+***INFO** 2019-09-26 00:32:51: Data updating process is finished!  
+***INFO** 2019-09-26 00:35:19: Start update data.  
+*WARNING* 2019-09-26 00:38:59: No new data found!  
+***INFO** 2019-09-26 00:38:59: Data updating process is finished!  
+***INFO** 2019-09-26 00:41:21: Start update data.  
+*WARNING* 2019-09-26 00:44:59: No new data found!  
+***INFO** 2019-09-26 00:44:59: Data updating process is finished!  
+***INFO** 2019-09-26 00:47:15: Start update data.  
+*WARNING* 2019-09-26 00:50:58: No new data found!  
+***INFO** 2019-09-26 00:50:58: Data updating process is finished!  
+***INFO** 2019-09-26 00:53:08: Start update data.  
+*WARNING* 2019-09-26 00:56:53: No new data found!  
+***INFO** 2019-09-26 00:56:53: Data updating process is finished!  
+***INFO** 2019-09-26 00:58:57: Start update data.  
+*WARNING* 2019-09-26 01:02:38: No new data found!  
+***INFO** 2019-09-26 01:02:38: Data updating process is finished!  
+***INFO** 2019-09-26 01:05:36: Start update data.  
+*WARNING* 2019-09-26 01:09:18: No new data found!  
+***INFO** 2019-09-26 01:09:18: Data updating process is finished!  
+***INFO** 2019-09-26 01:12:09: Start update data.  
+*WARNING* 2019-09-26 01:15:58: No new data found!  
+***INFO** 2019-09-26 01:15:58: Data updating process is finished!  
+***INFO** 2019-09-26 01:18:43: Start update data.  
+*WARNING* 2019-09-26 01:22:24: No new data found!  
+***INFO** 2019-09-26 01:22:24: Data updating process is finished!  
+***INFO** 2019-09-26 01:25:02: Start update data.  
+*WARNING* 2019-09-26 01:28:42: No new data found!  
+***INFO** 2019-09-26 01:28:42: Data updating process is finished!  
+***INFO** 2019-09-26 01:31:14: Start update data.  
+*WARNING* 2019-09-26 01:34:54: No new data found!  
+***INFO** 2019-09-26 01:34:54: Data updating process is finished!  
+***INFO** 2019-09-26 01:37:20: Start update data.  
+*WARNING* 2019-09-26 01:41:03: No new data found!  
+***INFO** 2019-09-26 01:41:03: Data updating process is finished!  
+***INFO** 2019-09-26 01:43:22: Start update data.  
+*WARNING* 2019-09-26 01:47:00: No new data found!  
+***INFO** 2019-09-26 01:47:00: Data updating process is finished!  
+***INFO** 2019-09-26 01:49:13: Start update data.  
+*WARNING* 2019-09-26 01:52:53: No new data found!  
+***INFO** 2019-09-26 01:52:53: Data updating process is finished!  
+***INFO** 2019-09-26 01:55:01: Start update data.  
+*WARNING* 2019-09-26 01:58:42: No new data found!  
+***INFO** 2019-09-26 01:58:42: Data updating process is finished!  
+***INFO** 2019-09-26 02:00:44: Start update data.  
+*WARNING* 2019-09-26 02:04:25: No new data found!  
+***INFO** 2019-09-26 02:04:25: Data updating process is finished!  
+***INFO** 2019-09-26 02:07:21: Start update data.  
+*WARNING* 2019-09-26 02:11:03: No new data found!  
+***INFO** 2019-09-26 02:11:03: Data updating process is finished!  
+***INFO** 2019-09-26 02:13:52: Start update data.  
+*WARNING* 2019-09-26 02:17:36: No new data found!  
+***INFO** 2019-09-26 02:17:36: Data updating process is finished!  
+***INFO** 2019-09-26 02:20:19: Start update data.  
+*WARNING* 2019-09-26 02:23:58: No new data found!  
+***INFO** 2019-09-26 02:23:58: Data updating process is finished!  
+***INFO** 2019-09-26 02:26:35: Start update data.  
+*WARNING* 2019-09-26 02:30:12: No new data found!  
+***INFO** 2019-09-26 02:30:12: Data updating process is finished!  
+***INFO** 2019-09-26 02:32:43: Start update data.  
+*WARNING* 2019-09-26 02:36:24: No new data found!  
+***INFO** 2019-09-26 02:36:24: Data updating process is finished!  
+***INFO** 2019-09-26 02:38:48: Start update data.  
+*WARNING* 2019-09-26 02:42:29: No new data found!  
+***INFO** 2019-09-26 02:42:29: Data updating process is finished!  
+***INFO** 2019-09-26 02:44:47: Start update data.  
+*WARNING* 2019-09-26 02:48:31: No new data found!  
+***INFO** 2019-09-26 02:48:31: Data updating process is finished!  
+***INFO** 2019-09-26 02:50:43: Start update data.  
+*WARNING* 2019-09-26 02:54:29: No new data found!  
+***INFO** 2019-09-26 02:54:29: Data updating process is finished!  
+***INFO** 2019-09-26 02:56:35: Start update data.  
+*WARNING* 2019-09-26 03:00:15: No new data found!  
+***INFO** 2019-09-26 03:00:15: Data updating process is finished!  
+***INFO** 2019-09-26 03:03:15: Start update data.  
+*WARNING* 2019-09-26 03:06:58: No new data found!  
+***INFO** 2019-09-26 03:06:58: Data updating process is finished!  
+***INFO** 2019-09-26 03:09:52: Start update data.  
+*WARNING* 2019-09-26 03:13:34: No new data found!  
+***INFO** 2019-09-26 03:13:34: Data updating process is finished!  
+***INFO** 2019-09-26 03:16:21: Start update data.  
+*WARNING* 2019-09-26 03:20:05: No new data found!  
+***INFO** 2019-09-26 03:20:05: Data updating process is finished!  
+***INFO** 2019-09-26 03:22:45: Start update data.  
+*WARNING* 2019-09-26 03:26:32: No new data found!  
+***INFO** 2019-09-26 03:26:32: Data updating process is finished!  
+***INFO** 2019-09-26 03:29:06: Start update data.  
+*WARNING* 2019-09-26 03:32:47: No new data found!  
+***INFO** 2019-09-26 03:32:47: Data updating process is finished!  
+***INFO** 2019-09-26 03:35:15: Start update data.  
+*WARNING* 2019-09-26 03:38:55: No new data found!  
+***INFO** 2019-09-26 03:38:55: Data updating process is finished!  
+***INFO** 2019-09-26 03:41:17: Start update data.  
+*WARNING* 2019-09-26 03:45:01: No new data found!  
+***INFO** 2019-09-26 03:45:01: Data updating process is finished!  
+***INFO** 2019-09-26 03:47:16: Start update data.  
+*WARNING* 2019-09-26 03:50:58: No new data found!  
+***INFO** 2019-09-26 03:50:58: Data updating process is finished!  
+***INFO** 2019-09-26 03:53:08: Start update data.  
+*WARNING* 2019-09-26 03:56:50: No new data found!  
+***INFO** 2019-09-26 03:56:50: Data updating process is finished!  
+***INFO** 2019-09-26 03:58:54: Start update data.  
+*WARNING* 2019-09-26 04:02:36: No new data found!  
+***INFO** 2019-09-26 04:02:36: Data updating process is finished!  
+***INFO** 2019-09-26 04:05:34: Start update data.  
+*WARNING* 2019-09-26 04:09:14: No new data found!  
+***INFO** 2019-09-26 04:09:14: Data updating process is finished!  
+***INFO** 2019-09-26 04:12:05: Start update data.  
+*WARNING* 2019-09-26 04:15:52: No new data found!  
+***INFO** 2019-09-26 04:15:52: Data updating process is finished!  
+***INFO** 2019-09-26 04:18:37: Start update data.  
+*WARNING* 2019-09-26 04:22:21: No new data found!  
+***INFO** 2019-09-26 04:22:21: Data updating process is finished!  
+***INFO** 2019-09-26 04:24:59: Start update data.  
+*WARNING* 2019-09-26 04:28:38: No new data found!  
+***INFO** 2019-09-26 04:28:38: Data updating process is finished!  
+***INFO** 2019-09-26 04:31:10: Start update data.  
+*WARNING* 2019-09-26 04:34:49: No new data found!  
+***INFO** 2019-09-26 04:34:49: Data updating process is finished!  
+***INFO** 2019-09-26 04:37:15: Start update data.  
+*WARNING* 2019-09-26 04:40:57: No new data found!  
+***INFO** 2019-09-26 04:40:57: Data updating process is finished!  
+***INFO** 2019-09-26 04:43:17: Start update data.  
+*WARNING* 2019-09-26 04:46:59: No new data found!  
+***INFO** 2019-09-26 04:46:59: Data updating process is finished!  
+***INFO** 2019-09-26 04:49:13: Start update data.  
+*WARNING* 2019-09-26 04:52:57: No new data found!  
+***INFO** 2019-09-26 04:52:57: Data updating process is finished!  
+***INFO** 2019-09-26 04:55:05: Start update data.  
+*WARNING* 2019-09-26 04:58:45: No new data found!  
+***INFO** 2019-09-26 04:58:45: Data updating process is finished!  
+***INFO** 2019-09-26 05:00:47: Start update data.  
+*WARNING* 2019-09-26 05:04:30: No new data found!  
+***INFO** 2019-09-26 05:04:30: Data updating process is finished!  
+***INFO** 2019-09-26 05:07:26: Start update data.  
+*WARNING* 2019-09-26 05:11:06: No new data found!  
+***INFO** 2019-09-26 05:11:06: Data updating process is finished!  
+***INFO** 2019-09-26 05:13:55: Start update data.  
+*WARNING* 2019-09-26 05:17:36: No new data found!  
+***INFO** 2019-09-26 05:17:36: Data updating process is finished!  
+***INFO** 2019-09-26 05:20:19: Start update data.  
+*WARNING* 2019-09-26 05:23:59: No new data found!  
+***INFO** 2019-09-26 05:23:59: Data updating process is finished!  
+***INFO** 2019-09-26 05:26:36: Start update data.  
+*WARNING* 2019-09-26 05:30:16: No new data found!  
+***INFO** 2019-09-26 05:30:16: Data updating process is finished!  
+***INFO** 2019-09-26 05:32:46: Start update data.  
+*WARNING* 2019-09-26 05:36:27: No new data found!  
+***INFO** 2019-09-26 05:36:27: Data updating process is finished!  
+***INFO** 2019-09-26 05:38:51: Start update data.  
+*WARNING* 2019-09-26 05:42:30: No new data found!  
+***INFO** 2019-09-26 05:42:30: Data updating process is finished!  
+***INFO** 2019-09-26 05:44:48: Start update data.  
+*WARNING* 2019-09-26 05:48:31: No new data found!  
+***INFO** 2019-09-26 05:48:31: Data updating process is finished!  
+***INFO** 2019-09-26 05:50:43: Start update data.  
+*WARNING* 2019-09-26 05:54:25: No new data found!  
+***INFO** 2019-09-26 05:54:25: Data updating process is finished!  
+***INFO** 2019-09-26 05:56:31: Start update data.  
+*WARNING* 2019-09-26 06:00:10: No new data found!  
+***INFO** 2019-09-26 06:00:10: Data updating process is finished!  
+***INFO** 2019-09-26 06:03:10: Start update data.  
+*WARNING* 2019-09-26 06:06:52: No new data found!  
+***INFO** 2019-09-26 06:06:52: Data updating process is finished!  
+***INFO** 2019-09-26 06:09:46: Start update data.  
+*WARNING* 2019-09-26 06:13:28: No new data found!  
+***INFO** 2019-09-26 06:13:28: Data updating process is finished!  
+***INFO** 2019-09-26 06:16:15: Start update data.  
+*WARNING* 2019-09-26 06:19:58: No new data found!  
+***INFO** 2019-09-26 06:19:58: Data updating process is finished!  
+***INFO** 2019-09-26 06:22:39: Start update data.  
+*WARNING* 2019-09-26 06:26:20: No new data found!  
+***INFO** 2019-09-26 06:26:20: Data updating process is finished!  
+***INFO** 2019-09-26 06:28:54: Start update data.  
+*WARNING* 2019-09-26 06:32:34: No new data found!  
+***INFO** 2019-09-26 06:32:34: Data updating process is finished!  
+***INFO** 2019-09-26 06:35:02: Start update data.  
+*WARNING* 2019-09-26 06:38:45: No new data found!  
+***INFO** 2019-09-26 06:38:45: Data updating process is finished!  
+***INFO** 2019-09-26 06:41:07: Start update data.  
+*WARNING* 2019-09-26 06:44:48: No new data found!  
+***INFO** 2019-09-26 06:44:48: Data updating process is finished!  
+***INFO** 2019-09-26 06:47:04: Start update data.  
+*WARNING* 2019-09-26 06:50:47: No new data found!  
+***INFO** 2019-09-26 06:50:47: Data updating process is finished!  
+***INFO** 2019-09-26 06:52:57: Start update data.  
+*WARNING* 2019-09-26 06:56:38: No new data found!  
+***INFO** 2019-09-26 06:56:38: Data updating process is finished!  
+***INFO** 2019-09-26 06:58:42: Start update data.  
+*WARNING* 2019-09-26 07:02:23: No new data found!  
+***INFO** 2019-09-26 07:02:23: Data updating process is finished!  
+***INFO** 2019-09-26 07:05:22: Start update data.  
+*WARNING* 2019-09-26 07:09:02: No new data found!  
+***INFO** 2019-09-26 07:09:02: Data updating process is finished!  
+***INFO** 2019-09-26 07:11:53: Start update data.  
+*WARNING* 2019-09-26 07:15:35: No new data found!  
+***INFO** 2019-09-26 07:15:35: Data updating process is finished!  
+***INFO** 2019-09-26 07:18:20: Start update data.  
+*WARNING* 2019-09-26 07:22:01: No new data found!  
+***INFO** 2019-09-26 07:22:01: Data updating process is finished!  
+***INFO** 2019-09-26 07:24:39: Start update data.  
+*WARNING* 2019-09-26 07:28:21: No new data found!  
+***INFO** 2019-09-26 07:28:21: Data updating process is finished!  
+***INFO** 2019-09-26 07:30:54: Start update data.  
+*WARNING* 2019-09-26 07:34:33: No new data found!  
+***INFO** 2019-09-26 07:34:33: Data updating process is finished!  
+***INFO** 2019-09-26 07:36:59: Start update data.  
+*WARNING* 2019-09-26 07:40:39: No new data found!  
+***INFO** 2019-09-26 07:40:39: Data updating process is finished!  
+***INFO** 2019-09-26 07:42:59: Start update data.  
+*WARNING* 2019-09-26 07:46:37: No new data found!  
+***INFO** 2019-09-26 07:46:37: Data updating process is finished!  
+***INFO** 2019-09-26 07:48:51: Start update data.  
+*WARNING* 2019-09-26 07:52:29: No new data found!  
+***INFO** 2019-09-26 07:52:29: Data updating process is finished!  
+***INFO** 2019-09-26 07:54:37: Start update data.  
+*WARNING* 2019-09-26 07:58:18: No new data found!  
+***INFO** 2019-09-26 07:58:18: Data updating process is finished!  
+***INFO** 2019-09-26 08:00:21: Start update data.  
+*WARNING* 2019-09-26 08:04:07: No new data found!  
+***INFO** 2019-09-26 08:04:07: Data updating process is finished!  
+***INFO** 2019-09-26 08:07:03: Start update data.  
+*WARNING* 2019-09-26 08:10:43: No new data found!  
+***INFO** 2019-09-26 08:10:43: Data updating process is finished!  
+***INFO** 2019-09-26 08:13:33: Start update data.  
+*WARNING* 2019-09-26 08:17:14: No new data found!  
+***INFO** 2019-09-26 08:17:14: Data updating process is finished!  
+***INFO** 2019-09-26 08:19:57: Start update data.  
+*WARNING* 2019-09-26 08:23:41: No new data found!  
+***INFO** 2019-09-26 08:23:41: Data updating process is finished!  
+***INFO** 2019-09-26 08:26:18: Start update data.  
+*WARNING* 2019-09-26 08:29:59: No new data found!  
+***INFO** 2019-09-26 08:29:59: Data updating process is finished!  
+***INFO** 2019-09-26 08:32:30: Start update data.  
+*WARNING* 2019-09-26 08:36:11: No new data found!  
+***INFO** 2019-09-26 08:36:11: Data updating process is finished!  
+***INFO** 2019-09-26 08:38:35: Start update data.  
+*WARNING* 2019-09-26 08:42:21: No new data found!  
+***INFO** 2019-09-26 08:42:21: Data updating process is finished!  
+***INFO** 2019-09-26 08:44:39: Start update data.  
+*WARNING* 2019-09-26 08:48:21: No new data found!  
+***INFO** 2019-09-26 08:48:21: Data updating process is finished!  
+***INFO** 2019-09-26 08:50:33: Start update data.  
+*WARNING* 2019-09-26 08:54:14: No new data found!  
+***INFO** 2019-09-26 08:54:14: Data updating process is finished!  
+***INFO** 2019-09-26 08:56:20: Start update data.  
+**ERROR** 2019-09-26 08:57:48: Fail to scape this location: L5569795 due to ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response',))   
+*WARNING* 2019-09-26 09:00:02: No new data found!  
+***INFO** 2019-09-26 09:00:02: Data updating process is finished!  
+***INFO** 2019-09-26 09:03:02: Start update data.  
+*WARNING* 2019-09-26 09:06:44: No new data found!  
+***INFO** 2019-09-26 09:06:44: Data updating process is finished!  
+***INFO** 2019-09-26 09:09:38: Start update data.  
+*WARNING* 2019-09-26 09:13:23: No new data found!  
+***INFO** 2019-09-26 09:13:23: Data updating process is finished!  
+***INFO** 2019-09-26 09:16:10: Start update data.  
+*WARNING* 2019-09-26 09:19:51: No new data found!  
+***INFO** 2019-09-26 09:19:51: Data updating process is finished!  
+***INFO** 2019-09-26 09:22:32: Start update data.  
+*WARNING* 2019-09-26 09:26:14: No new data found!  
+***INFO** 2019-09-26 09:26:14: Data updating process is finished!  
+***INFO** 2019-09-26 09:28:48: Start update data.  
+*WARNING* 2019-09-26 09:32:29: No new data found!  
+***INFO** 2019-09-26 09:32:29: Data updating process is finished!  
+***INFO** 2019-09-26 09:34:57: Start update data.  
+*WARNING* 2019-09-26 09:38:38: No new data found!  
+***INFO** 2019-09-26 09:38:38: Data updating process is finished!  
+***INFO** 2019-09-26 13:00:19: Start update data.  
+*WARNING* 2019-09-26 13:04:06: New data found: 20 rows  
+***INFO** 2019-09-26 13:04:06: Data updating process is finished!  
+***INFO** 2019-09-26 16:00:06: Start update data.  
+*WARNING* 2019-09-26 16:03:54: No new data found!  
+***INFO** 2019-09-26 16:03:54: Data updating process is finished!  
+***INFO** 2019-09-26 19:00:54: Start update data.  
+*WARNING* 2019-09-26 19:04:40: No new data found!  
+***INFO** 2019-09-26 19:04:40: Data updating process is finished!  
+***INFO** 2019-09-26 22:00:40: Start update data.  
+*WARNING* 2019-09-26 22:04:30: No new data found!  
+***INFO** 2019-09-26 22:04:30: Data updating process is finished!  
+***INFO** 2019-09-27 01:00:30: Start update data.  
+**ERROR** 2019-09-27 01:01:23: Fail to scape this location: L5192267 due to ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response',))   
+*WARNING* 2019-09-27 01:04:13: No new data found!  
+***INFO** 2019-09-27 01:04:13: Data updating process is finished!  
+***INFO** 2019-09-27 04:00:13: Start update data.  
+*WARNING* 2019-09-27 04:03:58: No new data found!  
+***INFO** 2019-09-27 04:03:58: Data updating process is finished!  
+***INFO** 2019-09-27 07:00:58: Start update data.  
+*WARNING* 2019-09-27 07:04:43: No new data found!  
+***INFO** 2019-09-27 07:04:43: Data updating process is finished!  
+***INFO** 2019-09-27 10:00:43: Start update data.  
+*WARNING* 2019-09-27 10:04:31: No new data found!  
+***INFO** 2019-09-27 10:04:31: Data updating process is finished!  
+***INFO** 2019-09-27 13:00:31: Start update data.  
+*WARNING* 2019-09-27 13:04:22: No new data found!  
+***INFO** 2019-09-27 13:04:22: Data updating process is finished!  
+***INFO** 2019-09-27 16:00:22: Start update data.  
+*WARNING* 2019-09-27 16:04:14: No new data found!  
+***INFO** 2019-09-27 16:04:14: Data updating process is finished!  
+***INFO** 2019-09-27 19:00:14: Start update data.  
+*WARNING* 2019-09-27 19:04:02: New data found: 30 rows  
+***INFO** 2019-09-27 19:04:02: Data updating process is finished!  
+***INFO** 2019-09-27 22:00:02: Start update data.  
+*WARNING* 2019-09-27 22:03:51: New data found: 26 rows  
+***INFO** 2019-09-27 22:03:51: Data updating process is finished!  
+***INFO** 2019-09-28 01:00:51: Start update data.  
+*WARNING* 2019-09-28 01:04:36: No new data found!  
+***INFO** 2019-09-28 01:04:36: Data updating process is finished!  
+***INFO** 2019-09-28 04:00:36: Start update data.  
+*WARNING* 2019-09-28 04:04:19: No new data found!  
+***INFO** 2019-09-28 04:04:19: Data updating process is finished!  
+***INFO** 2019-09-28 07:00:19: Start update data.  
+*WARNING* 2019-09-28 07:04:02: No new data found!  
+***INFO** 2019-09-28 07:04:02: Data updating process is finished!  
+***INFO** 2019-09-28 10:00:02: Start update data.  
+**ERROR** 2019-09-28 10:08:36: Fail to scape this location: L5192267 due to ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response',))   

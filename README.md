@@ -1,2 +1,0 @@
-# EbirdTaiwan
-ebirdtaiwan.com

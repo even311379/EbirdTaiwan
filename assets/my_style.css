@@ -76,6 +76,10 @@ html {
     line-height: 60px;
 }
 
+.help-lnks {
+    font-size: 18px !important;
+}
+
 #hint-text {
     font-size: 18px;
     color: red;
@@ -121,26 +125,24 @@ html {
     }
 
     .home-card-title {
-        font-size: 32px;
+        font-size: 28px;
         line-height: 52px;
         text-align: center;
         padding: 10px;
     }
 
     .home-card-content {
-        font-size: 20px;
-        line-height: 35px;
+        font-size: 18px;
+        line-height: 27px;
         padding: 10px;
     }
 
     .date-range-text {
-        font-weight: 100;
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .modal-entry {
-        font-weight: 100;
-        font-size: 20px;
+        font-size: 18px;
         color: #235EAE;
     }
 
@@ -416,9 +418,6 @@ html {
         color: #235EAE;
     }
 
-    .CBgap {
-        display: none;
-    }
 
     .modal-title {
         font-size: 28px;
@@ -515,6 +514,10 @@ html {
         color: red;
     }
 
+    .help-lnks {
+        font-size: 12px !important;
+    }
+
     #team_accp {
         padding-top: 100px;
     }
@@ -535,7 +538,18 @@ html {
     overflow-y: hidden;
 }
 
+.NotYet {
+    width: 100vw;
+    height: auto;
+    display: block;
+}
 
+.help-img {
+    display: block;
+    margin: 5% auto 5% auto;
+    width: 80%;
+    border: 3px solid #e9e9e9;
+}
 /*.people-plot {
     display: inline-block
 }
@@ -552,7 +566,6 @@ html {
     overflow-y: hidden;
     height: 400px;
 }*/
-
 /*
     xs: < 576px sm: 576~768 px md: 992~768px lg: 1140~960px xl: > 1200px */
 @media only screen and (min-width: 1400px) {
