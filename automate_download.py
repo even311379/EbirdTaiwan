@@ -27,8 +27,6 @@ location_id = ['L2425949', 'L3856620', 'L5248567', 'L5569845', 'L5192267', 'L329
 
 
 def download_all():
-    global failed_loc
-    global failed_checklist
 
     DFL = []
     for loc in location_id:
@@ -67,7 +65,6 @@ def download_all():
                 except Exception as e:
                     print(e)
                     print(url)
-                    failed_checklist.append(loc+':'+url)
 
             LocDF = pd.concat(dl).reset_index(drop=True)
             LocDF.insert(0, 'LocationID', [loc]*len(LocDF))
@@ -77,19 +74,18 @@ def download_all():
         except Exception as e:
             print(loc)
             print(e)
-            failed_loc.append(loc)
 
 
     DF = pd.concat(DFL).reset_index(drop=True)
     DF['Date'] = DF['Date'].apply(lambda x: f'{x.tm_year}-{x.tm_mon}-{x.tm_mday}')
-    DF.to_csv('AllData.csv',index=False)
+    DF.to_csv('data/AllData.csv',index=False)
     return DF
 
 
 def update_data():
 
     my_logger(0, 'Start update data.')
-    old_data = pd.read_csv('AllData.csv')
+    old_data = pd.read_csv('data/AllData.csv')
     old_Link = old_data.Link.tolist()
     th_day = datetime.datetime.now() - datetime.timedelta(days=30)
 
@@ -134,7 +130,7 @@ def update_data():
                         temp_c.append(h)
                         temp_o.append(b)
             if len(temp_c) > 0:
-                print(f'New data found in {loc}!!!!!')
+                my_logger(1, f'New data found in {loc}!!!!!')
             else:
                 continue
             
@@ -162,7 +158,7 @@ def update_data():
     if DFL:
         DF = pd.concat(DFL).reset_index(drop=True)
         more_data = old_data.append(DF, ignore_index=True)
-        more_data.to_csv('AllData.csv',index=False)        
+        more_data.to_csv('data/AllData.csv',index=False)        
         my_logger(1, f'New data found: {len(more_data) - len(old_data)} rows')
     else:
         my_logger(1, 'No new data found!')

@@ -1,4 +1,6 @@
+data
 .vs
 .ipynb_checkpoints
 __pycache__
 *.ipynb
+*.socket

@@ -48,7 +48,10 @@ def GetChecklist(url, c):
     try:
         L = re.findall('href="(.*?/hotspot/.*?)"', r.text)[0]
     except:
-        L = re.findall('Location</h6>\s*?<span>(.*?)</span>', r.text)[0]
+        L = re.findall('Location</h6>\s*?<span>([\S\s]*?)</span>', r.text)[0]
+        if '\n' in L:
+            L = L[L.index('\n')+1:]
+        
     return pd.DataFrame(dict(Creator=[c]*len(S),Species=S,Count=N,DateTime=[DT]*len(S),Hotspot=[L]*len(S),url=[url]*len(S)))
 
 
@@ -94,11 +97,11 @@ def Update(j = 0):
     
     WTS = [] # what to scrap
     Creators = []
-    if not os.path.isfile(DFs[j]):
+    if not os.path.isfile('data/'+DFs[j]):
         WTS = cls
         Creators = cs
     else:
-        old_url = pd.read_csv(DFs[j]).url.drop_duplicates().tolist()
+        old_url = pd.read_csv('data/'+DFs[j]).url.drop_duplicates().tolist()
         WTS = [url for url in cls if url not in old_url]
         Creators = [cs[i] for i, url in enumerate(cls) if url not in old_url]
     if len(WTS) == 0:
@@ -125,7 +128,7 @@ def Update(j = 0):
     else:
         old_data = pd.read_csv(DFs[j])
         more_data = old_data.append(DATA, ignore_index=True)
-        more_data.to_csv(DFs[j],index=False)
+        more_data.to_csv('data/'+DFs[j],index=False)
     
     my_logger(0, f'Success Scrape {IDs[j]}')
 
