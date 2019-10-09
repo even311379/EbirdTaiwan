@@ -136,7 +136,7 @@ def Update(j = 0):
 def automate():
     while True:
         now = time.localtime()
-        sleeptime = ((26 - now.tm_hour) * 60 + (60 - now.tm_min))*60
+        sleeptime = (60 - now.tm_min)*60
         time.sleep(sleeptime)
         for i in range(3):
             Update(i)

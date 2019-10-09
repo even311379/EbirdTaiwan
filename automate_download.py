@@ -168,15 +168,11 @@ def update_data():
 
 
 def automate():
-    start = False
     while True:
-        if not start:
-            time.sleep(60)
-            if time.localtime().tm_min == 0:
-                start = True
-        else:
-            time.sleep(((60 - time.localtime().tm_min) + 2 * 60) * 60)
-            update_data()
+        now = time.localtime()
+        sleeptime = (60 - now.tm_min)*60
+        time.sleep(sleeptime)
+        update_data()
 
 
 if __name__ == '__main__':
