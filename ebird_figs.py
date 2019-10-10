@@ -11,19 +11,16 @@ def draw_bar(values, names, w):
 
     # for case that the total df is empty, when the chanllenge just begun, and no data can be scraped yet!
     empty_plot = False
-    if not values:
+    try:
+        if len(values) < 5:
+            t = [0] * (5 - len(values))
+            values = t + values
+            t = [' '] * (5 - len(names))
+            names = t + names
+    except:
         empty_plot = True
         values= [0] * 5
         names = [''] * 5
-
-
-    if len(values) < 5:
-        t = [0] * (5 - len(values))
-        values = t.append(values)
-        t = [''] * (5 - len(values))
-        names = t.append(names)
-
-    m_names = names
 
     m_names = []
     if w < 400:
@@ -65,13 +62,17 @@ def draw_bar(values, names, w):
                 size=12,),
             hoverinfo='none'),
         ]
+
+    # set color issue
+    anno_text = [f'<b>{n}</b>' if n > 0 else ' ' for n in values]
     if not empty_plot:
         data += [go.Scatter(x = [max(values) * 0.05] * 5,
                 y = [1,2,3,4,5],
-                text=[f'<b>{n}</b>' for n in values],
+                text=anno_text,
                 mode = 'text',
                 textposition="middle right",
-                textfont=dict(color="white",
+                textfont=dict(
+                    color='white',
                     family='Noto Sans TC',
                     size=17),
                 hoverinfo='none')]
@@ -242,6 +243,7 @@ def GetN_Record(sdate, edate):
     ndf = df[bs]
     observers = set(ndf.Observer)
     N_Record = []
+    ndf = ndf.drop_duplicates(['Observer','Link'])
     for observer in observers:
         N_Record.append(len(ndf[ndf.Observer == observer]))
     odf = pd.DataFrame([observers,N_Record]).T
@@ -447,27 +449,42 @@ def DisplayTeamData(teamID):
 
     if teamID == 0:
         df = pd.read_csv('data/Team1Data.csv')
-        table_id = 'team1_table'
+        # table_id = 'team1_table'
     elif teamID == 1:
         df = pd.read_csv('data/Team2Data.csv')
-        table_id = 'team2_table'
+        # table_id = 'team2_table'
     elif teamID == 2:
         df = pd.read_csv('data/Team3Data.csv')
-        table_id = 'team3_table'
+        # table_id = 'team3_table'
     
+    NameTranslateTable = pd.read_excel('data/NameTranslateTable.xlsx').fillna('缺值')
+    ENAME = NameTranslateTable.ENAME.tolist()
+    CNAME = NameTranslateTable.CNAME.tolist()
     BD = [i[5:7]=='10' for i in df.ScrapDate.tolist()]
     df = df[BD]
     spe = list(set(df.Species))
+
     counts = []
     samples = []
     for s in spe:
         counts.append(sum(df[df.Species==s].Count))
         samples.append(len(df[df.Species==s]))
+    
+    tname = []
+    for s in spe:
+        if s in ENAME:
+            if CNAME[ENAME.index(s)] != '缺值':
+                tname.append(CNAME[ENAME.index(s)])
+            else:
+                tname.append(s)
+        else:
+            tname.append(s)
 
-    odf = pd.DataFrame(dict(物種=spe,總數量=counts,清單數=samples))
+    # tname = [CNAME[ENAME.index(s)] if (s in ENAME and CNAME[ENAME.index(s)] != pd.np.nan ) else s for s in spe]
+    odf = pd.DataFrame(dict(物種=tname,總數量=counts,清單數=samples))
 
     final_table = dash_table.DataTable(
-        id = table_id,
+        # id = table_id,
         data = odf.to_dict('records'),
         columns=[{'id': c, 'name': c} for c in odf.columns],
         style_cell_conditional=[{'if': {'column_id': '物種'},'textAlign': 'left'}],

@@ -22,6 +22,25 @@ Autumn_layout = html.Div([html.Div("當前戰況", className="section_title"),
         dbc.Col(dcc.Graph(figure=init_donut1,id='donut1',config=dict(displayModeBar=False),className="half_donut"),xl = 4,lg = 4, md = 12, className = "d-flex justify-content-center"),
         dbc.Col(dcc.Graph(figure=init_donut2,id='donut2',config=dict(displayModeBar=False),className="half_donut"),xl = 4,lg = 4, md = 12, className = "d-flex justify-content-center"),
         dbc.Col(dcc.Graph(figure=init_donut3,id='donut3',config=dict(displayModeBar=False),className="half_donut"),xl = 4,lg = 4, md = 12, className = "d-flex justify-content-center")]),
+    html.Div("資料表", className="section_title"),
+    html.Br(),
+    dbc.Row([
+        dbc.Col([
+            html.H1('ET灰面鵟鷹隊',className='month-data-title'),
+            html.Div(DisplayTeamData(0),className='month-data-table')
+        ],xl = 4,lg = 4, md = 12),
+        dbc.Col([
+            html.H1('ET黑面琵鷺隊',className='month-data-title'),
+            html.Div(DisplayTeamData(1),className='month-data-table')
+        ],xl = 4,lg = 4, md = 12),
+        dbc.Col([
+            html.H1('ET小辮鴴隊',className='month-data-title'),
+            html.Div(DisplayTeamData(2),className='month-data-table')
+        ],xl = 4,lg = 4, md = 12),        
+    ]),
+    html.Br(),
+    html.P("可在filter data欄位直接輸入篩選條件，如: '> 10' 或 'Dove'。",className='text-muted',style={'text-align':'right','padding-right':'30px','font-size':'12px'}),
+    html.Br(),
     dcc.Link('我要加入', href='/SignUp',className='JoinBtn d-flex align-items-center justify-content-center',id='JoinBtn'),
     html.Br(),
     html.Br(),

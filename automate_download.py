@@ -23,7 +23,7 @@ def my_logger(level, message):
 location_id = ['L2425949', 'L3856620', 'L5248567', 'L5569845', 'L5192267', 'L3290632',
               'L5594364', 'L5569795', 'L6675201', 'L8443148', 'L5569882', 'L7033433',
              'L3949628', 'L2894596', 'L2329696', 'L3887194', 'L2394672',
-            'L3188784', 'L6563827', 'L2270945']
+            'L3188784', 'L6563827', 'L2270945','L9951200']
 
 
 def download_all():
@@ -113,7 +113,11 @@ def update_data():
             time.sleep(2)
             hrefs = re.findall('href=\"(/view.*?)\">\d',r.text)
             odate = re.findall('href=\"/view.*?\">(.*?)</a>',r.text)
-            wdf = pd.read_html(r.text)
+            try:
+                wdf = pd.read_html(r.text)
+            except ValueError:
+                my_logger(1, f'{loc} has no data yet!')
+                
             if len(wdf) > 1:
                 Bys = wdf[2]['By'].dropna().tolist()
             else:
@@ -130,7 +134,7 @@ def update_data():
                         temp_c.append(h)
                         temp_o.append(b)
             if len(temp_c) > 0:
-                my_logger(1, f'New data found in {loc}!!!!!')
+                my_logger(0, f'New data found in {loc}!!!!!')
             else:
                 continue
             
@@ -164,7 +168,7 @@ def update_data():
         my_logger(1, 'No new data found!')
     
     my_logger(0, 'Data updating process is finished!')
-        
+
 
 
 def automate():

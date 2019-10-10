@@ -123,7 +123,7 @@ def Update(j = 0):
     today = datetime.datetime.now().strftime('%Y-%m-%d')
     DATA.insert(0, 'ScrapDate', [today]*len(DATA))
 
-    if not os.path.isfile(DFs[j]):
+    if not os.path.isfile('data/'+DFs[j]):
         DATA.to_csv('data/'+DFs[j],index=False)
     else:
         old_data = pd.read_csv('data/'+DFs[j])

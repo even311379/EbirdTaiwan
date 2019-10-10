@@ -34,6 +34,8 @@ app.layout = html.Div([
     html.Div(id='page-content'),      
     ])
 
+
+
 @app.callback(Output('javascript', 'run'),
     [Input('page-content', 'children')])
 def resize(_): 
