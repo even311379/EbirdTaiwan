@@ -124,9 +124,9 @@ def Update(j = 0):
     DATA.insert(0, 'ScrapDate', [today]*len(DATA))
 
     if not os.path.isfile(DFs[j]):
-        DATA.to_csv(DFs[j],index=False)
+        DATA.to_csv('data/'+DFs[j],index=False)
     else:
-        old_data = pd.read_csv(DFs[j])
+        old_data = pd.read_csv('data/'+DFs[j])
         more_data = old_data.append(DATA, ignore_index=True)
         more_data.to_csv('data/'+DFs[j],index=False)
     
