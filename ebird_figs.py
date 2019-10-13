@@ -154,6 +154,43 @@ def GetN_Participants(sdate, edate):
     ndf = df[bs]
     return len(set(ndf.Observer.tolist()))
 
+def Get_All_N_Species(sdate, edate):
+    df = pd.read_csv('data/AllData.csv')
+
+    # remove the three teams in case ...
+    df = df[df.Observer != '黑面琵鷺隊 eBirdTaiwan']
+    df = df[df.Observer != '灰面鵟鷹隊 eBirdTaiwan']
+    df = df[df.Observer != '小辮鴴隊 eBirdTaiwan']
+
+    dtl = [datetime.datetime.strptime(d, '%Y-%m-%d') for d in df.Date]
+    bs = []
+    for i in dtl:
+        if datetime.datetime(sdate[0], sdate[1], sdate[2]) <= i <= datetime.datetime(edate[0], edate[1], edate[2]):
+            bs.append(True)
+        else:
+            bs.append(False)
+    ndf = df[bs]
+    return len(set(ndf.Species.tolist()))
+
+def Get_All_N_List(sdate, edate):
+    df = pd.read_csv('data/AllData.csv')
+
+    # remove the three teams in case ...
+    df = df[df.Observer != '黑面琵鷺隊 eBirdTaiwan']
+    df = df[df.Observer != '灰面鵟鷹隊 eBirdTaiwan']
+    df = df[df.Observer != '小辮鴴隊 eBirdTaiwan']
+
+    dtl = [datetime.datetime.strptime(d, '%Y-%m-%d') for d in df.Date]
+    bs = []
+    for i in dtl:
+        if datetime.datetime(sdate[0], sdate[1], sdate[2]) <= i <= datetime.datetime(edate[0], edate[1], edate[2]):
+            bs.append(True)
+        else:
+            bs.append(False)
+    ndf = df[bs]
+    
+    return len(set(ndf.Link.tolist()))
+
 def GetN_Species(sdate, edate):
     df = pd.read_csv('data/AllData.csv')
 
@@ -185,9 +222,6 @@ def GetN_Species(sdate, edate):
     
     return odf
 
-'''
-problem of 'X' which is transfered to -1 temporarily, ignore it by now
-'''
 def GetTotalIndivisual(sdate, edate):
     df = pd.read_csv('data/AllData.csv')
 

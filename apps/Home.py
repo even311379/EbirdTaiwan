@@ -48,7 +48,7 @@ home_layout = html.Div([html.Hr(),
             * 2019.11.24，於eBird Taiwan FB 社團進行直播抽獎，公布得獎名單。
         ''')),className="modal-body"),
         dbc.ModalFooter([
-            dbc.Button(html.A("活動連結",href='/Ebird%e7%a7%8b%e5%ad%a3%e6%8c%91%e6%88%b0%e8%b3%bd', style={'color':'white'}), className="ml-auto"),
+            dbc.Button(html.A("活動連結",href='/big-month-challenge', style={'color':'white'}), className="ml-auto"),
             dbc.Button("關閉", id="close-modal-1")]),
     ],id="modal-1",size="xl",centered=True),       
     dbc.Modal([dbc.ModalHeader("關渡觀鳥大日",className="modal-title"),
@@ -68,7 +68,7 @@ home_layout = html.Div([html.Hr(),
 
         ''')),className="modal-body"),
         dbc.ModalFooter([
-            dbc.Button(html.A("活動連結",href='/%e9%97%9c%e6%b8%a1%e9%b3%a5%e5%8d%9a%e8%a7%80%e9%b3%a5%e5%a4%a7%e6%97%a5', style={'color':'white'}), className="ml-auto"),
+            dbc.Button(html.A("活動連結",href='/big-day-challenge', style={'color':'white'}), className="ml-auto"),
             dbc.Button("關閉", id="close-modal-2")]),
     ],id="modal-2",size="xl",centered=True),
     dbc.Modal([dbc.ModalHeader("十月觀鳥大日",className="modal-title"),

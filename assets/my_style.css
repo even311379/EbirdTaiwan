@@ -179,15 +179,26 @@ html {
         border: 0;
     }
 
-    .badge_overlay {
-        color: #fff;
-        background-color: #235EAE;
+    .info-overlay {
         display: block;
+        background-color: #f8f9fa ;
         position: absolute;
-        top: 500px;
+        top: 450px;
         left: 50px;
-        font-size: 24px;
-        border-radius: 10% / 50%;
+        height: 120px;
+        width: 220px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .info-item {
+        font-size: 20px;
+        margin-left:auto;
+        margin-right:auto;
+        white-space: nowrap;
     }
 
     /*fig section*/
@@ -223,15 +234,6 @@ html {
         font-weight: 600;
     }
 
-    /*.main-svg {
-        height: 300px !important;
-        width: 600px !important;
-    }
-
-    .svg-container {
-        height: 300px !important;
-        width: 600px !important;
-    }*/
 
     .my_fig {
         height: 300px;
@@ -252,15 +254,6 @@ html {
         font-weight: 600;
     }
 
-    /*.main-svg {
-        height: 220px !important;
-        width: 350px !important;
-    }
-
-    .svg-container {
-        height: 220px !important;
-        width: 350px !important;
-    }*/
 
     .my_fig {
         height: 220px;
@@ -347,15 +340,26 @@ html {
         border: 0;
     }
 
-    .badge_overlay {
-        color: #fff;
-        background-color: #235EAE;
+    .info-overlay {
         display: block;
+        background-color: #f8f9fa ;
         position: absolute;
-        top: 350px;
+        top: 300px;
         left: 20px;
+        height: 90px;
+        width: 190px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .info-item {
         font-size: 16px;
-        border-radius: 10% / 50%;
+        margin-left:auto;
+        margin-right:auto;
+        white-space: nowrap;
     }
 
     /* app2 */
@@ -453,15 +457,26 @@ html {
         border: 0;
     }
 
-    .badge_overlay {
-        color: #fff;
-        background-color: #235EAE;
+    .info-overlay {
         display: block;
+        background-color: #f8f9fa ;
         position: absolute;
-        top: 310px;
-        left: 30px;
+        top: 285px;
+        left: 15px;
+        height: 75px;
+        width: 160px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 7px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .info-item {
         font-size: 12px;
-        border-radius: 10% / 50%;
+        margin-left:auto;
+        margin-right:auto;
+        white-space: nowrap;
     }
 
     /*fig section*/
@@ -658,4 +673,22 @@ input:invalid {
 
 .month-data-table{
     padding: 1rem 3rem 1rem 3rem;
+}
+
+#accb {
+    text-align:center;
+    color:white;
+    background-color:#E8817C;
+}
+
+#accl {
+    text-align:center;
+    color:white;
+    background-color:#F2C581;
+}
+
+#accp {
+    text-align:center;
+    color:white;
+    background-color:#CDA0D0;
 }
