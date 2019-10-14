@@ -29,7 +29,7 @@ Autumn_layout = html.Div([
         ]),
     html.Br(),    
     html.Br(),
-    dcc.Link('我要加入', href='/SignUp',className='JoinBtn d-flex align-items-center justify-content-center',id='JoinBtn'),
+    dcc.Link('各隊戰績', href='/big-month-challenge-data',className='JoinBtn d-flex align-items-center justify-content-center',id='JoinBtn'),
     html.Br(),
     html.Br(),
     html.Div(style={"height": "100px", "background": "#84BC60"}), 
@@ -48,8 +48,8 @@ join_layout = html.Div([
             dbc.Row(dcc.Input(debounce=True,id='account-input', className='form-inputs',name='new_acct',required=True)),
             dbc.Row('選擇隊伍', className='align-items-center'),
             dbc.Row(dcc.Dropdown(options=[
-                    dict(label='ET灰面鵟鷹隊',value='ET灰面鵟鷹隊'),
                     dict(label='ET黑面琵鷺隊',value='ET黑面琵鷺隊'),
+                    dict(label='ET灰面鵟鷹隊',value='ET灰面鵟鷹隊'),
                     dict(label='ET小辮鴴隊',value='ET小辮鴴隊'),],
                 value='ET灰面鵟鷹隊',id='team-option', className='form-inputs d-flex align-items-center'), className='align-items-center'),
             dbc.Row(html.Div('',id='hint-text'), className='align-items-center'),
@@ -91,15 +91,15 @@ help_layout = html.Div([
 
 data_layout = html.Div([
     #visdcc.Run_js(id='javascript-rn'),
-    html.Div("資料表", className="section_title"),
+    html.Div("各隊戰績", className="section_title"),
     html.Br(),
     dbc.Row([
         dbc.Col([
-            html.H1('ET灰面鵟鷹隊',className='month-data-title'),
+            html.H1('ET黑面琵鷺隊',className='month-data-title'),
             html.Div(DisplayTeamData(0),className='month-data-table')
         ],xl = 4,lg = 4, md = 12),
         dbc.Col([
-            html.H1('ET黑面琵鷺隊',className='month-data-title'),
+            html.H1('ET灰面鵟鷹隊',className='month-data-title'),
             html.Div(DisplayTeamData(1),className='month-data-table')
         ],xl = 4,lg = 4, md = 12),
         dbc.Col([

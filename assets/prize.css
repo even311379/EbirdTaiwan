@@ -1,0 +1,255 @@
+.prize-contents {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+@media only screen and (min-width: 961px){
+
+    .prize-title {
+        font-family: Noto Sans TC;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 35px;
+        color: #2D3A4B;
+        padding-bottom: 1rem;
+    }
+
+    .prize-text1 {
+        font-family: Noto Sans TC;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 26px;
+        color: #2D3A4B;
+    }
+    .prize-text2 {
+        font-family: Noto Sans TC;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 13px;
+        line-height: 19px;
+        color: #2D3A4B;
+        padding-top: 1rem;
+    }
+
+    .prize-text3 {
+        font-family: Noto Sans TC;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 30px;
+        line-height: 43px;
+        color: #2D3A4B;
+        text-shadow: 0px 4px 4px #E2EDF3;
+        text-align:center;
+        padding-top: 2rem;
+    }
+
+    .prize-text4 {
+        font-family: Noto Sans TC;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 28px;
+        line-height: 41px;
+        color: #2D3A4B;
+        text-shadow: 0px 4px 4px #E2EDF3;
+        text-align:center;
+        padding-top: 1.5rem;
+    }
+
+    .prize-text5 {
+        display:none;
+    }
+
+    .prize-card {
+        border: 4px solid #84BC60;
+        border-radius: 8px;
+        padding: 0;
+        height: 325px;
+    }
+
+    /* images*/
+    .prize-img-owl {
+        width: 100%;
+        height: auto;
+    }
+
+    .prize-img-calender {
+        width: 100%;
+        height: auto;
+    }
+    .prize-img-owls {
+        width: 483px;
+        height: 209px;
+    }
+    .prize-tele1 {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+    .prize-tele2 {
+        display:none;
+    }
+
+}
+
+@media only screen and (min-width: 401px) and (max-width: 960px) {
+    .prize-contents {
+        margin-left: 8%;
+        margin-right: 8%;
+    }
+
+    .prize-title {
+        font-family: Noto Sans TC;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 20px;
+        color: #2D3A4B;
+        padding-bottom: 1.5rem;
+    }
+    .prize-text1 {
+        font-family: Noto Sans TC;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 20px;
+        color: #2D3A4B;
+    }
+
+    .prize-img-owl {
+        max-width: 100%;
+    }
+    
+    .prize-img-calender {
+        max-width: 100%;
+    }
+
+    .prize-text2 {
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 22px;
+        color: #2D3A4B;
+        padding-top: 1rem;
+        padding-bottom: 3rem;
+    }
+    
+    .prize-tele1 {
+        display:none;
+    }
+    .prize-card {
+        border: 0;
+        padding: 0;
+    }
+
+    .prize-text5 {
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 28px;
+        color: #2D3A4B;
+        text-shadow: 0px 4px 4px #E2EDF3;
+    }
+
+    .prize-img-owls {
+        max-width: 100%;
+    }
+
+    .prize-text4 {
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 20px;
+        color: #2D3A4B;
+        text-shadow: 0px 4px 4px #E2EDF3;
+    }
+
+    .prize-text3 {
+        display:none;
+    }
+    .prize-tele2 {
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+}
+
+@media only screen and (max-width: 400px) {
+    .prize-contents {
+        margin-left: 8%;
+        margin-right: 8%;
+    }
+
+    .prize-title {
+        font-family: Noto Sans TC;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 20px;
+        color: #2D3A4B;
+        padding-bottom: 0.8rem;
+    }
+    .prize-text1 {
+        font-family: Noto Sans TC;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 20px;
+        color: #2D3A4B;
+    }
+
+    .prize-img-owl {
+        max-width: 100%;
+    }
+    
+    .prize-img-calender {
+        max-width: 100%;
+    }
+
+    .prize-text2 {
+        font-weight: bold;
+        font-size: 10px;
+        line-height: 14px;
+        color: #2D3A4B;
+        padding-top: 0.5rem;
+        padding-bottom: 3rem;
+    }
+    
+    .prize-tele1 {
+        display:none;
+    }
+    .prize-card {
+        border: 0;
+        padding: 0;
+    }
+
+    .prize-text5 {
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 20px;
+        color: #2D3A4B;
+        text-shadow: 0px 4px 4px #E2EDF3;
+    }
+
+    .prize-img-owls {
+        max-width: 100%;
+    }
+
+    .prize-text4 {
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 20px;
+        color: #2D3A4B;
+        text-shadow: 0px 4px 4px #E2EDF3;
+    }
+
+    .prize-text3 {
+        display:none;
+    }
+    .prize-tele2 {
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+}

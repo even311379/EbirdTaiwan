@@ -295,10 +295,10 @@ def GetN_Record(sdate, edate):
 def half_donut(n_bird, n_rows, team=0, w=1600):
     
     if team == 0:
-        team_name = 'ET灰面鵟鷹隊'
+        team_name = 'ET黑面琵鷺隊'
         team_color = '#A4B924'
     elif team == 1:
-        team_name = 'ET黑面琵鷺隊'
+        team_name = 'ET灰面鵟鷹隊'
         team_color = '#5185AA'
     elif team == 2:
         team_name = 'ET小辮鴴隊'
@@ -439,18 +439,18 @@ def accumlate_people_trace(start_date, w):
         Date = [(start_date + datetime.timedelta(days=(x-1))).strftime('%m/%d') for x in X]
         return X,Y, Date
 
-    x1, y1, Date1 = GetXYfromSignUp('ET灰面鵟鷹隊')
-    x2, y2, Date2 = GetXYfromSignUp('ET黑面琵鷺隊')
+    x1, y1, Date1 = GetXYfromSignUp('ET黑面琵鷺隊')
+    x2, y2, Date2 = GetXYfromSignUp('ET灰面鵟鷹隊')
     x3, y3, Date3 = GetXYfromSignUp('ET小辮鴴隊')
 
-    t1_info =[''] + [f'{d}: 灰面鵟鷹隊有{t}位成員囉' for t, d in zip(y1[1:],Date1[1:])]
-    t2_info =[''] + [f'{d}: 黑面琵鷺隊有{t}位成員囉' for t, d in zip(y2[1:],Date2[1:])]
+    t1_info =[''] + [f'{d}: 黑面琵鷺隊有{t}位成員囉' for t, d in zip(y1[1:],Date1[1:])]
+    t2_info =[''] + [f'{d}: 灰面鵟鷹隊有{t}位成員囉' for t, d in zip(y2[1:],Date2[1:])]
     t3_info =[''] + [f'{d}: 小辮鴴隊有{t}位成員囉' for t, d in zip(y3[1:],Date3[1:])]
 
     y_upper = max(y1 + y2 + y3) * 1.2 # hack y axis limit
 
-    data = [go.Scatter(x = x1, y = y1, mode='lines',line=dict(shape='spline',color='#A4B924'), name = 'ET灰面鵟鷹隊', hoverinfo = 'text', text=t1_info),
-        go.Scatter(x = x2, y = y2, mode='lines',line=dict(shape='spline',color='#5185AA'), name = 'ET黑面琵鷺隊', hoverinfo = 'text', text=t2_info),
+    data = [go.Scatter(x = x1, y = y1, mode='lines',line=dict(shape='spline',color='#A4B924'), name = 'ET黑面琵鷺隊', hoverinfo = 'text', text=t1_info),
+        go.Scatter(x = x2, y = y2, mode='lines',line=dict(shape='spline',color='#5185AA'), name = 'ET灰面鵟鷹隊', hoverinfo = 'text', text=t2_info),
         go.Scatter(x = x3, y = y3, mode='lines',line=dict(shape='spline',color='#993131'), name = 'ET小辮鴴隊', hoverinfo = 'text', text=t3_info),]
 
     date_text = [''] + [f'10/{i+1}' for i in range(31)]

@@ -15,7 +15,7 @@ import flask
 import datetime
 import time
 
-from apps import Home, AutumnChallenge, BigDayChallenge, NotYet, Admin
+from apps import Home, AutumnChallenge, BigDayChallenge, NotYet, Admin, Prize
 from setting import app
 
 
@@ -93,6 +93,8 @@ def display_page(pathname):
         return AutumnChallenge.help_layout
     elif pathname == '/big-month-challenge-data':
         return AutumnChallenge.data_layout
+    elif pathname == '/big-day-challenge-prize':
+        return Prize.Prize_layout
     elif pathname == '/admin':
         return Admin.admin_layout
 
