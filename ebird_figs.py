@@ -514,11 +514,10 @@ def DisplayTeamData(teamID):
         else:
             tname.append(s)
 
-    # tname = [CNAME[ENAME.index(s)] if (s in ENAME and CNAME[ENAME.index(s)] != pd.np.nan ) else s for s in spe]
     odf = pd.DataFrame(dict(物種=tname,總數量=counts,清單數=samples))
 
     final_table = dash_table.DataTable(
-        # id = table_id,
+        #id = table_id,
         data = odf.to_dict('records'),
         columns=[{'id': c, 'name': c} for c in odf.columns],
         style_cell_conditional=[{'if': {'column_id': '物種'},'textAlign': 'left'}],

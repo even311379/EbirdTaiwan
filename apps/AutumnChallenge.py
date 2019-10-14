@@ -4,42 +4,30 @@ import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 from dash.dependencies import Input, Output, State
 
+import visdcc
+
 import flask
 import pandas as pd
 import time
 import datetime
+
 
 from ebird_figs import  setup_donuts,accumlate_people_trace,DisplayTeamData
 from setting import app
 
 init_donut1, init_donut2, init_donut3 = setup_donuts(1600, datetime.datetime(2019,10,1))
 
-Autumn_layout = html.Div([html.Div("當前戰況", className="section_title"),
+Autumn_layout = html.Div([
+    html.Div("當前戰況", className="section_title"),
     html.Br(),
     html.Br(),
     html.Br(),
     dbc.Row([
         dbc.Col(dcc.Graph(figure=init_donut1,id='donut1',config=dict(displayModeBar=False),className="half_donut"),xl = 4,lg = 4, md = 12, className = "d-flex justify-content-center"),
         dbc.Col(dcc.Graph(figure=init_donut2,id='donut2',config=dict(displayModeBar=False),className="half_donut"),xl = 4,lg = 4, md = 12, className = "d-flex justify-content-center"),
-        dbc.Col(dcc.Graph(figure=init_donut3,id='donut3',config=dict(displayModeBar=False),className="half_donut"),xl = 4,lg = 4, md = 12, className = "d-flex justify-content-center")]),
-    html.Div("資料表", className="section_title"),
-    html.Br(),
-    dbc.Row([
-        dbc.Col([
-            html.H1('ET灰面鵟鷹隊',className='month-data-title'),
-            html.Div(DisplayTeamData(0),className='month-data-table')
-        ],xl = 4,lg = 4, md = 12),
-        dbc.Col([
-            html.H1('ET黑面琵鷺隊',className='month-data-title'),
-            html.Div(DisplayTeamData(1),className='month-data-table')
-        ],xl = 4,lg = 4, md = 12),
-        dbc.Col([
-            html.H1('ET小辮鴴隊',className='month-data-title'),
-            html.Div(DisplayTeamData(2),className='month-data-table')
-        ],xl = 4,lg = 4, md = 12),        
-    ]),
-    html.Br(),
-    html.P("可在filter data欄位直接輸入篩選條件，如: '> 10' 或 'Dove'。",className='text-muted',style={'text-align':'right','padding-right':'30px','font-size':'12px'}),
+        dbc.Col(dcc.Graph(figure=init_donut3,id='donut3',config=dict(displayModeBar=False),className="half_donut"),xl = 4,lg = 4, md = 12, className = "d-flex justify-content-center")
+        ]),
+    html.Br(),    
     html.Br(),
     dcc.Link('我要加入', href='/SignUp',className='JoinBtn d-flex align-items-center justify-content-center',id='JoinBtn'),
     html.Br(),
@@ -102,6 +90,7 @@ help_layout = html.Div([
 
 
 data_layout = html.Div([
+    #visdcc.Run_js(id='javascript-rn'),
     html.Div("資料表", className="section_title"),
     html.Br(),
     dbc.Row([
@@ -119,7 +108,7 @@ data_layout = html.Div([
         ],xl = 4,lg = 4, md = 12),        
     ]),
     html.Br(),
-    html.P("可在filter data欄位直接輸入篩選條件，如: '> 10' 或 'Dove'。",className='text-muted',style={'text-align':'right','padding-right':'30px','font-size':'12px'}),
+    html.P("可在篩選資料欄位直接輸入篩選條件，如: '> 10' 或 '鷗'。",className='text-muted',style={'text-align':'right','padding-right':'30px','font-size':'12px'}),
     html.Br(),
     html.Div(style={"height": "100px", "background": "#84BC60"}), 
 ])

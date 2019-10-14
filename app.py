@@ -46,7 +46,19 @@ def resize(_):
             'event':{'w':w}
             })
     }
+    function RenameFilterPlaceholder(){
+        var x = document.getElementsByTagName("Input");
+        if (x.length === 0) {console.log('so bad...');}
+        for (var i = 0; i < x.length; i++) {
+            if (x[i].placeholder === "filter data..."){
+                console.log('condition met');
+                x[i].placeholder = "篩選資料";
+            }
+        } 
+    }
+
     window.addEventListener("resize", getWindowSize);
+    window.addEventListener("resize", RenameFilterPlaceholder);
     window.dispatchEvent(new Event('resize'));
     window.removeEventListener("resize", getWindowSize);
     """
