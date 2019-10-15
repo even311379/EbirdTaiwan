@@ -29,7 +29,7 @@ Autumn_layout = html.Div([
         ]),
     html.Br(),    
     html.Br(),
-    dcc.Link('各隊戰績', href='/big-month-challenge-data',className='JoinBtn d-flex align-items-center justify-content-center',id='JoinBtn'),
+    dcc.Link('我要報名', href='/SignUp',className='JoinBtn d-flex align-items-center justify-content-center',id='JoinBtn'),
     html.Br(),
     html.Br(),
     html.Div(style={"height": "100px", "background": "#84BC60"}), 

@@ -64,7 +64,7 @@ BigDay_layout = html.Div([
                     html.Hr(),], xl=4,lg=4,md=12),]),], style={"box-shadow":"4px 4px 0px rgba(187, 187, 187, 0.25)"}, body=True, color="light"),
         html.Br(),
         html.P('資料範圍: 2019/10/10 00:00 ~ 現在',style={'text-align':'right','paddning-right':'30px'}, id='data-range-hint',className='text-muted'),
-        dcc.Link(' 查看豐富獎品們', href='/big-day-challenge-prize',className='JoinBtn d-flex align-items-center justify-content-center',id='JoinBtn'),
+        dcc.Link(' 查看豐富獎品們', href='/big-day-challenge-prize',className='JoinBtn d-flex align-items-center justify-content-center'),
         html.Br(),
         ],fluid=True),
         html.Div(style={"height": "100px", "background": "#84BC60"}), 

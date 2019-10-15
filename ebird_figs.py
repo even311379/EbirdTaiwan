@@ -156,6 +156,7 @@ def GetN_Participants(sdate, edate):
 
 def Get_All_N_Species(sdate, edate):
     df = pd.read_csv('data/AllData.csv')
+    NameValidTable = pd.read_excel('data/NameValid.xlsx').fillna('缺值')
 
     # remove the three teams in case ...
     df = df[df.Observer != '黑面琵鷺隊 eBirdTaiwan']
@@ -170,7 +171,14 @@ def Get_All_N_Species(sdate, edate):
         else:
             bs.append(False)
     ndf = df[bs]
-    return len(set(ndf.Species.tolist()))
+    ENAME = NameValidTable.ENAME.tolist()
+    re_spe = []
+    for s in ndf.Species.tolist():
+        for es in ENAME:
+            if es in s:
+                re_spe.append(es)
+                break
+    return len(set(re_spe))
 
 def Get_All_N_List(sdate, edate):
     df = pd.read_csv('data/AllData.csv')
@@ -193,7 +201,7 @@ def Get_All_N_List(sdate, edate):
 
 def GetN_Species(sdate, edate):
     df = pd.read_csv('data/AllData.csv')
-
+    NameValidTable = pd.read_excel('data/NameValid.xlsx').fillna('缺值')
         # remove the three teams in case ...
     df = df[df.Observer != '黑面琵鷺隊 eBirdTaiwan']
     df = df[df.Observer != '灰面鵟鷹隊 eBirdTaiwan']
@@ -206,7 +214,19 @@ def GetN_Species(sdate, edate):
             bs.append(True)
         else:
             bs.append(False)
-    ndf = df[bs].drop_duplicates(['Species','Observer'])
+
+    ENAME = NameValidTable.ENAME.tolist()
+    re_spe = []
+    for s in df.Species.tolist():
+        for es in ENAME:
+            if es in s:
+                re_spe.append(es)
+                break
+        else:
+            re_spe.append('not valid')
+
+    df.insert(0,'ValidSpecies',re_spe)
+    ndf = df[bs].drop_duplicates(['ValidSpecies','Observer'])
     observers = set(ndf.Observer)
     N_species = []
     for obs in observers:
@@ -362,6 +382,7 @@ def setup_donuts(w, start_date):
     data1 = pd.read_csv('data/Team1Data.csv')
     data2 = pd.read_csv('data/Team2Data.csv')
     data3 = pd.read_csv('data/Team3Data.csv')
+    NameValidTable = pd.read_excel('data/NameValid.xlsx').fillna('缺值')
 
     db1 = []
     db2 = []
@@ -378,11 +399,22 @@ def setup_donuts(w, start_date):
     data2 = data2[db2]
     data3 = data3[db3]
 
-    ts1 = len(set(data1.Species.tolist()))
+    valid_species = []
+    for df in [data1, data2, data3]:
+        ENAME = NameValidTable.ENAME.tolist()
+        re_spe = []
+        for s in df.Species.tolist():
+            for es in ENAME:
+                if es in s:
+                    re_spe.append(es)
+                    break
+        valid_species.append(len(set(re_spe)))
+
+    ts1 = valid_species[0]
     tl1 = len(data1[['DateTime', 'Creator']].drop_duplicates())
-    ts2 = len(set(data2.Species.tolist()))
+    ts2 = valid_species[1]
     tl2 = len(data2[['DateTime', 'Creator']].drop_duplicates())
-    ts3 = len(set(data3.Species.tolist()))
+    ts3 = valid_species[2]
     tl3 = len(data3[['DateTime', 'Creator']].drop_duplicates())
 
     fig1 = half_donut(ts1,tl1,0,w)
@@ -491,21 +523,35 @@ def DisplayTeamData(teamID):
         df = pd.read_csv('data/Team3Data.csv')
         # table_id = 'team3_table'
     
-    NameTranslateTable = pd.read_excel('data/NameTranslateTable.xlsx').fillna('缺值')
-    ENAME = NameTranslateTable.ENAME.tolist()
-    CNAME = NameTranslateTable.CNAME.tolist()
+    NameValidTable = pd.read_excel('data/NameValid.xlsx').fillna('缺值')
+    ENAME = NameValidTable.ENAME.tolist()
+    CNAME = NameValidTable.CNAME.tolist()
     BD = [i[5:7]=='10' for i in df.ScrapDate.tolist()]
     df = df[BD]
-    spe = list(set(df.Species))
+    re_spe = []
+    for s in df.Species.tolist():
+        for es in ENAME:
+            if es in s:
+                re_spe.append(es)
+                break
+        else:
+            re_spe.append('not valid')
+
+    df.insert(0,'ValidSpecies',re_spe)
+    spe = list(set(df.ValidSpecies))
 
     counts = []
     samples = []
     for s in spe:
-        counts.append(sum(df[df.Species==s].Count))
-        samples.append(len(df[df.Species==s]))
+        if s == 'not valid':
+            continue
+        counts.append(sum(df[df.ValidSpecies==s].Count))
+        samples.append(len(df[df.ValidSpecies==s]))
     
     tname = []
     for s in spe:
+        if s == 'not valid':
+            continue
         if s in ENAME:
             if CNAME[ENAME.index(s)] != '缺值':
                 tname.append(CNAME[ENAME.index(s)])
