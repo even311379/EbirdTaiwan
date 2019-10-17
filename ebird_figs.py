@@ -4,6 +4,7 @@ import pandas as pd
 import datetime
 import time
 import random
+import re
 import plotly.graph_objects as go
 import dash_table
 ## app1 functions
@@ -401,13 +402,13 @@ def setup_donuts(w, start_date):
 
     valid_species = []
     for df in [data1, data2, data3]:
-        ENAME = NameValidTable.ENAME.tolist()
+        CNAME = NameValidTable.CNAME.tolist()
         re_spe = []
         for s in df.Species.tolist():
-            for es in ENAME:
-                if es in s:
-                    re_spe.append(es)
-                    break
+            ns = re.sub(' ?\(.*?\)','',s)
+            if ns in CNAME:
+                re_spe.append(ns)
+            
         valid_species.append(len(set(re_spe)))
 
     ts1 = valid_species[0]
@@ -522,18 +523,25 @@ def DisplayTeamData(teamID):
     elif teamID == 2:
         df = pd.read_csv('data/Team3Data.csv')
         # table_id = 'team3_table'
+
+
+    dbools = []
+    for d in df.DateTime:
+        dbools.append(datetime.datetime.strptime(d, '%I:%M %p %d %b %Y') >= datetime.datetime(2019,10,1))           
     
+    df = df[dbools]
+
     NameValidTable = pd.read_excel('data/NameValid.xlsx').fillna('缺值')
-    ENAME = NameValidTable.ENAME.tolist()
+    # ENAME = NameValidTable.ENAME.tolist()
     CNAME = NameValidTable.CNAME.tolist()
     BD = [i[5:7]=='10' for i in df.ScrapDate.tolist()]
     df = df[BD]
     re_spe = []
+
     for s in df.Species.tolist():
-        for es in ENAME:
-            if es in s:
-                re_spe.append(es)
-                break
+        ns = re.sub(' ?\(.*?\)','',s)
+        if ns in CNAME:
+            re_spe.append(ns)
         else:
             re_spe.append('not valid')
 
@@ -552,15 +560,19 @@ def DisplayTeamData(teamID):
     for s in spe:
         if s == 'not valid':
             continue
-        if s in ENAME:
-            if CNAME[ENAME.index(s)] != '缺值':
-                tname.append(CNAME[ENAME.index(s)])
-            else:
-                tname.append(s)
         else:
             tname.append(s)
 
     odf = pd.DataFrame(dict(物種=tname,總數量=counts,清單數=samples))
+    NTD = []
+    TO = NameValidTable.TAXON_ORDER
+    for n in tname:
+        NTD.append(TO[CNAME.index(n)])
+    
+    odf.insert(0,'TO',NTD)
+    odf.sort_values(by=['TO'],inplace=True)
+
+    odf = odf[['物種','總數量','清單數']].reset_index(drop=True)
 
     final_table = dash_table.DataTable(
         #id = table_id,

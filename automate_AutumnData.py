@@ -11,6 +11,7 @@ import datetime
 
 options = Options()
 options.add_argument('--headless')
+options.add_argument('--lang=en') 
 
 IDs = ['ET黑面琵鷺隊', 'ET灰面鵟鷹隊','ET小辮鴴隊']
 PWs = ['201910BFS','201910GFB','201910NL']
@@ -31,24 +32,27 @@ def my_logger(level, message):
         f.write(f'{L} {t}: {message}  \n')
 
 
-def GetChecklist(url, c):
-    r = requests.get(url)
-    time.sleep(1)
-    S = re.findall('Heading-main\".*?>(.*?)</span',r.text)[4:]
+def GetChecklist(htmltext, url, c):
+    S = re.findall('Heading-main\".*?>(.*?)</span',htmltext)[4:]
+
     '''
+    if tacker path is in list, my original regex will include 2 more garbage info, so, I manually check and delete them.
+
     if the check list is hidden from public, this word "Checklist flagged"
     will occur in its html source code and crash my program, I'lljust explicitly silence it!
     '''
+    if 'eBird' in S[0]:
+        S = S[2:]
     if 'Checklist flagged' in S:  
         S.remove('Checklist flagged')
-    N = [-1 if n == 'X' else int(n) for n in re.findall('<span>([X|\d]\d*?)</span>',r.text)]
-    t = re.findall('<span class="Heading-sub Heading-sub--inline">(.*?)</span>', r.text)[0]
-    d = re.findall('</span>(.*?)</span>',r.text)[0]
+    N = [-1 if n == 'X' else int(n) for n in re.findall('<span>([X|\d]\d*?)</span>',htmltext)]
+    t = re.findall('<span class="Heading-sub Heading-sub--inline">(.*?)</span>', htmltext)[0]
+    d = re.findall('</span>(.*?)</span>',htmltext)[0]
     DT = t+d
     try:
-        L = re.findall('href="(.*?/hotspot/.*?)"', r.text)[0]
+        L = re.findall('href="(.*?/hotspot/.*?)"', htmltext)[0]
     except:
-        L = re.findall('Location</h6>\s*?<span>([\S\s]*?)</span>', r.text)[0]
+        L = re.findall('Location</h6>\s*?<span>([\S\s]*?)</span>', htmltext)[0]
         if '\n' in L:
             L = L[L.index('\n')+1:]
         
@@ -93,7 +97,6 @@ def Update(j = 0):
         driver.close()
         return False
 
-    driver.close()
     
     WTS = [] # what to scrap
     Creators = []
@@ -106,17 +109,22 @@ def Update(j = 0):
         Creators = [cs[i] for i, url in enumerate(cls) if url not in old_url]
     if len(WTS) == 0:
         my_logger(1, f'No new shared data for {IDs[j]}!')
+        driver.close()
         return False
     
     DLS = []   
     for i, c in zip(WTS, Creators):
         try:
-            DLS.append(GetChecklist(i, c))
+            driver.get(i)
+            time.sleep(2)
+            htmltext = driver.page_source
+            DLS.append(GetChecklist(htmltext, i, c))
         except Exception as e:
             my_logger(2, f'Scrape Data failed for : {e}')
 
     if len(DLS) == 0:
         my_logger(2, f'Fail to scrape any data for {IDs[j]}!')
+        driver.close()
         return False   
     
     DATA = pd.concat(DLS).reset_index(drop=True)
@@ -131,6 +139,8 @@ def Update(j = 0):
         more_data.to_csv('data/'+DFs[j],index=False)
     
     my_logger(0, f'Success Scrape {IDs[j]}')
+    driver.close()
+    return True
 
 # download Data At AM 03:00        
 def automate():
@@ -140,6 +150,11 @@ def automate():
         time.sleep(sleeptime)
         for i in range(3):
             Update(i)
- 
+
+def run_now():
+    for i in range(3):
+        Update(i)
+
 if __name__ == '__main__':
-    automate()
+#    run_now()
+     automate()
