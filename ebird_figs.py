@@ -12,16 +12,22 @@ def draw_bar(values, names, w):
 
     # for case that the total df is empty, when the chanllenge just begun, and no data can be scraped yet!
     empty_plot = False
-    try:
-        if len(values) < 5:
-            t = [0] * (5 - len(values))
-            values = t + values
-            t = [' '] * (5 - len(names))
-            names = t + names
-    except:
+
+    if len(values) == 0:
         empty_plot = True
         values= [0] * 5
         names = [''] * 5
+    else:
+        try:
+            if len(values) < 5:
+                t = [0] * (5 - len(values))
+                values = t + values
+                t = [' '] * (5 - len(names))
+                names = t + names
+        except:
+            empty_plot = True
+            values= [0] * 5
+            names = [''] * 5
 
     m_names = []
     if w < 400:
@@ -124,7 +130,7 @@ def GetUploadTimeTable(sdate, edate):
     df.insert(0, 'DateTime', pd.Series(dtl))
     bs = []
     for i in dtl:
-        if datetime.datetime(sdate[0], sdate[1], sdate[2]) <= i <= datetime.datetime(edate[0], edate[1], edate[2]):
+        if datetime.datetime(sdate[0], sdate[1], sdate[2]) <= i < datetime.datetime(edate[0], edate[1], edate[2]):
             bs.append(True)
         else:
             bs.append(False)
@@ -148,7 +154,7 @@ def GetN_Participants(sdate, edate):
     dtl = [datetime.datetime.strptime(d, '%Y-%m-%d') for d in df.Date]
     bs = []
     for i in dtl:
-        if datetime.datetime(sdate[0], sdate[1], sdate[2]) <= i <= datetime.datetime(edate[0], edate[1], edate[2]):
+        if datetime.datetime(sdate[0], sdate[1], sdate[2]) <= i < datetime.datetime(edate[0], edate[1], edate[2]):
             bs.append(True)
         else:
             bs.append(False)
@@ -167,7 +173,7 @@ def Get_All_N_Species(sdate, edate):
     dtl = [datetime.datetime.strptime(d, '%Y-%m-%d') for d in df.Date]
     bs = []
     for i in dtl:
-        if datetime.datetime(sdate[0], sdate[1], sdate[2]) <= i <= datetime.datetime(edate[0], edate[1], edate[2]):
+        if datetime.datetime(sdate[0], sdate[1], sdate[2]) <= i < datetime.datetime(edate[0], edate[1], edate[2]):
             bs.append(True)
         else:
             bs.append(False)
@@ -192,7 +198,7 @@ def Get_All_N_List(sdate, edate):
     dtl = [datetime.datetime.strptime(d, '%Y-%m-%d') for d in df.Date]
     bs = []
     for i in dtl:
-        if datetime.datetime(sdate[0], sdate[1], sdate[2]) <= i <= datetime.datetime(edate[0], edate[1], edate[2]):
+        if datetime.datetime(sdate[0], sdate[1], sdate[2]) <= i < datetime.datetime(edate[0], edate[1], edate[2]):
             bs.append(True)
         else:
             bs.append(False)
@@ -211,7 +217,7 @@ def GetN_Species(sdate, edate):
     dtl = [datetime.datetime.strptime(d, '%Y-%m-%d') for d in df.Date]
     bs = []
     for i in dtl:
-        if datetime.datetime(sdate[0], sdate[1], sdate[2]) <= i <= datetime.datetime(edate[0], edate[1], edate[2]):
+        if datetime.datetime(sdate[0], sdate[1], sdate[2]) <= i < datetime.datetime(edate[0], edate[1], edate[2]):
             bs.append(True)
         else:
             bs.append(False)
@@ -227,7 +233,8 @@ def GetN_Species(sdate, edate):
             re_spe.append('not valid')
 
     df.insert(0,'ValidSpecies',re_spe)
-    ndf = df[bs].drop_duplicates(['ValidSpecies','Observer'])
+    df = df[bs]
+    ndf = df[df.ValidSpecies != 'not valid'].drop_duplicates(['ValidSpecies','Observer'])
     observers = set(ndf.Observer)
     N_species = []
     for obs in observers:
@@ -255,7 +262,7 @@ def GetTotalIndivisual(sdate, edate):
     dtl = [datetime.datetime.strptime(d, '%Y-%m-%d') for d in df.Date]
     bs = []
     for i in dtl:
-        if datetime.datetime(sdate[0], sdate[1], sdate[2]) <= i <= datetime.datetime(edate[0], edate[1], edate[2]):
+        if datetime.datetime(sdate[0], sdate[1], sdate[2]) <= i < datetime.datetime(edate[0], edate[1], edate[2]):
             bs.append(True)
         else:
             bs.append(False)
@@ -291,7 +298,7 @@ def GetN_Record(sdate, edate):
     dtl = [datetime.datetime.strptime(d, '%Y-%m-%d') for d in df.Date]
     bs = []
     for i in dtl:
-        if datetime.datetime(sdate[0], sdate[1], sdate[2]) <= i <= datetime.datetime(edate[0], edate[1], edate[2]):
+        if datetime.datetime(sdate[0], sdate[1], sdate[2]) <= i < datetime.datetime(edate[0], edate[1], edate[2]):
             bs.append(True)
         else:
             bs.append(False)
@@ -406,9 +413,11 @@ def setup_donuts(w, start_date):
         re_spe = []
         for s in df.Species.tolist():
             ns = re.sub(' ?\(.*?\)','',s)
-            if ns in CNAME:
+            if s in CNAME:
+                re_spe.append(s)
+            elif ns in CNAME:
                 re_spe.append(ns)
-            
+                            
         valid_species.append(len(set(re_spe)))
 
     ts1 = valid_species[0]
@@ -540,7 +549,9 @@ def DisplayTeamData(teamID):
 
     for s in df.Species.tolist():
         ns = re.sub(' ?\(.*?\)','',s)
-        if ns in CNAME:
+        if s in CNAME:
+            re_spe.append(s)
+        elif ns in CNAME:
             re_spe.append(ns)
         else:
             re_spe.append('not valid')

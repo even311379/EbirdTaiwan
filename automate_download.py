@@ -59,7 +59,8 @@ def download_all():
                     r = requests.get('https://ebird.org'+url)
                     time.sleep(1)
                     S = re.findall('Heading-main\".*?>(.*?)</span',r.text)[4:]
-                    N = [-1 if n == 'X' else int(n) for n in re.findall('<span>(..?.?)</span>',r.text)]
+                    tN = [i for i in re.findall('<span>(..?.?)</span>',r.text) if i.isdigit()]
+                    N = [-1 if n == 'X' else int(n) for n in tN]
                     temp_df = pd.DataFrame(dict(Date = [temp_d[i]]*len(S),Observer = [temp_o[i]]*len(S),Species=S,Count=N, Link=[url]*len(S)))
                     dl.append(temp_df)
                 except Exception as e:
@@ -80,6 +81,7 @@ def download_all():
     DF['Date'] = DF['Date'].apply(lambda x: f'{x.tm_year}-{x.tm_mon}-{x.tm_mday}')
     DF.to_csv('data/AllData.csv',index=False)
     return DF
+
 
 
 def update_data():
@@ -144,7 +146,8 @@ def update_data():
                     r = requests.get('https://ebird.org'+url)
                     time.sleep(1)
                     S = re.findall('Heading-main\".*?>(.*?)</span',r.text)[4:]
-                    N = [-1 if n == 'X' else int(n) for n in re.findall('<span>(..?.?)</span>',r.text)]
+                    tN = [i for i in re.findall('<span>(..?.?)</span>',r.text) if i.isdigit()]
+                    N = [-1 if n == 'X' else int(n) for n in tN]
                     temp_df = pd.DataFrame(dict(Date = [temp_d[i]]*len(S),Observer = [temp_o[i]]*len(S),Species=S,Count=N, Link=[url]*len(S)))
                     dl.append(temp_df)
                 except Exception as e:
@@ -168,7 +171,6 @@ def update_data():
         my_logger(1, 'No new data found!')
     
     my_logger(0, 'Data updating process is finished!')
-
 
 
 def automate():

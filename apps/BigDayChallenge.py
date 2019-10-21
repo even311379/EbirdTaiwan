@@ -17,18 +17,32 @@ from setting import app
 # init figs
 init_day = [2019,10,10]
 
-df = GetN_Species(init_day, [2019,12,31])
-fig_N_species = draw_bar(df.鳥種數.tolist(), df.觀察者.tolist(), 1300)
+if datetime.datetime.now() > datetime.datetime(2019,10,19):
+    df = GetN_Species([2019,10,19], [2019,10,20])
+    fig_N_species = draw_bar(df.鳥種數.tolist(), df.觀察者.tolist(), 1300)
 
-df = GetTotalIndivisual(init_day, [2019,12,31])
-fig_TI_species = draw_bar(df.鳥總隻數.tolist(), df.觀察者.tolist(), 1300)
+    df = GetTotalIndivisual([2019,10,19], [2019,10,20])
+    fig_TI_species = draw_bar(df.鳥總隻數.tolist(), df.觀察者.tolist(), 1300)
 
-df = GetN_Record(init_day, [2019,12,31])
-fig_Record_species = draw_bar(df.紀錄筆數.tolist(), df.觀察者.tolist(), 1300)
+    df = GetN_Record([2019,10,19], [2019,10,20])
+    fig_Record_species = draw_bar(df.紀錄筆數.tolist(), df.觀察者.tolist(), 1300)
 
-nS = Get_All_N_Species(init_day, [2019,12,31])
-nL = Get_All_N_List(init_day, [2019,12,31])
-nP = GetN_Participants(init_day, [2019,12,31])
+    nS = Get_All_N_Species([2019,10,19], [2019,10,20])
+    nL = Get_All_N_List([2019,10,19], [2019,10,20])
+    nP = GetN_Participants([2019,10,19], [2019,10,20])
+else:
+    df = GetN_Species(init_day, [2019,12,31])
+    fig_N_species = draw_bar(df.鳥種數.tolist(), df.觀察者.tolist(), 1300)
+
+    df = GetTotalIndivisual(init_day, [2019,12,31])
+    fig_TI_species = draw_bar(df.鳥總隻數.tolist(), df.觀察者.tolist(), 1300)
+
+    df = GetN_Record(init_day, [2019,12,31])
+    fig_Record_species = draw_bar(df.紀錄筆數.tolist(), df.觀察者.tolist(), 1300)
+
+    nS = Get_All_N_Species(init_day, [2019,12,31])
+    nL = Get_All_N_List(init_day, [2019,12,31])
+    nP = GetN_Participants(init_day, [2019,12,31])
 
 
 
@@ -63,7 +77,7 @@ BigDay_layout = html.Div([
                     dbc.Row(dbc.Col(dcc.Graph(figure=fig_Record_species, id='fRs', config=dict(displayModeBar=False),className='my_fig'))),
                     html.Hr(),], xl=4,lg=4,md=12),]),], style={"box-shadow":"4px 4px 0px rgba(187, 187, 187, 0.25)"}, body=True, color="light"),
         html.Br(),
-        html.P('資料範圍: 2019/10/10 00:00 ~ 現在',style={'text-align':'right','paddning-right':'30px'}, id='data-range-hint',className='text-muted'),
+        html.P('資料範圍: 2019/10/19 00:00 ~ 24:00',style={'text-align':'right','paddning-right':'30px'}, id='data-range-hint',className='text-muted'),
         dcc.Link(' 查看豐富獎品們', href='/big-day-challenge-prize',className='JoinBtn d-flex align-items-center justify-content-center'),
         html.Br(),
         ],fluid=True),
@@ -100,8 +114,8 @@ def update_all(prop):
         fig_TI_species = draw_bar(df.鳥總隻數.tolist(), df.觀察者.tolist(),w)
         df = GetN_Record([2019,10,19], [2019,10,20])
         fig_Record_species = draw_bar(df.紀錄筆數.tolist(), df.觀察者.tolist(),w)
-        nS = Get_All_N_Species([2019,10,19], [2019,12,31])
-        nL = Get_All_N_List([2019,10,19], [2019,12,31])
+        nS = Get_All_N_Species([2019,10,19], [2019,10,20])
+        nL = Get_All_N_List([2019,10,19], [2019,10,20])
         nP = GetN_Participants([2019,10,19], [2019,10,20])
     else:
         df = GetN_Species(init_day, [2019,12,31])
