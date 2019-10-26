@@ -17,6 +17,7 @@ IDs = ['ET黑面琵鷺隊', 'ET灰面鵟鷹隊','ET小辮鴴隊']
 PWs = ['201910BFS','201910GFB','201910NL']
 DFs = ['Team1Data.csv', 'Team2Data.csv', 'Team3Data.csv']
 
+bad_url = []
 
 def my_logger(level, message):
     
@@ -45,9 +46,19 @@ def GetChecklist(htmltext, url, c):
         S = S[2:]
     if 'Checklist flagged' in S:  
         S.remove('Checklist flagged')
+
     N = [-1 if n == 'X' else int(n) for n in re.findall('<span>([X|\d]\d*?)</span>',htmltext)]
+    if not N:
+        my_logger(1,f'bad_checklist_found {url}: this is due to NO Bird found !!??')
+        return pd.DataFrame(dict(Creator=[c],Species=['No bird'],Count=[-1],DateTime=['10:00 AM 1 Sep 2019'],Hotspot=['NA'],url=[url],Duration=['NA']))
     t = re.findall('<span class="Heading-sub Heading-sub--inline">(.*?)</span>', htmltext)[0]
     d = re.findall('</span>(.*?)</span>',htmltext)[0]
+    try:
+        duration = re.findall('title="Duration:(.*?)"',htmltext)[0]
+    except:
+        bad_url.append(url)
+        my_logger(1,f'bad_checklist_found {url}: this is due to No Duration!')
+        return pd.DataFrame(dict(Creator=[c],Species=['In complete'],Count=[-1],DateTime=['10:00 AM 1 Sep 2019'],Hotspot=['NA'],url=[url],Duration=['NA']))
     DT = t+d
     try:
         L = re.findall('href="(.*?/hotspot/.*?)"', htmltext)[0]
@@ -56,11 +67,11 @@ def GetChecklist(htmltext, url, c):
         if '\n' in L:
             L = L[L.index('\n')+1:]
         
-    return pd.DataFrame(dict(Creator=[c]*len(S),Species=S,Count=N,DateTime=[DT]*len(S),Hotspot=[L]*len(S),url=[url]*len(S)))
+    return pd.DataFrame(dict(Creator=[c]*len(S),Species=S,Count=N,DateTime=[DT]*len(S),Hotspot=[L]*len(S),url=[url]*len(S),Duration=[duration]*len(S)))
 
 
 def Update(j = 0):
-    driver = webdriver.Chrome(executable_path = '/usr/bin/chromedriver', options = options)
+    driver = webdriver.Chrome(executable_path = '/usr/bin/chromedriver', options = options)    
     time.sleep(3)
     try:
         driver.get('https://secure.birds.cornell.edu/cassso/login?')
@@ -120,7 +131,7 @@ def Update(j = 0):
             htmltext = driver.page_source
             DLS.append(GetChecklist(htmltext, i, c))
         except Exception as e:
-            my_logger(2, f'Scrape Data failed for : {e}')
+            my_logger(2, f'Scrape Data failed for {i} : {e}')
 
     if len(DLS) == 0:
         my_logger(2, f'Fail to scrape any data for {IDs[j]}!')
@@ -156,5 +167,4 @@ def run_now():
         Update(i)
 
 if __name__ == '__main__':
-#    run_now()
-     automate()
+    automate()

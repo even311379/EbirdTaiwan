@@ -692,3 +692,7 @@ input:invalid {
     color:white;
     background-color:#CDA0D0;
 }
+
+.sort {
+    float: none !important;
+}

@@ -9,7 +9,7 @@ import pandas as pd
 
 from setting import app
 
-team_cols = ['ScrapDate','Creator','Species','Count','DateTime','Hotspot','url']
+team_cols = ['ScrapDate','Creator','Species','Count','DateTime','Hotspot','url','Duration']
 ChallengeDay_cols = ['LocationID','Date','Observer','Species','Count','Link']
 
 admin_layout = html.Div([

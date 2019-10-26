@@ -320,6 +320,28 @@ def GetN_Record(sdate, edate):
     return odf
 
 # app2 functions
+def filter_by_MinutesAndX(indata):
+    D = set(indata.Duration.tolist())
+    dl = []
+    for d in D:
+        temp = indata[indata.Duration==d]
+        if 'hour' not in d:
+            if int(d.split(' ')[1]) < 3:
+                pass
+            else:
+                dl.append(temp)
+        else:
+            dl.append(temp)
+    indata2 = pd.concat(dl,ignore_index=True)
+    cl = list(set(indata2.url))
+    dl = []
+    for ll in cl:
+        temp = indata2[indata2.url==ll]
+        if -1 not in temp.Count.tolist():
+            dl.append(temp)
+
+    return pd.concat(dl,ignore_index=True)
+
 def half_donut(n_bird, n_rows, team=0, w=1600):
     
     if team == 0:
@@ -395,6 +417,12 @@ def setup_donuts(w, start_date):
     db1 = []
     db2 = []
     db3 = []
+
+# if no bird found, it is still a valid check list, so add the number of check list back...
+    n_nobird1 = len(data1[data1.Species=='No bird'])
+    n_nobird2 = len(data2[data2.Species=='No bird'])
+    n_nobird3 = len(data3[data3.Species=='No bird'])
+
     for d in data1.DateTime:
         db1.append(datetime.datetime.strptime(d, '%I:%M %p %d %b %Y') >= start_date)
     for d in data2.DateTime:
@@ -403,9 +431,13 @@ def setup_donuts(w, start_date):
         db3.append(datetime.datetime.strptime(d, '%I:%M %p %d %b %Y') >= start_date)
             
     
-    data1 = data1[db1]
-    data2 = data2[db2]
-    data3 = data3[db3]
+    data1 = filter_by_MinutesAndX(data1[db1])
+    data2 = filter_by_MinutesAndX(data2[db2])
+    data3 = filter_by_MinutesAndX(data3[db3])
+
+    data1 = data1[data1.Count>0]
+    data2 = data2[data2.Count>0]
+    data3 = data3[data3.Count>0]
 
     valid_species = []
     for df in [data1, data2, data3]:
@@ -421,11 +453,11 @@ def setup_donuts(w, start_date):
         valid_species.append(len(set(re_spe)))
 
     ts1 = valid_species[0]
-    tl1 = len(data1[['DateTime', 'Creator']].drop_duplicates())
+    tl1 = len(data1[['DateTime', 'Creator']].drop_duplicates()) + n_nobird1
     ts2 = valid_species[1]
-    tl2 = len(data2[['DateTime', 'Creator']].drop_duplicates())
+    tl2 = len(data2[['DateTime', 'Creator']].drop_duplicates()) + n_nobird2
     ts3 = valid_species[2]
-    tl3 = len(data3[['DateTime', 'Creator']].drop_duplicates())
+    tl3 = len(data3[['DateTime', 'Creator']].drop_duplicates()) + n_nobird3
 
     fig1 = half_donut(ts1,tl1,0,w)
     fig2 = half_donut(ts2,tl2,1,w)
@@ -498,7 +530,8 @@ def accumlate_people_trace(start_date, w):
     date_text = [''] + [f'10/{i+1}' for i in range(31)]
 
     # brutal force to axis...
-    layout = go.Layout(shapes = [go.layout.Shape(type="line",x0=0,x1=21,y0=0,y1=0,line=dict(color="#000000",width=1)),
+    layout = go.Layout(
+        shapes = [go.layout.Shape(type="line",x0=0,x1=21,y0=0,y1=0,line=dict(color="#000000",width=1)),
                   go.layout.Shape(type="line",x0=0,x1=0,y0=0,y1=y_upper,line=dict(color="#000000",width=1)),],
         width=ww,
         height=h,
@@ -516,7 +549,8 @@ def accumlate_people_trace(start_date, w):
         annotations=[go.layout.Annotation(x=20,y= tp,xref="x",yref="paper",text="時間",font=dict(size=lbs,color='#000000',family='Noto Sans TC'),showarrow=False),
             go.layout.Annotation(x=ap,y=0.8,xref="x",yref="paper",text="各隊累積人數",font=dict(size=lbs,color='#000000',family='Noto Sans TC'),showarrow=False,textangle=-90),
             go.layout.Annotation(x=21,y=0,ax=-10,ay=0,xref="x",yref="y",arrowhead=1,arrowwidth=2,arrowcolor='#000000'),
-            go.layout.Annotation(x=0,y=y_upper,ax=0,ay=15,xref="x",yref="y",arrowhead=1,arrowwidth=2,arrowcolor='#000000'),])
+            go.layout.Annotation(x=0,y=y_upper,ax=0,ay=15,xref="x",yref="y",arrowhead=1,arrowwidth=2,arrowcolor='#000000'),]
+    )
 
     fig = go.Figure(data=data,layout=layout)
     return fig
@@ -538,7 +572,8 @@ def DisplayTeamData(teamID):
     for d in df.DateTime:
         dbools.append(datetime.datetime.strptime(d, '%I:%M %p %d %b %Y') >= datetime.datetime(2019,10,1))           
     
-    df = df[dbools]
+    df = filter_by_MinutesAndX(df[dbools])
+    df = df[df.Count > 0]
 
     NameValidTable = pd.read_excel('data/NameValid.xlsx').fillna('缺值')
     # ENAME = NameValidTable.ENAME.tolist()
@@ -589,7 +624,7 @@ def DisplayTeamData(teamID):
         #id = table_id,
         data = odf.to_dict('records'),
         columns=[{'id': c, 'name': c} for c in odf.columns],
-        style_cell_conditional=[{'if': {'column_id': '物種'},'textAlign': 'left'}],
+        #style_cell_conditional=[{'if': {'column_id': '物種'},'textAlign': 'left'}],
         fixed_rows={ 'headers': True, 'data': 0 },
         style_as_list_view=True,
         filter_action='native',
