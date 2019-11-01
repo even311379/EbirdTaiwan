@@ -71,7 +71,7 @@ def GetChecklist(htmltext, url, c):
 
 
 def Update(j = 0):
-    driver = webdriver.Chrome(executable_path = '/usr/bin/chromedriver', options = options)    
+    driver = webdriver.Chrome(options = options)    
     time.sleep(3)
     try:
         driver.get('https://secure.birds.cornell.edu/cassso/login?')
@@ -167,4 +167,4 @@ def run_now():
         Update(i)
 
 if __name__ == '__main__':
-    automate()
+    run_now()

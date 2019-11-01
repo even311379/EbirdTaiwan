@@ -693,6 +693,6 @@ input:invalid {
     background-color:#CDA0D0;
 }
 
-.sort {
+.column-header--sort {
     float: none !important;
 }

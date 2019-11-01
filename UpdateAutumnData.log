@@ -1,0 +1,95 @@
+**ERROR** 2019-11-01 11:54:56: Scrape Data failed for https://ebird.org/checklist/S61081402 : list index out of range  
+**ERROR** 2019-11-01 11:55:47: Scrape Data failed for https://ebird.org/checklist/S61081452 : list index out of range  
+**ERROR** 2019-11-01 11:56:58: Scrape Data failed for https://ebird.org/checklist/S61081508 : list index out of range  
+*WARNING* 2019-11-01 11:57:02: bad_checklist_found https://ebird.org/checklist/S61064751: this is due to NO Bird found !!??  
+*WARNING* 2019-11-01 11:57:11: bad_checklist_found https://ebird.org/checklist/S61064758: this is due to NO Bird found !!??  
+**ERROR** 2019-11-01 11:57:27: Scrape Data failed for https://ebird.org/checklist/S61064775 : list index out of range  
+*WARNING* 2019-11-01 11:57:39: bad_checklist_found https://ebird.org/checklist/S61064786: this is due to NO Bird found !!??  
+*WARNING* 2019-11-01 11:57:43: bad_checklist_found https://ebird.org/checklist/S61064794: this is due to NO Bird found !!??  
+*WARNING* 2019-11-01 12:01:23: bad_checklist_found https://ebird.org/checklist/S61054674: this is due to No Duration!  
+*WARNING* 2019-11-01 12:02:52: bad_checklist_found https://ebird.org/checklist/S61036719: this is due to No Duration!  
+*WARNING* 2019-11-01 12:03:00: bad_checklist_found https://ebird.org/checklist/S61036723: this is due to No Duration!  
+**ERROR** 2019-11-01 12:03:03: Scrape Data failed for https://ebird.org/checklist/S61036724 : list index out of range  
+**ERROR** 2019-11-01 12:03:05: Scrape Data failed for https://ebird.org/checklist/S61036725 : list index out of range  
+*WARNING* 2019-11-01 12:03:10: bad_checklist_found https://ebird.org/checklist/S61036727: this is due to No Duration!  
+**ERROR** 2019-11-01 12:03:24: Scrape Data failed for https://ebird.org/checklist/S61036733 : list index out of range  
+**ERROR** 2019-11-01 12:03:26: Scrape Data failed for https://ebird.org/checklist/S61036735 : list index out of range  
+*WARNING* 2019-11-01 12:03:48: bad_checklist_found https://ebird.org/checklist/S61036747: this is due to No Duration!  
+*WARNING* 2019-11-01 12:04:03: bad_checklist_found https://ebird.org/checklist/S61036758: this is due to No Duration!  
+*WARNING* 2019-11-01 12:04:15: bad_checklist_found https://ebird.org/checklist/S61036765: this is due to No Duration!  
+*WARNING* 2019-11-01 12:06:17: bad_checklist_found https://ebird.org/checklist/S61016881: this is due to No Duration!  
+*WARNING* 2019-11-01 12:13:59: bad_checklist_found https://ebird.org/checklist/S60993272: this is due to No Duration!  
+*WARNING* 2019-11-01 12:14:01: bad_checklist_found https://ebird.org/checklist/S60993275: this is due to No Duration!  
+*WARNING* 2019-11-01 12:14:09: bad_checklist_found https://ebird.org/checklist/S60993282: this is due to No Duration!  
+**ERROR** 2019-11-01 12:15:41: Scrape Data failed for https://ebird.org/checklist/S60986945 : list index out of range  
+*WARNING* 2019-11-01 12:16:23: bad_checklist_found https://ebird.org/checklist/S60986976: this is due to NO Bird found !!??  
+*WARNING* 2019-11-01 12:16:59: bad_checklist_found https://ebird.org/checklist/S60987014: this is due to NO Bird found !!??  
+*WARNING* 2019-11-01 12:17:17: bad_checklist_found https://ebird.org/checklist/S60987037: this is due to NO Bird found !!??  
+**ERROR** 2019-11-01 12:17:50: Scrape Data failed for https://ebird.org/checklist/S60987066 : list index out of range  
+*WARNING* 2019-11-01 12:17:54: bad_checklist_found https://ebird.org/checklist/S60987070: this is due to NO Bird found !!??  
+*WARNING* 2019-11-01 12:18:12: bad_checklist_found https://ebird.org/checklist/S60987086: this is due to NO Bird found !!??  
+*WARNING* 2019-11-01 12:18:28: bad_checklist_found https://ebird.org/checklist/S60987093: this is due to NO Bird found !!??  
+*WARNING* 2019-11-01 12:18:41: bad_checklist_found https://ebird.org/checklist/S60987107: this is due to NO Bird found !!??  
+*WARNING* 2019-11-01 12:18:44: bad_checklist_found https://ebird.org/checklist/S60987110: this is due to NO Bird found !!??  
+*WARNING* 2019-11-01 12:18:59: bad_checklist_found https://ebird.org/checklist/S60987123: this is due to NO Bird found !!??  
+*WARNING* 2019-11-01 12:19:02: bad_checklist_found https://ebird.org/checklist/S60987126: this is due to NO Bird found !!??  
+*WARNING* 2019-11-01 12:19:23: bad_checklist_found https://ebird.org/checklist/S60987134: this is due to NO Bird found !!??  
+*WARNING* 2019-11-01 12:19:26: bad_checklist_found https://ebird.org/checklist/S60987137: this is due to NO Bird found !!??  
+*WARNING* 2019-11-01 12:19:35: bad_checklist_found https://ebird.org/checklist/S60987141: this is due to NO Bird found !!??  
+*WARNING* 2019-11-01 12:22:45: bad_checklist_found https://ebird.org/checklist/S60936778: this is due to NO Bird found !!??  
+*WARNING* 2019-11-01 12:24:20: bad_checklist_found https://ebird.org/checklist/S60929764: this is due to No Duration!  
+*WARNING* 2019-11-01 12:30:00: bad_checklist_found https://ebird.org/checklist/S60831546: this is due to NO Bird found !!??  
+*WARNING* 2019-11-01 12:35:44: bad_checklist_found https://ebird.org/checklist/S60664390: this is due to No Duration!  
+**ERROR** 2019-11-01 12:36:38: Scrape Data failed for https://ebird.org/checklist/S60664456 : list index out of range  
+*WARNING* 2019-11-01 12:38:51: bad_checklist_found https://ebird.org/checklist/S60634794: this is due to No Duration!  
+*WARNING* 2019-11-01 12:39:03: bad_checklist_found https://ebird.org/checklist/S60634800: this is due to No Duration!  
+*WARNING* 2019-11-01 12:40:22: bad_checklist_found https://ebird.org/checklist/S60601161: this is due to No Duration!  
+*WARNING* 2019-11-01 12:40:24: bad_checklist_found https://ebird.org/checklist/S60601166: this is due to No Duration!  
+*WARNING* 2019-11-01 12:40:27: bad_checklist_found https://ebird.org/checklist/S60601171: this is due to No Duration!  
+*WARNING* 2019-11-01 12:40:29: bad_checklist_found https://ebird.org/checklist/S60601176: this is due to No Duration!  
+*WARNING* 2019-11-01 12:40:32: bad_checklist_found https://ebird.org/checklist/S60601180: this is due to No Duration!  
+*WARNING* 2019-11-01 12:40:34: bad_checklist_found https://ebird.org/checklist/S60601182: this is due to No Duration!  
+*WARNING* 2019-11-01 12:40:40: bad_checklist_found https://ebird.org/checklist/S60601189: this is due to No Duration!  
+*WARNING* 2019-11-01 12:40:42: bad_checklist_found https://ebird.org/checklist/S60601191: this is due to No Duration!  
+*WARNING* 2019-11-01 12:40:45: bad_checklist_found https://ebird.org/checklist/S60601192: this is due to No Duration!  
+*WARNING* 2019-11-01 12:42:36: bad_checklist_found https://ebird.org/checklist/S60537820: this is due to No Duration!  
+*WARNING* 2019-11-01 12:43:05: bad_checklist_found https://ebird.org/checklist/S60537855: this is due to No Duration!  
+*WARNING* 2019-11-01 12:43:39: bad_checklist_found https://ebird.org/checklist/S60528455: this is due to No Duration!  
+*WARNING* 2019-11-01 12:43:50: bad_checklist_found https://ebird.org/checklist/S60528464: this is due to No Duration!  
+*WARNING* 2019-11-01 12:43:52: bad_checklist_found https://ebird.org/checklist/S60528466: this is due to No Duration!  
+*WARNING* 2019-11-01 12:44:02: bad_checklist_found https://ebird.org/checklist/S60528484: this is due to No Duration!  
+*WARNING* 2019-11-01 12:44:05: bad_checklist_found https://ebird.org/checklist/S60528485: this is due to No Duration!  
+*WARNING* 2019-11-01 12:47:54: bad_checklist_found https://ebird.org/checklist/S60450189: this is due to No Duration!  
+*WARNING* 2019-11-01 12:48:00: bad_checklist_found https://ebird.org/checklist/S60450194: this is due to No Duration!  
+*WARNING* 2019-11-01 12:49:12: bad_checklist_found https://ebird.org/checklist/S60420982: this is due to No Duration!  
+*WARNING* 2019-11-01 12:49:15: bad_checklist_found https://ebird.org/checklist/S60420984: this is due to No Duration!  
+*WARNING* 2019-11-01 12:54:42: bad_checklist_found https://ebird.org/checklist/S60130736: this is due to No Duration!  
+*WARNING* 2019-11-01 12:54:53: bad_checklist_found https://ebird.org/checklist/S60108823: this is due to No Duration!  
+*WARNING* 2019-11-01 12:54:56: bad_checklist_found https://ebird.org/checklist/S60100604: this is due to No Duration!  
+***INFO** 2019-11-01 12:55:06: Success Scrape ET黑面琵鷺隊  
+*WARNING* 2019-11-01 13:16:02: bad_checklist_found https://ebird.org/checklist/S60938916: this is due to NO Bird found !!??  
+*WARNING* 2019-11-01 13:17:46: bad_checklist_found https://ebird.org/checklist/S60907624: this is due to No Duration!  
+*WARNING* 2019-11-01 13:20:29: bad_checklist_found https://ebird.org/checklist/S60868417: this is due to NO Bird found !!??  
+*WARNING* 2019-11-01 13:20:42: bad_checklist_found https://ebird.org/checklist/S60862914: this is due to No Duration!  
+*WARNING* 2019-11-01 13:22:08: bad_checklist_found https://ebird.org/checklist/S60833853: this is due to No Duration!  
+*WARNING* 2019-11-01 13:23:50: bad_checklist_found https://ebird.org/checklist/S60775759: this is due to No Duration!  
+*WARNING* 2019-11-01 13:28:27: bad_checklist_found https://ebird.org/checklist/S60679868: this is due to No Duration!  
+*WARNING* 2019-11-01 13:28:35: bad_checklist_found https://ebird.org/checklist/S60679874: this is due to No Duration!  
+*WARNING* 2019-11-01 13:28:49: bad_checklist_found https://ebird.org/checklist/S60679885: this is due to No Duration!  
+*WARNING* 2019-11-01 13:31:45: bad_checklist_found https://ebird.org/checklist/S60618894: this is due to No Duration!  
+**ERROR** 2019-11-01 13:33:29: Scrape Data failed for https://ebird.org/checklist/S60604205 : list index out of range  
+**ERROR** 2019-11-01 13:33:42: Scrape Data failed for https://ebird.org/checklist/S60604217 : list index out of range  
+*WARNING* 2019-11-01 13:33:58: bad_checklist_found https://ebird.org/checklist/S60601245: this is due to No Duration!  
+*WARNING* 2019-11-01 13:37:51: bad_checklist_found https://ebird.org/checklist/S60428965: this is due to NO Bird found !!??  
+*WARNING* 2019-11-01 13:42:18: bad_checklist_found https://ebird.org/checklist/S60100702: this is due to No Duration!  
+***INFO** 2019-11-01 13:42:33: Success Scrape ET灰面鵟鷹隊  
+**ERROR** 2019-11-01 13:46:28: Scrape Data failed for https://ebird.org/checklist/S61043860 : list index out of range  
+**ERROR** 2019-11-01 13:51:17: Scrape Data failed for https://ebird.org/checklist/S60989258 : list index out of range  
+*WARNING* 2019-11-01 13:54:42: bad_checklist_found https://ebird.org/checklist/S60936992: this is due to NO Bird found !!??  
+*WARNING* 2019-11-01 14:01:47: bad_checklist_found https://ebird.org/checklist/S60779567: this is due to No Duration!  
+*WARNING* 2019-11-01 14:07:07: bad_checklist_found https://ebird.org/checklist/S60678950: this is due to No Duration!  
+*WARNING* 2019-11-01 14:23:53: bad_checklist_found https://ebird.org/checklist/S60316662: this is due to No Duration!  
+*WARNING* 2019-11-01 14:24:12: bad_checklist_found https://ebird.org/checklist/S60304266: this is due to No Duration!  
+*WARNING* 2019-11-01 14:24:44: bad_checklist_found https://ebird.org/checklist/S60286997: this is due to No Duration!  
+*WARNING* 2019-11-01 14:26:47: bad_checklist_found https://ebird.org/checklist/S60108861: this is due to No Duration!  
+***INFO** 2019-11-01 14:26:55: Success Scrape ET小辮鴴隊  

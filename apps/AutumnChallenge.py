@@ -168,3 +168,12 @@ def on_post():
         ndf = accounts.append(pd.DataFrame(dict(ID=[data['new_acct']],Team=[data['team']],SignUpDate=[today])), ignore_index=True)
         ndf.to_csv('data/SignUp.csv',index=False)
         return flask.redirect('/welcome')
+
+
+# @app.callback(
+#     [Output('data1', 'children'),
+#     Output('data2', 'children'),
+#     Output('data3', 'children'),],
+#     [Input('javascript', 'event')])
+# def update_summary_table(prop):    
+#     return DisplayTeamData(0), DisplayTeamData(1), DisplayTeamData(2)

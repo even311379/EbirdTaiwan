@@ -409,31 +409,24 @@ def half_donut(n_bird, n_rows, team=0, w=1600):
     return fig
 
 def setup_donuts(w, start_date):
-    data1 = pd.read_csv('data/Team1Data.csv')
-    data2 = pd.read_csv('data/Team2Data.csv')
-    data3 = pd.read_csv('data/Team3Data.csv')
+    data1 = pd.read_csv('data/Team1Data_fin.csv')
+    data2 = pd.read_csv('data/Team2Data_fin.csv')
+    data3 = pd.read_csv('data/Team3Data_fin.csv')
     NameValidTable = pd.read_excel('data/NameValid.xlsx').fillna('缺值')
 
-    db1 = []
-    db2 = []
-    db3 = []
+    d1 = pd.read_csv('data/Team1Data.csv')
+    d2 = pd.read_csv('data/Team2Data.csv')
+    d3 = pd.read_csv('data/Team3Data.csv')
 
-# if no bird found, it is still a valid check list, so add the number of check list back...
-    n_nobird1 = len(data1[data1.Species=='No bird'])
-    n_nobird2 = len(data2[data2.Species=='No bird'])
-    n_nobird3 = len(data3[data3.Species=='No bird'])
+    # if no bird found, it is still a valid check list, so add the number of check list back...
+    n_nobird1 = len(d1[d1.Species=='No bird'])
+    n_nobird2 = len(d2[d2.Species=='No bird'])
+    n_nobird3 = len(d3[d3.Species=='No bird'])
 
-    for d in data1.DateTime:
-        db1.append(datetime.datetime.strptime(d, '%I:%M %p %d %b %Y') >= start_date)
-    for d in data2.DateTime:
-        db2.append(datetime.datetime.strptime(d, '%I:%M %p %d %b %Y') >= start_date)
-    for d in data3.DateTime:
-        db3.append(datetime.datetime.strptime(d, '%I:%M %p %d %b %Y') >= start_date)
-            
-    
-    data1 = filter_by_MinutesAndX(data1[db1])
-    data2 = filter_by_MinutesAndX(data2[db2])
-    data3 = filter_by_MinutesAndX(data3[db3])
+          
+    data1 = filter_by_MinutesAndX(data1)
+    data2 = filter_by_MinutesAndX(data2)
+    data3 = filter_by_MinutesAndX(data3)
 
     data1 = data1[data1.Count>0]
     data2 = data2[data2.Count>0]
@@ -558,30 +551,20 @@ def accumlate_people_trace(start_date, w):
 def DisplayTeamData(teamID):
 
     if teamID == 0:
-        df = pd.read_csv('data/Team1Data.csv')
-        # table_id = 'team1_table'
+        df = pd.read_csv('data/Team1Data_fin.csv')
     elif teamID == 1:
-        df = pd.read_csv('data/Team2Data.csv')
-        # table_id = 'team2_table'
+        df = pd.read_csv('data/Team2Data_fin.csv')
     elif teamID == 2:
-        df = pd.read_csv('data/Team3Data.csv')
-        # table_id = 'team3_table'
+        df = pd.read_csv('data/Team3Data_fin.csv')
 
-
-    dbools = []
-    for d in df.DateTime:
-        dbools.append(datetime.datetime.strptime(d, '%I:%M %p %d %b %Y') >= datetime.datetime(2019,10,1))           
     
-    df = filter_by_MinutesAndX(df[dbools])
+    df = filter_by_MinutesAndX(df)
     df = df[df.Count > 0]
 
     NameValidTable = pd.read_excel('data/NameValid.xlsx').fillna('缺值')
-    # ENAME = NameValidTable.ENAME.tolist()
     CNAME = NameValidTable.CNAME.tolist()
-    BD = [i[5:7]=='10' for i in df.ScrapDate.tolist()]
-    df = df[BD]
-    re_spe = []
 
+    re_spe = []
     for s in df.Species.tolist():
         ns = re.sub(' ?\(.*?\)','',s)
         if s in CNAME:
@@ -590,7 +573,6 @@ def DisplayTeamData(teamID):
             re_spe.append(ns)
         else:
             re_spe.append('not valid')
-
     df.insert(0,'ValidSpecies',re_spe)
     spe = list(set(df.ValidSpecies))
 
