@@ -631,5 +631,70 @@ def DisplayTeamData(teamID):
     return final_table
 
 
+def DisplayParticipantsData(teamID):
+
+    if teamID == 0:
+        df = pd.read_csv('data/Team1Data_fin.csv')
+    elif teamID == 1:
+        df = pd.read_csv('data/Team2Data_fin.csv')
+    elif teamID == 2:
+        df = pd.read_csv('data/Team3Data_fin.csv')
+
+    
+    df = filter_by_MinutesAndX(df)
+    df = df[df.Count > 0]
+
+    NameValidTable = pd.read_excel('data/NameValid.xlsx').fillna('缺值')
+    CNAME = NameValidTable.CNAME.tolist()
+
+    re_spe = []
+    for s in df.Species.tolist():
+        ns = re.sub(' ?\(.*?\)','',s)
+        if s in CNAME:
+            re_spe.append(s)
+        elif ns in CNAME:
+            re_spe.append(ns)
+        else:
+            re_spe.append('not valid')
+    df.insert(0,'ValidSpecies',re_spe)
+
+    df = df[df.ValidSpecies != 'not valid']
+    pname = list(set(df.Creator))
+    NS = []
+    NL = []
+    for  n in pname:
+        tdf = df[df.Creator == n]
+        NS.append(len(set(tdf.ValidSpecies)))
+        NL.append(len(set(tdf.url)))
+
+    odf = pd.DataFrame(dict(名稱=pname,上傳物種數=NS,上傳清單數=NL))
+
+
+    final_table = dash_table.DataTable(
+        #id = table_id,
+        data = odf.to_dict('records'),
+        columns=[{'id': c, 'name': c} for c in odf.columns],
+        fixed_rows={ 'headers': True, 'data': 0 },
+        style_as_list_view=True,
+        filter_action='native',
+        sort_action='native',
+        page_action='none',
+        style_cell={
+                    'minWidth': '30px',
+                    'width': '30px',
+                    'maxWidth': '30px',
+                    'font-size':'12px',
+                },
+        style_data={
+            'whiteSpace': 'normal',
+            'height': 'auto'
+        },
+        style_table={
+                    'height':'500px'
+                }
+    )
+
+    return final_table
+
 if __name__ == "__main__":        
     pass

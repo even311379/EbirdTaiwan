@@ -3,6 +3,7 @@ import dash_html_components as html
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 from dash.dependencies import Input, Output, State
+from textwrap import dedent
 
 import visdcc
 
@@ -12,7 +13,7 @@ import time
 import datetime
 
 
-from ebird_figs import  setup_donuts,accumlate_people_trace,DisplayTeamData
+from ebird_figs import  setup_donuts,accumlate_people_trace,DisplayTeamData, DisplayParticipantsData
 from setting import app
 
 init_donut1, init_donut2, init_donut3 = setup_donuts(1600, datetime.datetime(2019,10,1))
@@ -110,6 +111,32 @@ data_layout = html.Div([
     html.Br(),
     html.P("可在篩選資料欄位直接輸入篩選條件，如: '> 10' 或 '鷗'。",className='text-muted',style={'text-align':'right','padding-right':'30px','font-size':'12px'}),
     html.Br(),
+    html.Div("隊員貢獻", className="section_title"),
+    html.Br(),
+    dbc.Row([
+       dbc.Col([
+            html.H1('ET黑面琵鷺隊',className='month-data-title'),
+            html.Div(DisplayParticipantsData(0),className='month-data-table')
+        ],xl = 4,lg = 4, md = 12),
+        dbc.Col([
+            html.H1('ET灰面鵟鷹隊',className='month-data-title'),
+            html.Div(DisplayParticipantsData(1),className='month-data-table')
+        ],xl = 4,lg = 4, md = 12),
+        dbc.Col([
+            html.H1('ET小辮鴴隊',className='month-data-title'),
+            html.Div(DisplayParticipantsData(2),className='month-data-table')
+        ],xl = 4,lg = 4, md = 12),     
+    ]),
+    html.Br(),
+    html.Div(
+        dcc.Markdown(dedent('''
+        統計結果經以下條件篩選:
+
+        1. 10/15號前尚未上傳第一筆清單者
+        2. 清單中含有X
+        3. 紀錄時間少於3分鐘
+        '''),className='text-muted',style={'font-size':'12px'}),
+    style={'margin-left':'auto','margin-right':'10px','width':'300px'}),
     html.Div(style={"height": "100px", "background": "#84BC60"}), 
 ])
 
